@@ -167,7 +167,7 @@ const ShippingDeliveryPolicyPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#27272a] text-white">
       {/* Hero */}
       <div className="bg-[#0f1110] text-white py-16 md:py-24">
         <div className="max-w-5xl mx-auto px-6">
@@ -182,10 +182,10 @@ const ShippingDeliveryPolicyPage = () => {
       </div>
 
       {/* Content */}
-      <div className="max-w-4xl mx-auto px-6 py-12">
+      <div className="max-w-4xl mx-auto px-6 py-12 text-white">
         {sections.map((section) => (
           <section key={section.id} className="mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">
+            <h2 className="text-3xl font-bold text-white mb-6">
               {section.title}
             </h2>
 
@@ -193,17 +193,17 @@ const ShippingDeliveryPolicyPage = () => {
               {section.content.map((item, idx) => (
                 <div key={idx} className="space-y-3">
                   {item.subtitle && (
-                    <h3 className="text-lg font-semibold text-gray-900">
+                    <h3 className="text-lg font-semibold text-white">
                       {item.subtitle}
                     </h3>
                   )}
                   {item.text && (
-                    <p className="text-gray-700 leading-relaxed whitespace-pre-wrap">
+                    <p className="text-gray-300 leading-relaxed whitespace-pre-wrap">
                       {item.text}
                     </p>
                   )}
                   {item.subpoints && (
-                    <ul className="list-disc ml-6 space-y-2 text-gray-700">
+                    <ul className="list-disc ml-6 space-y-2 text-gray-300">
                       {item.subpoints.map((point, i) => (
                         <li key={i}>{point}</li>
                       ))}

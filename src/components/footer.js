@@ -31,7 +31,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-[#0F0F0F] text-white w-full flex flex-col justify-end ">
+    <footer className="bg-[#27272a] text-white w-full flex flex-col justify-end ">
       <div className="px-4 sm:px-6 lg:px-8 py-10 flex flex-col flex-1 justify-end">
         {/* Main Footer Content */}
         <div className="flex flex-col lg:flex-row justify-between gap-20 mb-16 px-[20px]">
@@ -39,7 +39,7 @@ const Footer = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-x-14 gap-y-6">
             {/* Column 1 */}
             <ul className="space-y-3 text-sm text-gray-300">
-              <li>Welcome to La Fetch</li>
+              <li>Welcome to La Fetch Quick</li>
               <li>Announcements</li>
               <li>What's new</li>
               <li>Contact us</li>
@@ -163,7 +163,7 @@ const Footer = () => {
           {/* Row 2: Copyright and Socials on same line */}
           <div className="mt-6 flex flex-col md:flex-row justify-between items-center gap-6 md:gap-0">
             <div className="text-sm text-gray-400 text-center md:text-left">
-              ©2025 Powered By and All Right Reserved to AS10 TECH-RETAIL
+              ©2026 Powered By and All Right Reserved to AS10 TECH-RETAIL
               PRIVATE LIMITED
             </div>
 

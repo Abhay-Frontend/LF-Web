@@ -297,7 +297,7 @@ Personal Information and Sensitive Personal Data/Information are collectively re
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#27272a] text-white">
       {/* <Navbar /> */}
 
       {/* Hero Section */}
@@ -317,7 +317,7 @@ Personal Information and Sensitive Personal Data/Information are collectively re
       <div className="max-w-4xl mx-auto px-6 py-12">
         {sections.map((section) => (
           <section key={section.id} id={section.id} className="mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">
+            <h2 className="text-3xl font-bold text-white mb-6">
               {section.title}
             </h2>
 
@@ -325,19 +325,19 @@ Personal Information and Sensitive Personal Data/Information are collectively re
               {section.content.map((item, idx) => (
                 <div key={idx} className="space-y-3">
                   {item.subtitle && (
-                    <h3 className="font-semibold text-gray-900 text-lg">
+                    <h3 className="font-semibold text-white text-lg">
                       {item.subtitle}
                     </h3>
                   )}
 
                   {item.text && (
-                    <p className="text-gray-700 leading-relaxed whitespace-pre-wrap">
+                    <p className="text-gray-300 leading-relaxed whitespace-pre-wrap">
                       {item.text}
                     </p>
                   )}
 
                   {item.subpoints && (
-                    <ul className="space-y-2 ml-6 list-disc text-gray-700">
+                    <ul className="space-y-2 ml-6 list-disc text-gray-300">
                       {item.subpoints.map((point, i) => (
                         <li key={i} className="leading-relaxed">
                           {point}
@@ -347,11 +347,11 @@ Personal Information and Sensitive Personal Data/Information are collectively re
                   )}
 
                   {item.contact && (
-                    <div className="  p-6 rounded-lg mt-6">
-                      <strong className="text-gray-900 block mb-3 text-lg">
+                    <div className="bg-[#1f1f22]  p-6 rounded-lg mt-6">
+                      <strong className="text-white block mb-3 text-lg">
                         Contact Information:
                       </strong>
-                      <div className="space-y-2 text-gray-700">
+                      <div className="space-y-2 text-gray-300">
                         <p>
                           <b>Name:</b> {item.contact.name}
                         </p>
@@ -362,7 +362,7 @@ Personal Information and Sensitive Personal Data/Information are collectively re
                           <b>Email:</b>{" "}
                           <a
                             href={`mailto:${item.contact.email}`}
-                            className="text-blue-600 hover:underline"
+                            className="text-blue-400 hover:underline"
                           >
                             {item.contact.email}
                           </a>

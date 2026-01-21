@@ -51,9 +51,9 @@ than ever before.`,
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#27272a] text-white">
       {/* Hero Section */}
-      <div className="bg-[#0f1110] text-white py-16 md:py-24">
+      <div className="bg-[#0f1110]  border-b border-white/10 py-16 md:py-24">
         <div className="max-w-5xl mx-auto px-6">
           <h1 className="text-4xl md:text-5xl font-semibold tracking-tight">
             About LaFetch
@@ -69,10 +69,10 @@ than ever before.`,
         <div className="space-y-14">
           {sections.map((section) => (
             <section key={section.id} id={section.id}>
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              <h2 className="text-3xl font-bold text-white-900 mb-4">
                 {section.title}
               </h2>
-              <p className="text-gray-700 leading-relaxed whitespace-pre-line text-lg">
+              <p className="text-gray-300 leading-relaxed whitespace-pre-line text-lg">
                 {section.text}
               </p>
             </section>

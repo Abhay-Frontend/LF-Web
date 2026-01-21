@@ -104,21 +104,30 @@ const Navbar = () => {
   return (
     <>
       {/* HEADER */}
-      <div className="fixed top-14 inset-x-0 bg-white z-40 shadow-sm">
+      <div className="fixed top-14 inset-x-0 z-40 shadow-sm" style={{backgroundColor:"#27272a"}}>
         <div className="max-w-full mx-auto px-4 md:px-16 py-6 md:py-7 h-20 md:h-18 flex items-center justify-between">
           {/* LEFT */}
           <div className="flex items-center gap-1 md:gap-4">
-            <button className="md:hidden" onClick={() => setIsMobileOpen(true)}>
-              <Menu />
+            <button className="md:hidden" style={{color:"white"}} onClick={() => setIsMobileOpen(true)}>
+              <Menu style={{className :"text-white"}}/>
             </button>
 
-            <Link href="/" className="mt-[2px] md:mt-0">
-              <Image
-                src="/images/logo.png"
+            <Link href="/" className="mt-[2px] md:mt-0 flex items-center gap-1">
+            <div className="flex items-center gap-2">
+               <Image
+                src="/images/logo-white.png"
                 alt="Logo"
                 width={100}
                 height={60}
               />
+              <Image
+                src="/images/quick.png"
+                alt="Logo"
+                width={80}
+                height={40}
+              />  
+            </div>
+             
             </Link>
 
             {/* <Link href="/" className="md:hidden border-r border-black/50 pr-4">
@@ -136,10 +145,10 @@ const Navbar = () => {
             {filteredMenuData.map((menu, index) => (
               <div
                 key={index}
-                className="relative text-sm font-clash-display font-medium text-[#0F0F0F] uppercase leading-4
+                className="relative text-sm font-clash-display font-medium text-white uppercase leading-4
              after:absolute after:left-0 after:-bottom-2
              after:h-[1.5px] after:w-full after:bg-transparent
-             hover:after:bg-black
+             hover:after:bg-white
              hover:font-semibold"
                 onMouseEnter={() => {
                   clearTimeout(dropdownTimeout);
@@ -175,44 +184,19 @@ const Navbar = () => {
 
           {/* RIGHT */}
           <div className="flex items-center gap-1 md:gap-4">
-            <div className="border-r border-black/50 w-28 h-8 flex items-center justify-center ">
-              <button
-                onClick={() => setIsQuickModalOpen(true)}
-                className="relative overflow-hidden cursor-pointer"
-              >
-                <div className="md:block hidden pr-4">
-                  <Image
-                    src="/images/quick.png"
-                    alt="Quick"
-                    width={100}
-                    height={30}
-                  />
-                </div>
-
-                <div className="md:hidden  md:pr-4">
-                  <Image
-                    src="/images/quick.png"
-                    alt="Logo"
-                    width={80}
-                    height={40}
-                  />
-                </div>
-                <div className="absolute inset-0 shine-overlay"></div>
-              </button>
-            </div>
             <Search
-              className="text-black cursor-pointer"
+              className="text-white cursor-pointer"
               onClick={() => setShowSearchDropdown(true)}
             />
 
             <Link href="/wishlist-boards">
-              <Heart className="text-black" />
+              <Heart className="text-white" />
             </Link>
 
             <Link href="/checkout/bag" className="relative">
-              <ShoppingBag className="text-black" />
+              <ShoppingBag className="text-white" />
               {cartTotal > 0 && (
-                <span className="absolute -top-1 -right-1 text-xs bg-red-500 text-white rounded-full px-1">
+                <span className="absolute -top-1 -right-1 text-xs bg-white-500 text-white rounded-full px-1">
                   {cartTotal}
                 </span>
               )}
@@ -222,7 +206,7 @@ const Navbar = () => {
               <UserDropdown user={user} />
             ) : (
               <User
-                className="text-black"
+                className="text-white"
                 onClick={() => dispatch(openPhoneAuthModal("navbar"))}
               />
             )}

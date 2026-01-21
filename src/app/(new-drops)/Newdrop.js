@@ -48,12 +48,15 @@ const NewestAtLafetch = () => {
   const handleLike = (productId) => {};
 
   return (
-    <div className="w-full p-[24px] py-6 sm:py-8 bg-white flex flex-col gap-6 sm:gap-8 md:gap-10 ">
+    <div className="w-full p-[24px] py-6 sm:py-8 bg-[#27272a] flex flex-col gap-6 sm:gap-8 md:gap-10 ">
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-10 ">
-        <div className="flex-1 h-1 bg-stone-100/90 overflow-hidden relative">
+      <div className="flex flex-col items-center gap-4">
+        <h2 className="text-center text-2xl  md:text-[36px] font-semibold uppercase text-[white]">
+          What's Newest at Lafetch Quick
+        </h2>
+        <div className="w-full max-w-xl h-1 bg-[#27272a] overflow-hidden relative">
           <div
-            className="h-full bg-stone-950 transition-all duration-500"
+            className="h-full bg-white transition-all duration-500"
             style={{
               width: `${100 / totalPages}%`,
               transform: `translateX(${currentPage * 100}%)`,
@@ -61,9 +64,7 @@ const NewestAtLafetch = () => {
           />
         </div>
 
-        <h2 className="w-full md:w-[600px] text-left md:text-right text-2xl  md:text-[36px] font-semibold uppercase text-[#0F0F0F]">
-          What's Newest at Lafetch
-        </h2>
+       
       </div>
 
       {/* Content */}
@@ -96,7 +97,7 @@ const NewestAtLafetch = () => {
 
         {/* Right Section - Static */}
         <div className="flex flex-col gap-4 sm:gap-5 md:gap-6 lg:gap-7">
-          <div className="h-48 sm:h-72 md:h-[280px] rounded-xl md:rounded-2xl bg-stone-200 overflow-hidden">
+          <div className="h-48 sm:h-72 md:h-[280px] rounded-xl md:rounded-2xl bg-[#27272a] overflow-hidden">
             <video
               src="/videos/newin.mp4"
               autoPlay

@@ -70,7 +70,7 @@ const NavbarDropdown = ({ menu, latestBlogs, onMouseEnter, onMouseLeave }) => {
                       <li key={item.id}>
                         <a
                           href={`/products?subCatId=${item.id}`}
-                          className="text-[10px] font-normal text-[#404040] hover:text-black transition-colors"
+                          className="text-[10px] font-normal text-[#404040] hover:text-white transition-colors"
                         >
                           {item.name}
                         </a>

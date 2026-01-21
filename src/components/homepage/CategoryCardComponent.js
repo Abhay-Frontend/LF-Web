@@ -35,9 +35,9 @@ export default function ShopByCategory({ categories: externalCategories }) {
   };
 
   return (
-    <div className="w-full max-h-screen  px-4 sm:px-8 md:px-10 pt-10  md:pt-[20px] lg:pt-[50px] pb-8 p-[20px] ">
+    <div className="w-full max-h-screen bg-[#27272a] px-4 sm:px-8 md:px-10 pt-10  md:pt-[20px] lg:pt-[50px] pb-8 p-[20px] ">
       <div className="mb-6 sm:mb-8 md:mb-10">
-        <h1 className="text-stone-950 text-2xl  md:text-[38px] font-semibold uppercase">
+        <h1 className="text-white text-2xl  md:text-[38px] font-semibold uppercase">
           Shop by Category
         </h1>
       </div>
@@ -49,7 +49,7 @@ export default function ShopByCategory({ categories: externalCategories }) {
             href={category.href}
             className={`${getCardWidth(
               index
-            )} relative rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-[20px] overflow-hidden transition-all duration-500 ease-in-out cursor-pointer group bg-neutral-200`}
+            )} relative rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-[20px] overflow-hidden transition-all duration-500 ease-in-out cursor-pointer group bg-zinc-800`}
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
           >
@@ -62,7 +62,7 @@ export default function ShopByCategory({ categories: externalCategories }) {
             />
 
             {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-60 sm:opacity-40 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-60 sm:opacity-40 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500" />
 
             {/* Category Label */}
             <div
@@ -72,12 +72,12 @@ export default function ShopByCategory({ categories: externalCategories }) {
                   : "opacity-100 md:group-hover:opacity-100 md:group-hover:translate-y-0"
               }`}
             >
-              <h2 className="text-neutral-100 text-[10px] md:text-3xl  font-semibold uppercase">
+              <h2 className="text-white text-[10px] md:text-3xl  font-semibold uppercase">
                 {category.name}
               </h2>
 
               {/* Arrow is now visual-only */}
-              <div className="w-5  md:w-10 h-5  md:h-10 rounded-full flex items-center justify-center flex-shrink-0">
+              <div className="w-5  md:w-10 h-5  md:h-10 rounded-full flex items-center justify-center flex-shrink-0 bg-white/10 group-hover:bg-white/20 transition">
                 <ArrowRight className="w-4 md:w-6 h-4 md:h-6 text-white" />
               </div>
             </div>
