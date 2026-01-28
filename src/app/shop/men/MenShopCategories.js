@@ -53,8 +53,8 @@ const ShopCategories = () => {
 
   const CategorySkeleton = () => (
     <div className="flex flex-col items-center min-w-[140px] md:min-w-[215px]">
-      <div className="w-[120px] h-[120px] md:w-[195px] md:h-[195px] bg-gray-200 rounded-full animate-pulse"></div>
-      <div className="h-4 bg-gray-300 rounded w-3/4 mt-4 animate-pulse"></div>
+      <div className="w-[120px] h-[120px] md:w-[195px] md:h-[195px] bg-zinc-700 rounded-full animate-pulse"></div>
+      <div className="h-4 bg-zinc-600 rounded w-3/4 mt-4 animate-pulse"></div>
     </div>
   );
 
@@ -62,11 +62,11 @@ const ShopCategories = () => {
     !isLoading && fetchCategories && fetchCategories.length > 6;
 
   return (
-    <section className="w-full py-8  bg-white">
+    <section className="w-full py-8  bg-[#27272a]">
       <div className=" px-2 md:px-4">
         {/* Header */}
         <div className="text-center mb-8 md:mb-12">
-          <h2 className="text-2xl md:text-4xl font-bold text-black tracking-wider">
+          <h2 className="text-2xl md:text-4xl font-bold text-white tracking-wider">
             SHOP BY CATEGORIES
           </h2>
         </div>
@@ -118,7 +118,7 @@ const ShopCategories = () => {
                     className="flex flex-col items-center min-w-[140px] md:min-w-[215px]"
                   >
                     <div className="relative group cursor-pointer transform transition-transform duration-300">
-                      <div className="w-[120px] h-[120px] md:w-[195px] md:h-[195px] rounded-full overflow-hidden bg-gray-100">
+                      <div className="w-[120px] h-[120px] md:w-[195px] md:h-[195px] rounded-full overflow-hidden bg-zinc-800">
                         <Image
                           src={category.image || "/placeholder.png"}
                           alt={category.name}
@@ -130,7 +130,7 @@ const ShopCategories = () => {
                       </div>
                     </div>
 
-                    <h3 className="text-black text-center font-semibold text-sm md:text-base  mt-4 px-4 leading-tight">
+                    <h3 className="text-white text-center font-semibold text-sm md:text-base  mt-4 px-4 leading-tight">
                       {category.name}
                     </h3>
                   </Link>

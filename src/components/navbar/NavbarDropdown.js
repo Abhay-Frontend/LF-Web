@@ -48,7 +48,7 @@ const NavbarDropdown = ({ menu, latestBlogs, onMouseEnter, onMouseLeave }) => {
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
-      <div className="bg-[#F8F8F8] shadow-lg border-t border-gray-200">
+      <div className="bg-[#27272a] shadow-lg border-t border-white/10">
         <div className="max-w-full mx-auto px-16 ">
           <div className="grid grid-cols-[1fr_420px] gap-8 items-start">
             {/* Left Side - Categories Grid */}
@@ -57,11 +57,11 @@ const NavbarDropdown = ({ menu, latestBlogs, onMouseEnter, onMouseLeave }) => {
                 <div
                   key={section.id}
                   className={
-                    index % 2 === 0 ? "bg-[#F2F2F2] p-4 " : "bg-[#F8F8F8] p-4 "
+                    index % 2 === 0 ? "bg-zinc-800 hover:bg-zinc-700" : "bg-zinc-800/70 hover:bg-zinc-700"
                   }
                 >
                   <a href={`/categories?catId=${section.id}`}>
-                    <h3 className="text-[10px] font-[600] text-[#0F0F0F] mb-1 font-clash-display uppercase break-words">
+                    <h3 className="text-[10px] font-[600] text-white mb-1 font-clash-display uppercase break-words">
                       {section.heading}
                     </h3>
                   </a>
@@ -70,7 +70,7 @@ const NavbarDropdown = ({ menu, latestBlogs, onMouseEnter, onMouseLeave }) => {
                       <li key={item.id}>
                         <a
                           href={`/products?subCatId=${item.id}`}
-                          className="text-[10px] font-normal text-[#404040] hover:text-white transition-colors"
+                          className="text-[10px] font-normal text-white/50 hover:text-white transition-colors"
                         >
                           {item.name}
                         </a>

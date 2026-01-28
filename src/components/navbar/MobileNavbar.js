@@ -25,16 +25,16 @@ const MobileNavbar = ({ isOpen, onClose, menuData, getMenuHref }) => {
         transition-transform duration-300 flex flex-col`}
       >
         <div className="flex items-center justify-between p-4 border-b border-[#3f3f46]">
-          <button className="border-r border-black/50 w-20 h-8 flex items-center justify-center">
+          {/* <button className="border-r border-black/50 w-20 h-8 flex items-center justify-center">
             <Image
               src="/images/quick.png"
               alt="Quick"
               width={100}
               height={30}
             />
-          </button>
+          </button> */}
           <Link href="/" className="flex-shrink-0">
-            <Image src="/images/logo.png" alt="Logo" width={60} height={24} />
+            <Image src="/images/logo_white.png" alt="Logo" width={160} height={50} />
           </Link>
 
           <button onClick={onClose}>

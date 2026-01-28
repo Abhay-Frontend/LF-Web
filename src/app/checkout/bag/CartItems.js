@@ -403,36 +403,36 @@ const ShoppingCart = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-lg text-black">Loading your cart...</div>
+      <div className="min-h-screen bg-[#27272a] flex items-center justify-center">
+        <div className="text-lg text-white/70">Loading your cart...</div>
       </div>
     );
   }
 
   return (
     <>
-      <div className="min-h-screen bg-gray-50 py-8 mt-[130px]">
-        <div className="max-w-7xl mx-auto px-4">
+      <div className="min-h-screen bg-[#27272a] pb-8 pt-[130px]">
+        <div className="max-w-7xl mx-auto px-4 text-white">
           {/* Progress Steps */}
           <div className="mb-8 flex items-center justify-center gap-2 text-sm">
             <Link
               href="/checkout/bag"
-              className="text-black underline decoration-[#988BFF] decoration-[2px] font-bold"
+              className="text-white underline decoration-[#988BFF] decoration-[2px] font-bold"
             >
               BAG
             </Link>
-            <span className="text-black">--------</span>
-            <Link href="/checkout/address" className="text-black ">
+            <span className="text-white/40">--------</span>
+            <Link href="/checkout/address" className="text-white ">
               ADDRESS
             </Link>
-            <span className="text-black">--------</span>
-            <span className="text-black">PAYMENT</span>
+            <span className="text-white/40">--------</span>
+            <span className="text-white">PAYMENT</span>
           </div>
 
           {/* Header */}
           <div className="mb-6">
-            <h1 className="text-2xl font-bold text-black">SHOPPING BAG</h1>
-            <p className="text-gray-600">{products.length} Products</p>
+            <h1 className="text-2xl font-bold text-white">SHOPPING BAG</h1>
+            <p className="text-white/60">{products.length} Products</p>
           </div>
 
           {/* Main Content */}
@@ -443,10 +443,10 @@ const ShoppingCart = () => {
                 alt="Empty Cart"
                 className="mx-auto mb-2 w-64 h-64 object-contain"
               />
-              <p className="text-gray-600 text-lg">Your cart is waiting</p>
+              <p className="text-white/60 text-lg">Your cart is waiting</p>
               <button
                 onClick={() => (window.location.href = "/products")}
-                className="mt-4 bg-black text-white px-6 py-2 rounded hover:bg-gray-800 cursor-pointer"
+                className="mt-4 bg-[#988BFF] text-black px-6 py-2 rounded hover:bg-[#7f73ff] cursor-pointer"
               >
                 Continue Shopping
               </button>
@@ -456,7 +456,7 @@ const ShoppingCart = () => {
               {/* Left Side - Product Cards */}
               <div className="lg:col-span-2">
                 {/* Select All Checkbox */}
-                <div className="mb-4 flex items-center gap-2  p-4 rounded-lg ">
+                <div className="mb-4 flex items-center gap-2  p-4 rounded-lg bg-zinc-900">
                   <input
                     type="checkbox"
                     checked={
@@ -464,9 +464,9 @@ const ShoppingCart = () => {
                       products.length > 0
                     }
                     onChange={handleSelectAll}
-                    className="w-5 h-5 cursor-pointer accent-black"
+                    className="w-5 h-5 cursor-pointer accent-[#988BFF]"
                   />
-                  <span className="text-sm font-medium text-black">
+                  <span className="text-sm font-medium text-white">
                     Select All ({selectedItems.size}/{products.length})
                   </span>
                 </div>

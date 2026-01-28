@@ -21,12 +21,12 @@ const SortSelector = ({
       <div className="flex items-center gap-4">
         {!searchQuery && (
           <>
-            <span className="text-sm text-black">Sort by:</span>
+            <span className="text-sm text-white">Sort by:</span>
             <select
               onChange={onSortChange}
               value={selectedSort || ""}
               disabled={isSortLoading}
-              className="text-sm text-black border border-gray-300 rounded px-3 py-1 disabled:opacity-50"
+              className="text-sm bg-zinc-900 text-white/70 border border-gray-300 rounded px-3 py-1 disabled:opacity-50"
             >
               {sortOptions.map((opt) => (
                 <option key={opt.value} value={opt.value}>

@@ -40,7 +40,7 @@ const BoardCard = ({ board, onUpdate, onDelete }) => {
 
   return (
     <div className="relative group">
-      <div className="relative overflow-hidden rounded-lg shadow-md">
+      <div className="relative overflow-hidden rounded-lg bg-zinc-900 border border-white/10 shadow-md transition-shadow group-hover:shadow-lg group-hover:shadow-black/40">
         <div className="aspect-[4/5] relative">
           {/* ✅ Wrap image with Link */}
           <Link href={`/wishlist-board-products/${board.id}`}>
@@ -58,12 +58,12 @@ const BoardCard = ({ board, onUpdate, onDelete }) => {
           {/* Delete button */}
           <button
             onClick={handleShowDelete}
-            className="absolute cursor-pointer top-4 right-4 bg-white rounded-full p-2 transition-all opacity-0 group-hover:opacity-100 z-20"
+            className="absolute cursor-pointer top-4 right-4 bg-zinc-900/80 border border-white/10 rounded-full p-2 transition-all opacity-0 group-hover:opacity-100 z-20"
           >
             <svg
               className="w-5 h-5"
               fill="none"
-              stroke="black"
+              stroke="currentColor"
               viewBox="0 0 24 24"
             >
               <path
@@ -77,12 +77,12 @@ const BoardCard = ({ board, onUpdate, onDelete }) => {
 
           {/* Delete confirmation */}
           {showDelete && (
-            <div className="absolute inset-0 bg-black/80 flex items-center justify-center z-30 rounded-lg">
+            <div className="absolute inset-0 bg-black/90 flex items-center justify-center z-30 rounded-lg">
               <div className="text-center px-6">
                 <h3 className="text-white text-lg font-semibold mb-2">
                   Delete This Board?
                 </h3>
-                <p className="text-white text-sm mb-6">
+                <p className="text-white/40 text-sm mb-6">
                   This board will be deleted permanently.
                 </p>
                 <div className="flex gap-4 justify-center">
@@ -96,7 +96,7 @@ const BoardCard = ({ board, onUpdate, onDelete }) => {
                   <button
                     onClick={handleDelete}
                     disabled={loading}
-                    className="px-6 py-2 border-2 border-white text-white rounded-md hover:bg-white hover:text-black transition-colors disabled:opacity-50"
+                    className="px-6 py-2 border-2 border-white/10 text-white rounded-md hover:bg-[#9888BFF] hover:text-black transition-colors disabled:opacity-50"
                   >
                     {loading ? "Deleting..." : "Delete"}
                   </button>
@@ -116,7 +116,7 @@ const BoardCard = ({ board, onUpdate, onDelete }) => {
                 type="text"
                 value={editedName}
                 onChange={(e) => setEditedName(e.target.value)}
-                className="flex-1 px-2 py-1 border border-gray-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-black text-black"
+                className="flex-1 px-2 py-1 rounded text-sm bg-zinc-900 border border-white/10 text-white focus:outline-none focus:ring-1 focus:ring-[#988BFF]"
                 autoFocus
                 required
                 placeholder="Enter board name"
@@ -124,15 +124,15 @@ const BoardCard = ({ board, onUpdate, onDelete }) => {
               <button
                 onClick={handleSave}
                 disabled={loading}
-                className="px-3 py-1 bg-black text-white text-sm rounded hover:bg-gray-800 disabled:bg-gray-400"
+                className= "rounded text-sm bg-[#988BFF] text-black hover:opacity-90 disabled:opacity-50"
               >
                 {loading ? "Saving..." : "Save"}
               </button>
             </div>
           ) : (
             <div>
-              <h3 className="font-semibold text-lg text-black">{board.name}</h3>
-              <p className="text-sm text-gray-600">
+              <h3 className="font-semibold text-lg text-white">{board.name}</h3>
+              <p className="text-sm text-white/60">
                 {board.productCount} Items
               </p>
             </div>
@@ -142,12 +142,12 @@ const BoardCard = ({ board, onUpdate, onDelete }) => {
         {!isEditing && (
           <button
             onClick={handleEditClick}
-            className="ml-2 p-2 cursor-pointer rounded-full transition-colors"
+            className="ml-2 p-2 rounded-full hover:bg-white/10 transition"
           >
             <svg
-              className="w-5 h-5"
+              className="w-5 h-5 text-[#988BFF]"
               fill="none"
-              stroke="black"
+              stroke="currentColor"
               viewBox="0 0 24 24"
             >
               <path

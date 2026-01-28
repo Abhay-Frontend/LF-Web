@@ -115,17 +115,11 @@ const Navbar = () => {
             <Link href="/" className="mt-[2px] md:mt-0 flex items-center gap-1">
             <div className="flex items-center gap-2">
                <Image
-                src="/images/logo-white.png"
+                src="/images/logo_white.png"
                 alt="Logo"
-                width={100}
-                height={60}
+                width={200}
+                height={160}
               />
-              <Image
-                src="/images/quick.png"
-                alt="Logo"
-                width={80}
-                height={40}
-              />  
             </div>
              
             </Link>

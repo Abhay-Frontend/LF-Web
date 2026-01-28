@@ -95,10 +95,10 @@ const NewInCard = ({
             <div className="py-1.5 sm:py-2 flex flex-col gap-1.5 sm:gap-2">
               <div className="flex gap-2 sm:gap-2.5">
                 <div className="flex-1 flex flex-col gap-1">
-                  <h3 className="text-xs sm:text-sm md:text-[15px] font-[600] uppercase text-[#0F0F0F]">
+                  <h3 className="text-xs sm:text-sm md:text-[15px] font-[600] uppercase text-[#FFF]">
                     {title.length > 20 ? title.substring(0, 20) + "..." : title}
                   </h3>
-                  <p className="text-xs sm:text-xs md:text-[13px] uppercase font-[400] text-[#0F0F0F]">
+                  <p className="text-xs sm:text-xs md:text-[13px] uppercase font-[400] text-[#FFF]">
                     {brand}
                   </p>
                 </div>
@@ -107,20 +107,20 @@ const NewInCard = ({
                   onClick={handleLikeClick}
                   className="w-5 h-5 sm:w-5 sm:h-5 md:w-6 md:h-6 transition-transform cursor-pointer flex-shrink-0"
                 >
-                  <Heart size={16} className="sm:block hidden text-black" />
-                  <Heart size={14} className="sm:hidden text-black" />
+                  <Heart size={16} className="sm:block hidden text-white" />
+                  <Heart size={14} className="sm:hidden text-white" />
                 </button>
               </div>
 
               <div className="flex flex-wrap items-center gap-1">
                 {/* Selling Price */}
-                <span className="text-xs sm:text-[13px] md:text-[15px] font-[500] text-[#292929] uppercase">
+                <span className="text-xs sm:text-[13px] md:text-[15px] font-[500] text-[white] uppercase">
                   ₹{sellingPrice}
                 </span>
 
                 {/* Original Price (ONLY if mrp valid) */}
                 {showOriginalPrice && (
-                  <span className="text-xs sm:text-sm md:text-base text-black font-[500] opacity-60 line-through uppercase">
+                  <span className="text-xs sm:text-sm md:text-base text-[white] font-[500] opacity-60 line-through uppercase">
                     ₹{mrpValue}
                   </span>
                 )}

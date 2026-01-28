@@ -110,14 +110,14 @@ const ListingCard = ({
 
           {/* Brand */}
           {brand && (
-            <p className="text-xs text-gray-600 font-medium uppercase tracking-wide mb-1">
+            <p className="text-xs text-white/70 font-medium uppercase tracking-wide mb-1">
               {brand}
             </p>
           )}
 
           {/* Title */}
           <h3
-            className="text-sm font-medium text-gray-900 mb-3 leading-tight"
+            className="text-sm font-medium text-white mb-3 leading-tight"
             style={{
               display: "-webkit-box",
               WebkitLineClamp: 2,
@@ -131,13 +131,13 @@ const ListingCard = ({
           {/* Price Section */}
           <div className="mt-auto">
             <div className="flex items-baseline gap-1 flex-wrap">
-              <span className="text-base font-bold text-gray-900">
+              <span className="text-base font-bold text-white">
                 Rs. {basePrice}
               </span>
 
               {mrp > basePrice && mrp > 0 && (
                 <>
-                  <span className="text-sm text-gray-500 line-through">
+                  <span className="text-sm text-white line-through">
                     Rs. {mrp}
                   </span>
 

@@ -46,7 +46,7 @@ const ProductGrid = ({
   // SEARCHING
   if (isSearching) {
     return (
-      <div className="flex justify-center items-center h-64 text-gray-600">
+      <div className="flex justify-center items-center h-64 text-white">
         Searching products...
       </div>
     );
@@ -65,7 +65,7 @@ const ProductGrid = ({
   if (products?.length === 0) {
     return (
       <div className="flex flex-col justify-center items-center h-64 text-center">
-        <div className="text-gray-900 text-xl font-semibold mb-2">
+        <div className="text-white text-xl font-semibold mb-2">
           {isFilterApplied
             ? "No products available according to selected filters."
             : "No products found"}

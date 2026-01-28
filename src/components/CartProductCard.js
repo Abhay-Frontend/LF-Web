@@ -42,7 +42,7 @@ const CartProductCard = ({
   };
 
   return (
-    <div className="border-b border-gray-300 p-2 sm:p-4 mb-2 sm:mb-4 pb-4 sm:pb-6">
+    <div className="border-b border-white/10 p-2 sm:p-4 mb-2 sm:mb-4 pb-4 sm:pb-6">
       <div className="flex gap-2 sm:gap-4">
         {/* Checkbox for Selection */}
         <div className="flex items-start pt-1 sm:pt-2">
@@ -50,7 +50,7 @@ const CartProductCard = ({
             type="checkbox"
             checked={isSelected}
             onChange={() => onToggleSelect(product.cartItemId)}
-            className="w-4 h-4 sm:w-5 sm:h-5 cursor-pointer accent-black"
+            className="w-4 h-4 sm:w-5 sm:h-5 cursor-pointer accent-[#988BFF]"
           />
         </div>
 
@@ -72,16 +72,16 @@ const CartProductCard = ({
         <div className="flex-1 min-w-0">
           <div className="flex justify-between items-start gap-1">
             <div className="flex-1 min-w-0">
-              <h3 className="font-semibold text-sm sm:text-base md:text-lg text-black truncate sm:whitespace-normal">
+              <h3 className="font-semibold text-sm sm:text-base md:text-lg text-white truncate sm:whitespace-normal">
                 {product.name}
               </h3>
-              <p className="text-xs sm:text-sm text-black line-clamp-2 ">
+              <p className="text-xs sm:text-sm text-white/60 line-clamp-2 ">
                 {product.description}
               </p>
             </div>
             <button
               onClick={() => onRemove(product.productId)}
-              className="text-gray-400 hover:text-black cursor-pointer flex-shrink-0 ml-1"
+              className="text-white/40 hover:text-red-400 cursor-pointer flex-shrink-0 ml-1"
             >
               <X size={16} className="sm:hidden" />
               <X size={20} className="hidden sm:block" />
@@ -92,30 +92,30 @@ const CartProductCard = ({
           <div className="flex flex-col sm:flex-row gap-2 sm:gap-6 mt-2 sm:mt-3">
             {/* Size */}
             <div className="flex items-center gap-1 sm:gap-2">
-              <span className="text-xs sm:text-sm text-black">
+              <span className="text-xs sm:text-sm text-white/60">
                 Size / Color:
               </span>
-              <span className="text-black text-xs sm:text-sm font-medium">
+              <span className="text-white text-xs sm:text-sm font-medium">
                 {product.size}
               </span>
             </div>
 
             {/* Quantity - with + / - */}
             <div className="flex items-center gap-1 sm:gap-2">
-              <span className="text-xs sm:text-sm text-black">Qty:</span>
-              <div className="flex items-center border rounded px-1 sm:px-2 py-1">
+              <span className="text-xs sm:text-sm text-white">Qty:</span>
+              <div className="flex items-center border border-white/10 rounded px-1 sm:px-2 py-1 bg-zinc-800">
                 <button
                   onClick={handleDecrease}
-                  className="text-black text-base sm:text-lg font-semibold px-1 sm:px-2 hover:text-red-500 active:scale-95 transition-transform"
+                  className="text-white text-base sm:text-lg font-semibold px-1 sm:px-2 hover:text-red-400 active:scale-95 transition-transform"
                 >
                   −
                 </button>
-                <span className="px-2 sm:px-3 text-xs sm:text-sm text-black select-none min-w-[20px] text-center">
+                <span className="px-2 sm:px-3 text-xs sm:text-sm text-white select-none min-w-[20px] text-center">
                   {product.quantity}
                 </span>
                 <button
                   onClick={handleIncrease}
-                  className="text-black text-base sm:text-lg font-semibold px-1 sm:px-2 hover:text-green-600 active:scale-95 transition-transform"
+                  className="text-white text-base sm:text-lg font-semibold px-1 sm:px-2 hover:text-green-400 active:scale-95 transition-transform"
                 >
                   +
                 </button>
@@ -125,22 +125,22 @@ const CartProductCard = ({
 
           {/* Stock Availability Message */}
           {showStockMessage && (
-            <div className="mt-1 sm:mt-2 text-[10px] sm:text-xs text-red-600 bg-red-50 px-2 py-1 rounded">
+            <div className="mt-1 sm:mt-2 text-[10px] sm:text-xs text-red-400 bg-red-500/10 px-2 py-1 rounded">
               Only {product.availableStock || 0} items available in stock
             </div>
           )}
 
           {/* Price */}
           <div className="mt-2 sm:mt-3 flex flex-wrap items-center gap-1 sm:gap-2">
-            <span className="font-semibold text-black text-base sm:text-lg">
+            <span className="font-semibold text-white text-base sm:text-lg">
               Rs. {product.price}
             </span>
             {product.originalPrice > product.price && (
               <>
-                <span className="text-black line-through text-xs sm:text-sm">
+                <span className="text-white/40 line-through text-xs sm:text-sm">
                   Rs. {product.originalPrice}
                 </span>
-                <span className="text-green-600 text-xs sm:text-sm font-medium">
+                <span className="text-green-400 text-xs sm:text-sm font-medium">
                   ({discountPercent}% OFF)
                 </span>
               </>

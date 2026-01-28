@@ -107,22 +107,22 @@ const CreateBoardModal = ({ productData, onClose }) => {
     <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-[4px] flex items-center justify-center min-h-screen p-4">
       <div className="absolute inset-0" onClick={handleClose} />
 
-      <div className="relative bg-white w-full max-w-3xl mx-auto flex flex-col md:flex-row overflow-hidden max-h-[90vh] md:max-h-[500px]">
+      <div className="relative bg-[#27272a] w-full max-w-3xl mx-auto flex flex-col md:flex-row overflow-hidden max-h-[90vh] md:max-h-[500px]">
         {/* Left Panel */}
         <div className="flex-1 p-6">
           {/* Header */}
           <div className="flex items-center justify-between mb-4 md:mb-6">
             <div>
-              <h2 className="text-lg md:text-xl font-bold text-gray-900 flex items-center gap-2 md:gap-3">
+              <h2 className="text-lg md:text-xl font-bold text-white flex items-center gap-2 md:gap-3">
                 CREATE BOARD
               </h2>
-              <p className="text-xs md:text-sm text-gray-600">
+              <p className="text-xs md:text-sm text-white/60">
                 Create your own collection
               </p>
             </div>
             <button
               onClick={handleClose}
-              className="text-gray-400 hover:text-gray-600 cursor-pointer"
+              className="text-white hover:text-white/60 cursor-pointer"
             >
               <X size={20} />
             </button>
@@ -130,7 +130,7 @@ const CreateBoardModal = ({ productData, onClose }) => {
 
           {/* Create New Board Section */}
           <div className="mb-4 md:mb-6">
-            <h3 className="text-xs md:text-sm font-medium text-gray-900 mb-2 md:mb-3">
+            <h3 className="text-xs md:text-sm font-medium text-white mb-2 md:mb-3">
               Create New Board
             </h3>
             <div className="flex flex-col sm:flex-row gap-2">
@@ -139,13 +139,13 @@ const CreateBoardModal = ({ productData, onClose }) => {
                 placeholder="Write Name"
                 value={newBoardName}
                 onChange={(e) => setNewBoardName(e.target.value)}
-                className="flex-1 px-3 py-2 border border-gray-300 text-sm placeholder-gray-500 focus:outline-none focus:border-gray-400 text-black"
+                className="flex-1 px-3 py-2 border border-gray-300 text-sm placeholder-white/50 focus:outline-none focus:border-gray-400 text-white"
                 onKeyDown={(e) => e.key === "Enter" && handleCreateBoard()}
               />
               <button
                 onClick={handleCreateBoard}
                 disabled={!newBoardName.trim() || isCreating}
-                className="px-4 py-2 bg-gray-900 text-white text-sm font-medium hover:bg-gray-800 disabled:bg-gray-400 flex items-center gap-1 cursor-pointer"
+                className="px-4 py-2 bg-whte text-black text-sm font-medium bg-white flex items-center gap-1 cursor-pointer"
               >
                 <Plus size={16} />
                 {isCreating ? "Creating..." : "Create"}
@@ -155,22 +155,22 @@ const CreateBoardModal = ({ productData, onClose }) => {
 
           {/* Or Divider */}
           <div className="flex items-start justify-start mb-1 md:mb-2">
-            <span className="text-xs md:text-sm text-black font-medium">
+            <span className="text-xs md:text-sm text-white font-medium">
               OR
             </span>
           </div>
           {/* Existing Boards */}
           <div className="mb-4 md:mb-6">
-            <h3 className="text-xs md:text-sm font-medium text-gray-900 mb-2 md:mb-3">
+            <h3 className="text-xs md:text-sm font-medium text-white/60 mb-2 md:mb-3">
               Select Existing Board
             </h3>
             <div className="space-y-2 max-h-[120px] md:max-h-[150px] overflow-y-auto">
               {!getBoards ? (
-                <div className="text-center py-4 text-gray-500">
+                <div className="text-center py-4 text-white">
                   Loading boards...
                 </div>
               ) : getBoards.length === 0 ? (
-                <div className="text-center py-4 text-gray-500">
+                <div className="text-center py-4 text-white">
                   No boards found
                 </div>
               ) : (
@@ -202,7 +202,7 @@ const CreateBoardModal = ({ productData, onClose }) => {
           <button
             onClick={handleContinue}
             disabled={!selectedBoard || isAddingProduct || addProductLoading}
-            className="w-full bg-gray-900 text-white py-2 md:py-3 text-sm md:text-base font-medium hover:bg-gray-800 disabled:bg-gray-400 disabled:cursor-not-allowed"
+            className="w-full bg-white text-black py-2 md:py-3 text-sm md:text-base font-medium disabled:cursor-not-allowed"
           >
             {isAddingProduct || addProductLoading
               ? "Adding Product..."
@@ -303,7 +303,7 @@ const CreateBoardModal = ({ productData, onClose }) => {
               </div>
             </div>
           ) : (
-            <div className="flex items-center justify-center h-full text-gray-500">
+            <div className="flex items-center justify-center h-full text-white">
               No product selected
             </div>
           )}

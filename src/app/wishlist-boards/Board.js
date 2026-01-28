@@ -63,24 +63,24 @@ const WishlistBoards = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white p-6 mt-[130px]">
+    <div className="min-h-screen bg-[#27272a] p-6 mt-[120px]">
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h1 className="text-2xl font-bold text-black">WISHLIST</h1>
-            <p className="text-gray-600">{boards.length} Boards</p>
+            <h1 className="text-2xl font-bold text-white">WISHLIST</h1>
+            <p className="text-white/70">{boards.length} Boards</p>
           </div>
           <button
             onClick={() => setIsModalOpen(true)}
-            className="flex items-center gap-2 px-4 py-2 border-2 border-black cursor-pointer transition-colors"
+            className="flex items-center gap-2 px-4 py-2 border-2 border-white cursor-pointer transition-colors"
           >
-            <span className="text-xl text-black">+</span>
-            <span className="text-black">New Board</span>
+            <span className="text-xl text-white">+</span>
+            <span className="text-white">New Board</span>
           </button>
         </div>
 
         {loading ? (
-          <div className="flex justify-center items-center h-64 text-gray-500">
+          <div className="flex justify-center items-center h-64 text-white">
             Loading boards...
           </div>
         ) : boards.length === 0 ? (
@@ -93,7 +93,7 @@ const WishlistBoards = () => {
                 className="object-contain"
               />
             </div>
-            <p className="text-center text-gray-500">No boards found.</p>
+            <p className="text-center text-white/70">No boards found.</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

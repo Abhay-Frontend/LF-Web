@@ -10,7 +10,7 @@ const BlogCard = ({ blog }) => {
       rel="noopener noreferrer"
       className="block"
     >
-      <div className="bg-white overflow-hidden group cursor-pointer hover:shadow-lg transition-shadow duration-300">
+      <div className="bg-zinc-900 overflow-hidden group cursor-pointer hover:shadow-lg transition-shadow duration-300  hover:-translate-y-1 hover:shadow-xl hover:shadow-black/30">
         {/* Blog Image */}
         <div className="relative w-full  h-[250px] md:h-[300px] overflow-hidden">
           <Image
@@ -23,19 +23,19 @@ const BlogCard = ({ blog }) => {
 
         {/* Blog Content */}
         <div className="p-6">
-          <p className="text-xs font-semibold tracking-widest text-gray-600 mb-2 uppercase">
+          <p className="text-xs font-semibold tracking-widest text-white mb-2 uppercase">
             {blog?.category?.name || "BEAUTY"}
           </p>
 
-          <h3 className="text-lg font-bold text-gray-900 mb-3 leading-tight line-clamp-2">
+          <h3 className="text-lg font-bold text-white mb-3 leading-tight line-clamp-2">
             {blog.title}
           </h3>
 
-          <p className="text-sm text-gray-600 mb-4 line-clamp-2">
+          <p className="text-sm text-white/60 mb-4 line-clamp-2">
             {blog.meta_description}
           </p>
 
-          <div className="text-xs text-gray-500">
+          <div className="text-xs text-white/50">
             <p className="font-semibold uppercase">
               BY {blog.author || "VALERIE MCRAE"}
             </p>

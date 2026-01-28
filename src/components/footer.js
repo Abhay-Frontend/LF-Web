@@ -152,10 +152,10 @@ const Footer = () => {
           {/* Row 1: Big Center Logo */}
           <div className="flex justify-center">
             <Image
-              src="/images/logo-white.png"
+              src="/images/logo_white.png"
               alt="LAFETCH Logo"
-              width={300}
-              height={100}
+              width={200}
+              height={150}
               className="object-contain"
             />
           </div>

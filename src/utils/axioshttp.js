@@ -12,7 +12,11 @@ axiosHttp.interceptors.request.use(
     // Access state directly from store
     const state = store.getState();
 
-    const token = state.user?.token;
+    let token = state.user?.token;
+
+    // if(!token && typeof window!=="undefined"){
+    //   token=localStorage.getItem("token");
+    // }
 
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;

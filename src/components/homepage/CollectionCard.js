@@ -91,7 +91,7 @@ const ProductCollectionCard = ({ product, onLike }) => {
 
   return (
     <>
-      <div className="w-full rounded-xl flex flex-col gap-2 overflow-hidden">
+      <div className="w-full rounded-xl flex flex-col gap-2 overflow-hidden ">
         <Link
           href={`/products/${product.id}`}
           target="_blank"
@@ -99,7 +99,7 @@ const ProductCollectionCard = ({ product, onLike }) => {
         >
           <div
             className="relative h-[250px] sm:h-[280px] md:h-[340px] lg:h-[400px]
-             p-4 bg-stone-200 rounded-xl overflow-hidden group
+             p-4 bg-zinc-900 rounded-xl overflow-hidden group
              flex items-center justify-center"
             onMouseLeave={handleMouseLeave}
             onMouseEnter={() => setIsHovering(true)}
@@ -117,7 +117,7 @@ const ProductCollectionCard = ({ product, onLike }) => {
             <button
               onClick={handlePreviewClick}
               className="absolute left-2 bottom-2 w-[calc(100%-16px)] h-9
-               bg-stone-50 rounded-lg flex items-center justify-center
+               bg-white/90 hover:bg-white text-black rounded-lg flex items-center justify-center
                opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
             >
               <span className="text-sm font-medium">Product Preview</span>
@@ -128,25 +128,25 @@ const ProductCollectionCard = ({ product, onLike }) => {
         <div className="px-2 pb-2 flex flex-col gap-1">
           <div className="flex justify-between items-start">
             <div>
-              <p className="text-sm font-semibold uppercase">
+              <p className="text-sm font-semibold uppercase text-white">
                 {truncateText(product.name)}
               </p>
-              <p className="text-xs uppercase">{product.brand}</p>
+              <p className="text-xs uppercase text-white/60">{product.brand}</p>
             </div>
 
             <button onClick={handleLike}>
-              <Heart className="w-5 h-5 text-black" />
+              <Heart className="w-5 h-5 text-white/70 hover:text-white transition-colors" />
             </button>
           </div>
 
           <div className="flex items-center gap-2">
-            <span className="text-sm md:text-md">₹{price}</span>
+            <span className="text-sm md:text-md text-white">₹{price}</span>
             {showOriginalPrice && (
               <>
-                <span className="line-through opacity-60 text-sm md:text-md">
+                <span className="line-through opacity-50 text-sm md:text-md text-white/70">
                   ₹{originalPrice}
                 </span>
-                <span className="text-emerald-600 text-sm md:text-md font-medium">
+                <span className="text-emerald-400 text-sm md:text-md font-medium">
                   ({discountPercentage}% OFF)
                 </span>
               </>

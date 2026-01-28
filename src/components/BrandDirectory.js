@@ -52,6 +52,7 @@ const BrandDirectory = ({ brands }) => {
       setBrandPreview(null);
       return;
     }
+    // /discovery/brands?city=Delhi
 
     setPreviewLoading(true);
     setExpandedBrandId(brandId);
@@ -140,8 +141,8 @@ const BrandDirectory = ({ brands }) => {
         <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
           {/* Left side - Letter */}
           <div className="flex-shrink-0 flex justify-center sm:justify-start">
-            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border-2 border-[#988BFF] flex items-center justify-center bg-white">
-              <span className="text-xl sm:text-2xl font-semibold text-gray-700 ">
+            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border-2 border-[#988BFF] flex items-center justify-center bg-zinc-900">
+              <span className="text-xl sm:text-2xl font-semibold text-white ">
                 {letter}
               </span>
             </div>
@@ -160,7 +161,7 @@ const BrandDirectory = ({ brands }) => {
                         fetchBrandPreview(brand.id);
                       }
                     }}
-                    className={`relative bg-[#ECECF0] flex flex-col items-center cursor-pointer overflow-hidden group h-full transition-all duration-300 ${
+                    className={`relative bg-zinc-800 flex flex-col items-center cursor-pointer overflow-hidden group h-full transition-all duration-300 ${
                       expandedBrandId === brand.id
                         ? "ring-2 ring-[#988BFF] shadow-lg"
                         : ""
@@ -168,7 +169,7 @@ const BrandDirectory = ({ brands }) => {
                   >
                     {/* Image */}
                     <div className="w-full p-6 flex items-center justify-center">
-                      <div className="aspect-square w-32 bg-white rounded-full flex items-center justify-center overflow-hidden transition-all duration-300 group-hover:scale-110">
+                      <div className="aspect-square w-32 bg-zinc-900 rounded-full flex items-center justify-center overflow-hidden transition-all duration-300 group-hover:scale-110">
                         {brand.logo ? (
                           <Image
                             src={brand.logo}
@@ -178,8 +179,8 @@ const BrandDirectory = ({ brands }) => {
                             className="max-w-full max-h-full object-contain"
                           />
                         ) : (
-                          <div className="w-full h-full rounded-full bg-gray-100 flex items-center justify-center">
-                            <span className="text-gray-400 text-sm font-semibold">
+                          <div className="w-full h-full rounded-full bg-zinc-700 flex items-center justify-center">
+                            <span className="text-white/60 text-sm font-semibold">
                               {brand.name.substring(0, 2).toUpperCase()}
                             </span>
                           </div>
@@ -191,7 +192,7 @@ const BrandDirectory = ({ brands }) => {
                     <div className="flex-grow" />
 
                     {/* Brand Name - always at bottom */}
-                    <p className="text-sm text-center text-gray-900 font-normal w-full px-4 py-2 min-h-[40px] flex items-center justify-center transition-colors duration-300 group-hover:bg-[#E0E0E3]">
+                    <p className="text-sm text-center text-white font-normal w-full px-4 py-2 min-h-[40px] flex items-center justify-center transition-colors duration-300 group-hover:bg-zinc-700">
                       {brand.name}
                     </p>
                   </div>
@@ -200,7 +201,7 @@ const BrandDirectory = ({ brands }) => {
                   {expandedBrandId === brand.id && (
                     <div className="col-span-3 sm:col-span-5 md:col-span-6 lg:col-span-7">
                       {/* Brand Preview Section */}
-                      <div className="bg-white border border-gray-200 rounded-lg p-3 sm:p-6 shadow-lg">
+                      <div className="bg-zinc-900 border border-white/10 rounded-lg p-3 sm:p-6 shadow-lg">
                         {previewLoading ? (
                           <div className="flex justify-center items-center py-12">
                             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#988BFF]"></div>
@@ -211,7 +212,7 @@ const BrandDirectory = ({ brands }) => {
                             {brandPreview.products &&
                               brandPreview.products.length > 0 && (
                                 <div>
-                                  <h4 className="text-base sm:text-lg font-medium text-gray-900 mb-3 sm:mb-4">
+                                  <h4 className="text-base sm:text-lg font-medium text-white mb-3 sm:mb-4">
                                     Featured Products
                                   </h4>
                                   <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4 mb-4 sm:mb-6">
@@ -228,10 +229,10 @@ const BrandDirectory = ({ brands }) => {
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             key={product.id}
-                                            className="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition-shadow cursor-pointer group"
+                                            className="bg-zinc-800 border border-white/10 rounded-lg overflow-hidden hover:shadow-md transition-shadow cursor-pointer group"
                                           >
                                             {/* Product Image */}
-                                            <div className="relative aspect-square bg-gray-100">
+                                            <div className="relative aspect-square bg-zinc-900">
                                               {product.imageUrls &&
                                               product.imageUrls[0] ? (
                                                 <Image
@@ -251,16 +252,16 @@ const BrandDirectory = ({ brands }) => {
 
                                             {/* Product Info */}
                                             <div className="p-2 sm:p-3">
-                                              <h5 className="text-xs sm:text-sm font-medium text-gray-900 line-clamp-2 mb-1 sm:mb-2 min-h-[32px] sm:min-h-[40px]">
+                                              <h5 className="text-xs sm:text-sm font-medium text-white line-clamp-2 mb-1 sm:mb-2 min-h-[32px] sm:min-h-[40px]">
                                                 {product.title}
                                               </h5>
                                               <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
-                                                <span className="text-xs sm:text-sm font-semibold text-gray-900">
+                                                <span className="text-xs sm:text-sm font-semibold text-white">
                                                   ₹{product.basePrice}
                                                 </span>
                                                 {product.mrp >
                                                   product.basePrice && (
-                                                  <span className="text-[10px] sm:text-xs text-gray-500 line-through">
+                                                  <span className="text-[10px] sm:text-xs text-white/40 line-through">
                                                     ₹{product.mrp}
                                                   </span>
                                                 )}
@@ -282,7 +283,7 @@ const BrandDirectory = ({ brands }) => {
                                       href={`/brands/${expandedBrandId}`}
                                       target="_blank"
                                       rel="noopener noreferrer"
-                                      className="px-6 sm:px-8 py-2.5 sm:py-3 bg-black text-white text-sm sm:text-base font-medium rounded-lg transition-colors w-full sm:w-auto text-center"
+                                      className="px-6 sm:px-8 py-2.5 sm:py-3 bg-[#988BFF] text-black hover:opacity-90 transition text-sm sm:text-base font-medium rounded-lg transition-colors w-full sm:w-auto text-center"
                                     >
                                       Explore All Products
                                     </Link>
@@ -291,7 +292,7 @@ const BrandDirectory = ({ brands }) => {
                               )}
                           </div>
                         ) : (
-                          <div className="text-center py-8 text-gray-500">
+                          <div className="text-center py-8 text-white">
                             Failed to load brand preview
                           </div>
                         )}
@@ -305,7 +306,7 @@ const BrandDirectory = ({ brands }) => {
               {hasMore && (
                 <div
                   onClick={() => toggleExpand(letter)}
-                  className="flex flex-col items-center justify-center cursor-pointer aspect-square text-gray-600 hover:text-gray-800 transition-all"
+                  className="flex flex-col items-center justify-center cursor-pointer aspect-square text-white/60 hover:text-white transition-all"
                 >
                   <p className="text-xs sm:text-sm font-medium flex items-center gap-1 underline">
                     {isExpanded ? "View Less" : "View More"}
@@ -325,7 +326,7 @@ const BrandDirectory = ({ brands }) => {
   };
 
   return (
-    <div className="w-full  p-4 md:px-[100px] md:py-[50px]">
+    <div className="w-full  p-4 md:px-[100px] md:py-[50px] text-white">
       {/* Top Section - Alphabet Navigation and Search */}
       <div className="mb-8">
         {/* Alphabet Navigation */}
@@ -334,7 +335,7 @@ const BrandDirectory = ({ brands }) => {
             <button
               key={letter}
               onClick={() => scrollToLetter(letter)}
-              className="text-black hover:text-gray-900  md:text-[15px] sm:text-sm transition-colors cursor-pointer"
+              className="text-white/70 hover:text-white  md:text-[15px] sm:text-sm transition-colors cursor-pointer"
             >
               {letter}
             </button>
@@ -343,13 +344,20 @@ const BrandDirectory = ({ brands }) => {
 
         {/* Search Bar */}
         <div className="relative w-full max-w-full sm:max-w-xs">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white/40 w-4 h-4" />
           <input
             type="text"
             placeholder="Search For Brands"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-9 pr-4 py-2 text-sm border-0 border-b border-gray-300 focus:outline-none focus:border-black transition-colors duration-300 placeholder-gray-400 text-black"
+            className="w-full pl-9 pr-4 py-2 text-sm
+                    bg-transparent
+                    border-0 border-b border-white/20
+                    focus:outline-none focus:border-white
+                    placeholder-white/40
+                    text-white
+                    transition-colors
+                    "
           />
         </div>
       </div>

@@ -53,7 +53,7 @@ const ProductActions = ({
 
         <button
           onClick={handleWishlistClick}
-          className="w-full cursor-pointer border border-gray-300 text-gray-900 py-3.5 rounded font-bold text-sm hover:border-gray-400 transition-colors"
+          className="w-full cursor-pointer border border-gray-300 text-white py-3.5 rounded font-bold text-sm hover:border-gray-400 transition-colors"
         >
           WISHLIST
         </button>

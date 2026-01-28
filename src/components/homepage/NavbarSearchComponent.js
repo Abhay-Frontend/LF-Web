@@ -72,7 +72,7 @@ export default function NavbarSearchComponent({
   if (!isOpen) return null;
 
   return (
-    <div className="w-full max-h-screen bg-zinc-900 z-[1000] fixed top-15 left-0">
+    <div className="w-full max-h-screen bg-[#27272a] z-[1000] fixed top-15 left-0">
       {/* Search Input Area */}
       <div className="w-full h-auto min-h-20 md:h-24 px-4 sm:px-8 md:px-12 lg:px-16 py-4 md:py-7 bg-zinc-900 inline-flex justify-between items-center">
         <div className="flex-1 flex justify-start items-center gap-4 md:gap-8 lg:gap-32">

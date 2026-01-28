@@ -147,8 +147,8 @@ const ProductInfo = ({
       <div className="space-y-3 mb-5">
         <div className="flex items-start justify-between">
           <div>
-            <h1 className="text-xl font-normal text-gray-900 mt-1">{title}</h1>
-            <h2 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">
+            <h1 className="text-xl font-normal text-white mt-1">{title}</h1>
+            <h2 className="text-sm font-semibold text-white uppercase tracking-wide">
               {brand}
             </h2>
           </div>
@@ -166,7 +166,7 @@ const ProductInfo = ({
       {/* Pricing */}
       <div className="flex items-baseline gap-2 mb-5">
         {/* Always show variant price */}
-        <span className="text-2xl font-bold text-gray-900">
+        <span className="text-2xl font-bold text-white">
           ₹{variantPrice}
         </span>
 
@@ -176,7 +176,7 @@ const ProductInfo = ({
           Number(mrp) > 0 &&
           Number(mrp) > Number(variantPrice) && (
             <>
-              <span className="text-base text-gray-400 line-through">
+              <span className="text-base text-white/70 line-through">
                 MRP ₹{mrp}
               </span>
 
@@ -195,7 +195,7 @@ const ProductInfo = ({
       {hasSizes && (
         <div className="mb-5">
           <div className="flex items-center justify-between mb-3">
-            <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wide">
+            <h3 className="text-sm font-bold text-white uppercase tracking-wide">
               Select Size
             </h3>
             <button
@@ -229,10 +229,10 @@ const ProductInfo = ({
                   className={`min-w-[60px] px-4 py-3 border text-sm font-semibold transition-all rounded-md cursor-pointer
             ${
               !size.available
-                ? "bg-white text-gray-300 border-gray-200 line-through cursor-not-allowed"
+                ? "bg-zinc-900 text-gray-300 border-gray-200 line-through cursor-not-allowed"
                 : selectedSize === size.value
-                ? "border-pink-600 text-pink-600 bg-white"
-                : "border-gray-300 text-gray-700 bg-white hover:border-gray-400"
+                ? "border-pink-600 text-pink-600 bg-zinc-900"
+                : "border-gray-300 text-gray-700 bg-zinc-900 hover:border-gray-400"
             }`}
                 >
                   {size.label ? size.label : "ONE SIZE"}
@@ -252,7 +252,7 @@ const ProductInfo = ({
       {hasColors && (
         <div className="mb-5">
           <div className="flex items-center justify-between mb-3">
-            <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wide">
+            <h3 className="text-sm font-bold text-white uppercase tracking-wide">
               Select Color
             </h3>
           </div>

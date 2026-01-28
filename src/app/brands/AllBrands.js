@@ -4,7 +4,7 @@ import BrandDirectory from "@/components/BrandDirectory";
 import usegetBrands from "@/hooks/useGetBrands";
 
 const AllBrands = () => {
-  const { brands, loading } = usegetBrands();
+  const { brands, loading } = usegetBrands("Delhi");
 
   // Transform API data to match BrandDirectory props
   const formattedBrands =
@@ -15,7 +15,7 @@ const AllBrands = () => {
     })) || [];
 
   return (
-    <div className="min-h-screen bg-gray-50 mt-[130px]  ">
+    <div className="min-h-screen bg-[#27272a] pt-[130px]  ">
       <BrandDirectory brands={formattedBrands} />
     </div>
   );

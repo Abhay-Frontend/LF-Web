@@ -59,11 +59,11 @@ const WishlistProductCard = () => {
   };
 
   return (
-    <div className="bg-white p-6 min-h-screen flex md:items-center md:justify-center mt-[80px]">
+    <div className="bg-[#27272a] p-6 min-h-screen flex md:items-center md:justify-center mt-[80px]">
       <div className="w-full md:px-[100px] md:py-0 px-4 p-12 mb-4 mt-[100px]">
         {products.length === 0 ? (
           <div className="flex flex-col items-center justify-center min-h-[60vh]">
-            <p className="text-gray-500 mb-6">
+            <p className="text-white mb-6">
               Looks like this board is empty. Start adding some products!
             </p>
             <a

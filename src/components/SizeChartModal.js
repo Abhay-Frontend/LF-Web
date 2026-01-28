@@ -15,7 +15,7 @@ const SizeChartModal = ({ open, onClose, data, loading }) => {
 
       return (
         <div className="overflow-auto max-h-[60vh]">
-          <table className="w-full text-black text-sm table-auto border-collapse">
+          <table className="w-full text-white text-sm table-auto border-collapse">
             <thead>
               <tr>
                 {headers.map((h) => (

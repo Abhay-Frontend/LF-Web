@@ -363,9 +363,9 @@ export default function ProductPage({ params }) {
   const handleAddToWishlist = () => {};
 
   return (
-    <div className="bg-white">
+    <div className="bg-[#27272a]">
       <Navbar />
-      <div className="max-w-7xl mx-auto px-4 py-8 mt-[130px] ">
+      <div className="max-w-7xl mx-auto px-4 py-8 mt-[120px] ">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Left - Images */}
           <ProductImageGallery
@@ -397,23 +397,23 @@ export default function ProductPage({ params }) {
             {/* Quantity Selector - shows when variant is selected */}
             {selectedVariant && (
               <div className="space-y-2">
-                <label className="text-sm  font-semibold  text-gray-800">
+                <label className="text-sm  font-semibold  text-white">
                   Quantity
                 </label>
-                <div className="flex items-center border border-gray-300 rounded w-fit">
+                <div className="flex items-center border border-white rounded w-fit">
                   <button
                     onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                    className="px-4 py-2 hover:bg-gray-100 transition-colors text-gray-700 font-medium"
+                    className="px-4 py-2 hover:bg-gray-100 transition-colors text-white/70 font-medium"
                     disabled={quantity <= 1}
                   >
                     −
                   </button>
-                  <span className="px-6 py-2 font-medium text-gray-900">
+                  <span className="px-6 py-2 font-medium text-white">
                     {quantity}
                   </span>
                   <button
                     onClick={() => setQuantity(quantity + 1)}
-                    className="px-4 py-2 hover:bg-gray-100 transition-colors text-gray-700 font-medium"
+                    className="px-4 py-2 hover:bg-gray-100 transition-colors text-white/70 font-medium"
                   >
                     +
                   </button>
@@ -478,7 +478,7 @@ export default function ProductPage({ params }) {
             <div>
               <div className="flex items-center justify-between mb-6">
                 {reviews && reviews.length > 0 && (
-                  <h2 className="text-lg font-semibold text-black">Reviews</h2>
+                  <h2 className="text-lg font-semibold text-white">Reviews</h2>
                 )}
                 <button
                   onClick={() => setShowReviewModal(true)}

@@ -63,7 +63,7 @@ const FilterSidebar = ({
         ref={filterRef}
         className={`
           fixed lg:static top-0 left-0 h-full lg:h-auto 
-          w-72 bg-white p-6 border-r border-gray-400 overflow-y-auto z-50 md:z-8  
+          w-72 bg-zinc-900 p-6 border-r border-gray-400 overflow-y-auto z-50 md:z-8  
           transform transition-transform duration-300
           ${
             isFilterOpen
@@ -73,27 +73,27 @@ const FilterSidebar = ({
         `}
       >
         <button
-          className="lg:hidden mb-4 text-black font-bold text-lg"
+          className="lg:hidden mb-4 text-white hoveer:text-white/70 font-bold text-lg"
           onClick={() => setIsFilterOpen(false)}
         >
           ✕ Close
         </button>
 
-        <h2 className="text-xl font-bold mb-6 uppercase tracking-wide text-black">
+        <h2 className="text-xl font-bold mb-6 uppercase tracking-wide text-white">
           Filters
         </h2>
 
         {/* Super Category Filter */}
         {superCategories && superCategories.length > 0 && (
           <div className="mb-8">
-            <h3 className="text-lg font-semibold text-gray-800 mb-2">
+            <h3 className="text-lg font-semibold text-white mb-2">
               Category
             </h3>
             <div className="space-y-2">
               {superCategories.map((cat) => (
                 <label
                   key={cat.id}
-                  className="flex items-center space-x-2 text-sm text-gray-700"
+                  className="flex items-center space-x-2 text-sm text-white/70"
                 >
                   <input
                     type="radio"
@@ -101,7 +101,7 @@ const FilterSidebar = ({
                     value={cat.id}
                     checked={selectedSuperCategory === cat.id}
                     onChange={() => onSuperCategoryChange(cat.id)}
-                    className="w-4 h-4 accent-black"
+                    className="w-4 h-4 accent-[#988BFF]"
                   />
                   <span>{cat.name}</span>
                 </label>
@@ -112,20 +112,20 @@ const FilterSidebar = ({
 
         {/* Brand Filter */}
         <div className="mb-8">
-          <h3 className="text-lg font-semibold text-gray-800 mb-2">Brand</h3>
+          <h3 className="text-lg font-semibold text-white mb-2">Brand</h3>
           <div className="space-y-2">
             {brands
               .slice(0, expandedBrands ? brands.length : 5)
               .map((brand) => (
                 <label
                   key={brand.id}
-                  className="flex items-center space-x-2 text-sm text-gray-700"
+                  className="flex items-center space-x-2 text-sm text-white/70"
                 >
                   <input
                     type="checkbox"
                     checked={selectedBrands.includes(brand.id)}
                     onChange={() => toggleBrandSelection(brand.id)}
-                    className="w-4 h-4 accent-black"
+                    className="w-4 h-4 accent-[#988BFF]"
                   />
                   <span>{brand.name}</span>
                 </label>
@@ -143,14 +143,14 @@ const FilterSidebar = ({
 
         {/* Price Range */}
         <div className="mb-8">
-          <h3 className="text-lg font-semibold text-gray-800 mb-2">
+          <h3 className="text-lg font-semibold text-white mb-2">
             Price Range
           </h3>
 
           <div className="space-y-3">
             {/* Min Price Input */}
             <div>
-              <label className="text-sm text-gray-700 mb-1 block">
+              <label className="text-sm text-white/70 mb-1 block">
                 Min Price
               </label>
               <input
@@ -158,13 +158,13 @@ const FilterSidebar = ({
                 value={tempPriceMin}
                 onChange={(e) => setTempPriceMin(e.target.value)}
                 placeholder="0"
-                className="w-full border border-gray-300 rounded px-3 py-2 text-sm text-black focus:outline-none focus:border-black"
+                className="w-full border border-gray-300 rounded px-3 py-2 text-sm text-white focus:outline-none focus:border-black"
               />
             </div>
 
             {/* Max Price Input */}
             <div>
-              <label className="text-sm text-gray-700 mb-1 block">
+              <label className="text-sm text-white/70 mb-1 block">
                 Max Price
               </label>
               <input
@@ -172,7 +172,7 @@ const FilterSidebar = ({
                 value={tempPriceMax}
                 onChange={(e) => setTempPriceMax(e.target.value)}
                 placeholder="10000"
-                className="w-full border border-gray-300 rounded px-3 py-2 text-sm text-black focus:outline-none focus:border-black"
+                className="w-full border border-gray-300 rounded px-3 py-2 text-sm text-white focus:outline-none focus:border-black"
               />
             </div>
 
@@ -193,18 +193,18 @@ const FilterSidebar = ({
         {/* Size Filter */}
         {sizes && sizes.length > 0 && (
           <div className="mb-8">
-            <h3 className="text-lg font-semibold text-gray-800 mb-2">Size</h3>
+            <h3 className="text-lg font-semibold text-white mb-2">Size</h3>
             <div className="space-y-2">
               {sizes.slice(0, expandedSizes ? sizes.length : 5).map((size) => (
                 <label
                   key={size}
-                  className="flex items-center space-x-2 text-sm text-gray-700"
+                  className="flex items-center space-x-2 text-sm text-white/70"
                 >
                   <input
                     type="checkbox"
                     checked={selectedSizes.includes(size)}
                     onChange={() => toggleSizeSelection(size)}
-                    className="w-4 h-4 accent-black"
+                    className="w-4 h-4 accent-[#988BFF]"
                   />
                   <span>{size}</span>
                 </label>
@@ -224,20 +224,20 @@ const FilterSidebar = ({
         {/* Color Filter */}
         {colors && colors.length > 0 && (
           <div className="mb-8">
-            <h3 className="text-lg font-semibold text-gray-800 mb-2">Color</h3>
+            <h3 className="text-lg font-semibold text-white mb-2">Color</h3>
             <div className="space-y-2">
               {colors
                 .slice(0, expandedColors ? colors.length : 5)
                 .map((color) => (
                   <label
                     key={color}
-                    className="flex items-center space-x-2 text-sm text-gray-700"
+                    className="flex items-center space-x-2 text-sm text-white/70"
                   >
                     <input
                       type="checkbox"
                       checked={selectedColors.includes(color)}
                       onChange={() => toggleColorSelection(color)}
-                      className="w-4 h-4 accent-black"
+                      className="w-4 h-4 accent-[#988BFF]"
                     />
                     <span>{color}</span>
                   </label>
@@ -257,7 +257,7 @@ const FilterSidebar = ({
         <button
           onClick={onClearFilters}
           disabled={isLoading}
-          className="w-full border border-gray-300 py-2 rounded text-black cursor-pointer disabled:opacity-50"
+          className="w-full border border-gray-300 py-2 rounded text-white cursor-pointer disabled:opacity-50"
         >
           Clear Filters
         </button>

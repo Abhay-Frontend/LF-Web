@@ -25,6 +25,7 @@ export const endPoints = {
   getCoupons: "/coupons",
   getBrands: "/brands?status=true",
   getBrandsProducts: "/view-brand",
+  getBrandsByCity: "/discovery/brands",
   logout: "/auth/sign-out",
   sortProduct: "/sort-products",
   getCategoriesHierarchy: "/category-hierarchy",

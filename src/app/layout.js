@@ -43,10 +43,10 @@ const clashDisplay = localFont({
 });
 
 export const metadata = {
-  title: "LaFetch",
-  description: "LaFetch - Your one-stop online shopping destination",
+  title: "LaFetchQuick",
+  description: "LaFetchQuick - Your one-stop online shopping destination",
   icons: {
-    icon: "/favicon.png",
+    icon: "/favicon_quickbl.png",
   },
 };
 

@@ -32,3 +32,9 @@ export const store = configureStore({
 
 // ✅ Export persistor
 export const persistor = persistStore(store);
+// export const store = configureStore({
+//   reducer: rootReducer,  for fixing redux persist error uncomment this and comment persist
+//   middleware: (getDefaultMiddleware) =>
+//     getDefaultMiddleware({ serializableCheck: false }),
+// });
+

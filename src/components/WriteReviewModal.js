@@ -81,17 +81,17 @@ const WriteReviewModal = ({
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black/30 backdrop-blur-sm bg-opacity-50 p-4 z-[999]">
       <div
-        className="bg-white rounded-lg shadow-lg overflow-y-auto"
+        className="bg-zinc-900 rounded-lg shadow-lg overflow-y-auto"
         style={{ width: "513px", height: "auto", maxHeight: "90vh" }}
       >
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 ">
-          <h2 className="text-lg text-black font-semibold">
+          <h2 className="text-lg text-white font-semibold">
             Rate & Review Product
           </h2>
           <button
             onClick={handleCancel}
-            className="text-gray-400 hover:text-gray-600 text-2xl leading-none cursor-pointer"
+            className="text-white/70 hover:text-gray-600 text-2xl leading-none cursor-pointer"
           >
             ×
           </button>
@@ -108,15 +108,15 @@ const WriteReviewModal = ({
               className="w-16 h-24 object-cover rounded"
             />
             <div className="flex-1">
-              <h3 className="font-medium text-sm mb-1 text-black">
+              <h3 className="font-medium text-sm mb-1 text-white">
                 {productTitle}
               </h3>
-              <p className="text-xs text-gray-500 mb-2 text-gray-800">
+              <p className="text-xs text-white/70 mb-2 text-gray-800">
                 {productDesc?.split(" ").slice(0, 30).join(" ") +
                   (productDesc?.split(" ").length > 30 ? "..." : "")}
               </p>
 
-              <p className="text-sm font-semibold text-black">
+              <p className="text-sm font-semibold text-white">
                 Product ID: {productId}
               </p>
             </div>
@@ -125,7 +125,7 @@ const WriteReviewModal = ({
 
         {/* Rating Section */}
         <div className="px-6 py-6">
-          <h3 className="text-sm font-semibold mb-3 text-black">RATING</h3>
+          <h3 className="text-sm font-semibold mb-3 text-white">RATING</h3>
           <div className="flex gap-2">
             {[1, 2, 3, 4, 5].map((star) => (
               <button
@@ -152,14 +152,14 @@ const WriteReviewModal = ({
 
         {/* Comment Section */}
         <div className="px-6 pb-6">
-          <h3 className="text-sm font-semibold mb-3 text-black">
+          <h3 className="text-sm font-semibold mb-3 text-white">
             SHARE YOUR EXPERIENCE
           </h3>
           <textarea
             value={comment}
             onChange={(e) => setComment(e.target.value)}
             placeholder="Write your review here..."
-            className="w-full h-32 px-4 py-3 text-black border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-black resize-none text-sm"
+            className="w-full h-32 px-4 py-3 text-white/70 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-black resize-none text-sm"
           />
         </div>
 
@@ -167,7 +167,7 @@ const WriteReviewModal = ({
         <div className="px-6 pb-6 flex gap-3">
           <button
             onClick={handleCancel}
-            className="flex-1 px-6 py-3 border border-gray-300 text-gray-700 rounded hover:bg-gray-50 transition-colors font-medium cursor-pointer"
+            className="flex-1 px-6 py-3 border border-gray-300 text-white rounded hover:bg-[#27272a] transition-colors font-medium cursor-pointer"
             disabled={isSubmitting}
           >
             Cancel

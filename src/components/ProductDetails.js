@@ -3,13 +3,13 @@ import React from "react";
 const ProductDetails = ({ type, title, brand }) => {
   return (
     <div className=" pt-5 space-y-4">
-      <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wide">
+      <h3 className="text-sm font-bold text-white uppercase tracking-wide">
         {type}
       </h3>
-      <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wide">
+      <h3 className="text-sm font-bold text-white uppercase tracking-wide">
         {title}
       </h3>
-      <h3 className="text-sm  text-gray-900 uppercase tracking-wide">
+      <h3 className="text-sm  text-white uppercase tracking-wide">
         {brand}
       </h3>
 

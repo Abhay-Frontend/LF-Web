@@ -19,7 +19,7 @@ const MenCollectionSection = () => {
   };
 
   return (
-    <div className="px-0  bg-white">
+    <div className="px-0 bg-[#27272a]">
       <div className="w-full py-4 sm:py-6 md:py-8 px-4 sm:px-6 md:px-10">
         {collections?.map((collection) => {
           const productsToShow = displayedProductsCount[collection.id] || 8;
@@ -38,7 +38,7 @@ const MenCollectionSection = () => {
           return (
             <section key={collection.id} className="mb-16">
               {/* Section Title */}
-              <h2 className="text-[20px] md:text-4xl font-bold text-center text-black mb-12 tracking-wide">
+              <h2 className="text-[20px] md:text-4xl font-bold text-center text-white mb-12 tracking-wide">
                 {collection.name} {/* dynamic title */}
               </h2>
               {/* Products Grid */}
@@ -63,7 +63,7 @@ const MenCollectionSection = () => {
                             href={`/products?collectionId=${collection.id}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="absolute inset-0 flex items-center justify-center bg-black/40 text-white font-bold text-lg md:text-xl hover:bg-black/50 transition-colors"
+                            className="absolute inset-0 flex items-center justify-center bg-black/50 text-white font-bold text-lg md:text-xl hover:bg-black/60 backdrop-blur-[1px] transition-colors"
                           >
                             Explore All →
                           </Link>

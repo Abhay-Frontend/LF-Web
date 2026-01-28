@@ -26,21 +26,21 @@ const DeliveryOptions = ({ pincode, deliveryInfo, onCheckPincode }) => {
 
   return (
     <div className="pt-5 space-y-4">
-      <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wide">
+      <h3 className="text-sm font-bold text-white uppercase tracking-wide">
         Delivery Options
       </h3>
 
       {/* Pincode input */}
       <div className="flex gap-2">
-        <div className="flex-1 flex items-center gap-2 border rounded px-3 py-2.5">
-          <MapPin className="w-4 h-4 text-gray-500" />
+        <div className="flex-1 flex items-center gap-2 border border-white/10 rounded px-3 py-2.5">
+          <MapPin className="w-4 h-4 text-white/70" />
           <input
             type="text"
             value={pin}
             onChange={(e) => setPin(e.target.value.replace(/\D/g, ""))}
             onKeyDown={handleKeyDown}
             placeholder="Enter pincode"
-            className="flex-1 outline-none text-sm text-black"
+            className="flex-1 outline-none text-sm text-white"
             maxLength={6}
           />
         </div>
@@ -61,18 +61,18 @@ const DeliveryOptions = ({ pincode, deliveryInfo, onCheckPincode }) => {
           {safeDeliveryInfo.map((info, idx) => (
             <div key={idx} className="flex items-start gap-3 text-sm">
               {info.icon === "truck" && (
-                <Truck className="w-4 h-4 text-gray-600 mt-0.5 flex-shrink-0" />
+                <Truck className="w-4 h-4 text-white/70 mt-0.5 flex-shrink-0" />
               )}
               {info.icon === "refresh" && (
-                <RefreshCw className="w-4 h-4 text-gray-600 mt-0.5 flex-shrink-0" />
+                <RefreshCw className="w-4 h-4 text-white/70 mt-0.5 flex-shrink-0" />
               )}
               {info.icon === "shield" && (
-                <Shield className="w-4 h-4 text-gray-600 mt-0.5 flex-shrink-0" />
+                <Shield className="w-4 h-4 text-white/70 mt-0.5 flex-shrink-0" />
               )}
               <div>
-                <p className="font-semibold text-gray-900">{info.title}</p>
+                <p className="font-semibold text-white">{info.title}</p>
                 {info.description && (
-                  <div className="text-gray-600 mt-1 text-sm">
+                  <div className="text-white/70 mt-1 text-sm">
                     {info.description.split("\n").map((line, index) => (
                       <p key={index} className="mb-1">
                         {line}
@@ -86,7 +86,7 @@ const DeliveryOptions = ({ pincode, deliveryInfo, onCheckPincode }) => {
         </div>
       ) : (
         // ✅ Fallback when no delivery info
-        <p className="text-xs text-gray-500 italic">
+        <p className="text-xs text-white/70 italic">
           Enter a valid pincode to check delivery details.
         </p>
       )}

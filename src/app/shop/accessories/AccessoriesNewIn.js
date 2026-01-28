@@ -12,10 +12,10 @@ const NewInSection = () => {
   const topProducts = products.slice(0, 8);
 
   return (
-    <section className="py-10 px-4 bg-white">
+    <section className="py-10 px-4 bg-[#27272a]">
       <div className="w-full p-[20px] lg:p-[50px]">
         {/* Section Title */}
-        <h2 className="text-4xl md:text-5xl font-bold text-center text-black mb-12 tracking-wide">
+        <h2 className="text-4xl md:text-5xl font-bold text-center text-white mb-12 tracking-wide">
           NEW IN
         </h2>
 
@@ -42,7 +42,7 @@ const NewInSection = () => {
 
                     <Link
                       href="/products?superCatId=3" // explore page
-                      className="absolute inset-0 flex items-center justify-center bg-black/40 text-white font-bold text-lg md:text-xl hover:bg-black/50 transition-colors"
+                      className="absolute inset-0 flex items-center justify-center bg-black/50 text-white font-bold text-lg md:text-xl hover:bg-black/60 backdrop-blur-[1px] transition-colors"
                     >
                       Explore All →
                     </Link>

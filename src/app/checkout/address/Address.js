@@ -456,29 +456,29 @@ const CheckOutAddress = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center text-lg text-black">
+      <div className="min-h-screen bg-[#27272a] flex items-center justify-center text-lg text-white">
         Loading your cart...
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 mt-[130px] py-8">
+    <div className="min-h-screen bg-[#27272a] pt-[130px] pb-8">
       <div className="max-w-7xl mx-auto px-4">
         {/* Progress Steps */}
         <div className="mb-8 flex items-center justify-center gap-2 text-sm">
-          <Link href="/checkout/bag" className="text-black">
+          <Link href="/checkout/bag" className="text-white/60">
             BAG
           </Link>
-          <span className="text-black">--------</span>
+          <span className="text-white/30">--------</span>
           <Link
             href="/checkout/address"
-            className="text-black underline decoration-[#988BFF] decoration-[2px] font-bold"
+            className="text-white underline decoration-[#988BFF] decoration-[2px] font-bold"
           >
             ADDRESS
           </Link>
-          <span className="text-black">--------</span>
-          <span className="text-black">PAYMENT</span>
+          <span className="text-white/30">--------</span>
+          <span className="text-white/60">PAYMENT</span>
         </div>
 
         {/* Main Content Grid */}
@@ -487,17 +487,17 @@ const CheckOutAddress = () => {
           <div className="lg:col-span-2">
             <div className="flex justify-between items-center mb-4">
               <div>
-                <h2 className="text-xl font-semibold text-black">
+                <h2 className="text-xl font-semibold text-white">
                   SELECT ADDRESS
                 </h2>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-white/60">
                   {addresses.length} Saved Address
                   {addresses.length !== 1 ? "es" : ""}
                 </p>
               </div>
               <button
                 onClick={handleAddNewAddress}
-                className="flex items-center gap-2 px-4 py-2 border border-gray-300 text-black rounded hover:bg-gray-50 cursor-pointer"
+                className="flex items-center gap-2 px-4 py-2 border border-white/20 text-white rounded hover:bg-white/10 cursor-pointer transition"
               >
                 <span className="text-xl">+</span>
                 Add New Address
@@ -507,7 +507,7 @@ const CheckOutAddress = () => {
             {/* Default Address Section */}
             {addresses.filter((addr) => addr.isDefaultAddress).length > 0 && (
               <div className="mb-6">
-                <h3 className="text-sm font-medium text-gray-700 mb-3">
+                <h3 className="text-sm font-medium text-white/60 mb-3">
                   DEFAULT ADDRESS
                 </h3>
                 {addresses
@@ -528,7 +528,7 @@ const CheckOutAddress = () => {
             {/* Other Addresses Section */}
             {addresses.filter((addr) => !addr.isDefaultAddress).length > 0 && (
               <div>
-                <h3 className="text-sm font-medium text-gray-700 mb-3">
+                <h3 className="text-sm font-medium text-white/60 mb-3">
                   OTHER ADDRESS
                 </h3>
                 {addresses
@@ -548,11 +548,11 @@ const CheckOutAddress = () => {
 
             {/* No Addresses Message */}
             {addresses.length === 0 && (
-              <div className="bg-white border border-gray-200 rounded-lg p-8 text-center">
-                <p className="text-gray-600 mb-4">No saved addresses found</p>
+              <div className="bg-zinc-900 border border-white/10 rounded-lg p-8 text-center">
+                <p className="text-white/60 mb-4">No saved addresses found</p>
                 <button
                   onClick={handleAddNewAddress}
-                  className="px-6 py-2 bg-black text-white rounded hover:bg-gray-800"
+                  className="px-6 py-2 bg-[#988BFF] text-black rounded hover:opacity-90"
                 >
                   Add Your First Address
                 </button>
@@ -572,10 +572,10 @@ const CheckOutAddress = () => {
             <button
               onClick={handleRazorpayPayment}
               disabled={!razorpayLoaded}
-              className={`mt-6 w-full px-4 py-3 font-semibold rounded ${
+              className={`mt-6 w-full px-4 py-3 font-semibold rounded transition ${
                 razorpayLoaded
-                  ? "bg-black text-white cursor-pointer hover:bg-gray-800"
-                  : "bg-gray-400 text-gray-200 cursor-not-allowed"
+                  ? "bg-[#988BFF] text-black cursor-pointer hover:opacity-90"
+                  : "bg-white/20 text-white/40 cursor-not-allowed"
               }`}
             >
               {razorpayLoaded ? "Proceed to Pay" : "Loading Payment Gateway..."}
