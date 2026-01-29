@@ -29,7 +29,7 @@ export default function BlogDetailsPage() {
 
   if (!blogData) {
     return (
-      <div className="text-center py-10 text-gray-500">
+      <div className="text-center py-10 text-white">
         Blog not found or failed to load.
       </div>
     );

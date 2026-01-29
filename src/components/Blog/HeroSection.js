@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const FashionBlogHero = ({ blogPost, loading }) => {
   return (
-    <div className="relative w-full bg-[#27272a] mt-[130px]">
+    <div className="relative w-full bg-[#27272a] mt-[120px]">
       {/* Top Banner */}
       <div
         className="relative w-full bg-cover bg-center bg-no-repeat h-48 sm:h-64 md:h-80 lg:h-96"

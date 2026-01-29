@@ -27,11 +27,11 @@ const CategoryPage = () => {
   }
 
   return (
-    <div className="bg-white">
-      <div className="w-full md:px-[100px] md:py-0 px-4 p-12 mb-4 mt-[130px] md:mt-[160px]  ">
+    <div className="bg-[#27272a]">
+      <div className="w-full md:px-[100px] md:py-0 px-4 p-12  mt-[120px] md:mt-[128px]  ">
         {/* Category Header */}
         <div className="mb-8">
-          <h1 className="text-lg md:text-3xl font-bold text-gray-900 mb-2">
+          <h1 className="text-lg md:text-3xl font-bold text-white mb-2">
             {categoryProducts.name}
           </h1>
         </div>
@@ -50,7 +50,7 @@ const CategoryPage = () => {
                 >
                   {/* Subcategory Name */}
                   <div className="mb-6 flex justify-between items-center">
-                    <h2 className="text-lg md:text-2xl font-semibold text-gray-900 uppercase tracking-wide">
+                    <h2 className="text-lg md:text-2xl font-semibold text-white uppercase tracking-wide">
                       {subcategory.name}
                     </h2>
 
@@ -58,7 +58,7 @@ const CategoryPage = () => {
                     {subcategory.products?.length > 5 && (
                       <Link
                         href={`/products?subCatId=${subcategory.id}`}
-                        className="hidden lg:block text-[#808080] border-b border-[#808080] text-sm "
+                        className="hidden lg:block text-white border-b border-[#808080] text-sm "
                       >
                         View All →
                       </Link>
@@ -93,7 +93,7 @@ const CategoryPage = () => {
                     </div>
                   ) : (
                     <div className="text-center py-12">
-                      <p className="text-gray-500 text-lg">
+                      <p className="text-white text-lg">
                         No products available in this subcategory
                       </p>
                     </div>
