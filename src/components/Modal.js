@@ -389,7 +389,7 @@ const ProductModal = () => {
 
   return (
     <div className="fixed inset-0  bg-black/10 backdrop-blur-[4px]  flex items-center justify-center z-50 p-4 overflow-auto">
-      <div className="bg-white w-full max-w-3xl  overflow-hidden">
+      <div className="bg-[#27272a] w-full max-w-3xl  overflow-hidden">
         <div className="flex flex-col md:flex-row overflow-y-auto  max-h-[400px]">
           {/* Product Image */}
           <div className="md:w-1/2 w-full relative bg-gray-50 flex items-center justify-center ">
@@ -416,22 +416,22 @@ const ProductModal = () => {
             {/* Header with Close Button */}
             <div className="flex items-start justify-between mb-4">
               <div>
-                <h2 className="text-2xl font-semibold text-gray-900 mb-1">
+                <h2 className="text-2xl font-semibold text-white mb-1">
                   {product.title}
                 </h2>
-                <p className="text-xl text-gray-900">Rs. {product.basePrice}</p>
+                <p className="text-xl text-white">Rs. {product.basePrice}</p>
               </div>
               <button
                 onClick={handleClose}
                 className="w-8 h-8   flex items-center justify-center cursor-pointer"
               >
-                <X className="w-5 h-5 text-gray-600" />
+                <X className="w-5 h-5 text-white" />
               </button>
             </div>
 
             {/* Description */}
             <div className="mb-4">
-              <p className="text-gray-600 mb-1 text-sm leading-snug">
+              <p className="text-white mb-1 text-sm leading-snug">
                 {product.description?.split(" ").slice(0, 25).join(" ") +
                   (product.description?.split(" ").length > 25 ? "..." : "")}
               </p>
@@ -470,7 +470,7 @@ const ProductModal = () => {
             {/* Color Selection */}
             {showSizeColorOptions && colorsForSelectedSize.length > 0 && (
               <div className="mb-4">
-                <label className="block text-black font-medium mb-2 text-sm">
+                <label className="block text-white font-medium mb-2 text-sm">
                   Color: {selectedColor || "Select a color"}
                 </label>
                 <div className="flex flex-wrap gap-2">
