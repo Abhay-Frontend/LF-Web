@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setAppliedCoupon, clearAppliedCoupon } from "@/redux/slices/cartSlice";
 import { X } from "lucide-react";
 import Link from "next/link";
-
+ 
 const OrderSummary = ({
   products,
   onProceed,

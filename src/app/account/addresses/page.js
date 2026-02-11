@@ -103,16 +103,16 @@ const SavedAddresses = () => {
   };
 
   return (
-    <div className="bg-white    p-8">
+    <div className="bg-[#27272a] p-8 min-h-screen">
       {/* Header */}
       <div className="flex justify-between items-center mb-8">
-        <h2 className="text-2xl font-semibold text-black">Saved Addresses</h2>
+        <h2 className="text-2xl font-semibold text-white">Saved Addresses</h2>
       </div>
 
       {/* Default Address Section */}
       {addresses.filter((addr) => addr.isDefaultAddress).length > 0 && (
         <div className="mb-8">
-          <h3 className="text-sm font-semibold text-gray-700 mb-4 uppercase tracking-wider">
+          <h3 className="text-sm font-semibold text-white/40 mb-4 uppercase tracking-wider">
             Default Address
           </h3>
           {addresses
@@ -120,29 +120,29 @@ const SavedAddresses = () => {
             .map((address) => (
               <div
                 key={address.id}
-                className="border-b border-gray-300    p-6 mb-4"
+                className="bg-zinc-900 border-b border-white/10 p-6 mb-4 hover:shadow-lg hover:shadow-black/40 transition-shadow cursor-pointer"
               >
                 <div className="flex items-start gap-4">
                   {/* Radio Button */}
                   <div className="mt-1">
-                    <div className="w-5 h-5 rounded-full border-2 border-black bg-black flex items-center justify-center">
-                      <div className="w-2 h-2 bg-white rounded-full"></div>
+                    <div className="w-5 h-5 rounded-full border-2 border-[#988BFF] flex items-center justify-center">
+                      <div className="w-2 h-2 bg-[#988BFF] rounded-full"></div>
                     </div>
                   </div>
 
                   {/* Address Content */}
                   <div className="flex-1">
-                    <h4 className="font-semibold text-black text-lg mb-2">
+                    <h4 className="font-semibold text-white text-lg mb-2">
                       {address.type || "Home"}
                     </h4>
-                    <h4 className="font-semibold text-black text-lg mb-2">
+                    <h4 className="font-semibold text-white text-lg mb-2">
                       {address.state || "Home"}
                     </h4>
 
-                    <p className="text-gray-700 mb-3">
+                    <p className="text-white/60 mb-3">
                       {address.city}, {address.state} - {address.postalCode}
                     </p>
-                    <p className="text-gray-700">
+                    <p className="text-white/40">
                       <span className="font-medium">Mobile:</span>{" "}
                       {address.contactPhone}
                     </p>
@@ -152,7 +152,7 @@ const SavedAddresses = () => {
                   <div className="flex gap-4">
                     <button
                       onClick={() => handleEditAddress(address)}
-                      className="text-black hover:text-gray-600 flex items-center gap-1 cursor-pointer"
+                      className="text-[#988BFF] hover:text-[#b3a9ff] flex items-center gap-1 cursor-pointer"
                     >
                       <Edit2 size={16} />
                       <span className="text-sm">Edit</span>
@@ -175,7 +175,7 @@ const SavedAddresses = () => {
       {/* Other Address Section */}
       {addresses.filter((addr) => !addr.isDefaultAddress).length > 0 && (
         <div className="mb-8">
-          <h3 className="text-sm font-semibold text-gray-700 mb-4 uppercase tracking-wider">
+          <h3 className="text-sm font-semibold text-white/40 mb-4 uppercase tracking-wider">
             Other Address
           </h3>
           {addresses
@@ -183,24 +183,24 @@ const SavedAddresses = () => {
             .map((address) => (
               <div
                 key={address.id}
-                className="border-b border-gray-300 p-6 mb-4"
+                className="border-b border-[#988BFF] p-6 mb-4"
               >
                 <div className="flex items-start gap-4">
                   {/* Removed the disc/radio button */}
 
                   {/* Address Content */}
                   <div className="flex-1">
-                    <h4 className="font-semibold text-black text-lg mb-2">
+                    <h4 className="font-semibold text-white text-lg mb-2">
                       {address.type || "Home"}
                     </h4>
-                    <h4 className="font-semibold text-black text-lg mb-2">
+                    <h4 className="font-semibold text-white text-lg mb-2">
                       {address.state || "Home"}
                     </h4>
 
-                    <p className="text-gray-700 mb-3">
+                    <p className="text-white/60 mb-3">
                       {address.city}, {address.state} - {address.postalCode}
                     </p>
-                    <p className="text-gray-700">
+                    <p className="text-white/40">
                       <span className="font-medium">Mobile:</span>{" "}
                       {address.contactPhone}
                     </p>
@@ -210,7 +210,7 @@ const SavedAddresses = () => {
                   <div className="flex gap-4">
                     <button
                       onClick={() => handleEditAddress(address)}
-                      className="text-black hover:text-gray-600 flex items-center gap-1 cursor-pointer"
+                      className="text-[#988BFF] hover:text-[#b3a9ff] flex items-center gap-1 cursor-pointer"
                     >
                       <Edit2 size={16} />
                       <span className="text-sm">Edit</span>
@@ -233,10 +233,10 @@ const SavedAddresses = () => {
       {/* No Addresses Message */}
       {addresses.length === 0 && (
         <div className="text-center py-12">
-          <p className="text-gray-600 mb-6 text-lg">No saved addresses found</p>
+          <p className="text-white/60 mb-6 text-lg">No saved addresses found</p>
           <button
             onClick={handleAddNewAddress}
-            className="px-8 py-3 bg-black text-white rounded hover:bg-gray-800 cursor-pointer"
+            className="px-8 py-3 bg-[#988BFF] text-white rounded hover:bg-[#b3a9ff] cursor-pointer"
           >
             + Add New Address
           </button>
@@ -247,7 +247,7 @@ const SavedAddresses = () => {
       {addresses.length > 0 && (
         <button
           onClick={handleAddNewAddress}
-          className="w-full py-4 border-2 border-dashed border-gray-300 text-gray-600    hover:border-gray-400 hover:text-gray-800 font-medium cursor-pointer"
+          className="w-full py-4 border-2 border-dashed border-[#988BFF] text-white/60 hover:border-[#b3a9ff] hover:text-white font-medium cursor-pointer"
         >
           + Add New Address
         </button>

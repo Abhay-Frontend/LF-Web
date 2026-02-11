@@ -72,8 +72,8 @@ const AccountHeader = () => {
   };
 
   return (
-    <div className="bg-gray-50 w-full mt-[130px]">
-      <div className="bg-white border-b border-gray-200 px-4 sm:px-6 py-3 sm:py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-0">
+    <div className="bg-[#27272a] w-full mt-[130px]">
+      <div className="bg-[#27272a] border-b border-white/10 px-4 sm:px-6 py-3 sm:py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-0">
         {/* Left: User Info */}
         <div className="flex items-center gap-3 sm:gap-4">
           <div className="w-12 h-12 sm:w-14 sm:h-14 bg-black rounded-full flex items-center justify-center flex-shrink-0">
@@ -89,17 +89,17 @@ const AccountHeader = () => {
             ) : (
               <>
                 <div className="flex items-center gap-2 flex-wrap">
-                  <h1 className="text-lg sm:text-xl font-semibold text-gray-900 break-words">
+                  <h1 className="text-lg sm:text-xl font-semibold text-white break-words">
                     {userData.firstName?.toUpperCase()}{" "}
                     {userData.lastName?.toUpperCase()}
                   </h1>
                   {userData.gender && (
-                    <span className="text-xs sm:text-sm text-gray-600 bg-gray-100 px-2 py-1 rounded capitalize">
+                    <span className="text-xs sm:text-sm text-white/60 bg-zinc-900 px-2 py-1 rounded capitalize">
                       {userData.gender}
                     </span>
                   )}
                 </div>
-                <div className="flex flex-col sm:flex-row sm:gap-4 text-xs sm:text-sm text-gray-600 mt-1">
+                <div className="flex flex-col sm:flex-row sm:gap-4 text-xs sm:text-sm text-white/60 mt-1">
                   <span>{userData.phone}</span>
                   <span className="truncate">{userData.email}</span>
                 </div>
@@ -113,10 +113,10 @@ const AccountHeader = () => {
           <button
             onClick={handleEditClick}
             disabled={loading}
-            className="flex items-center gap-1 sm:gap-2 border border-gray-300 rounded-md px-3 py-2 sm:px-4 sm:py-2 text-sm font-medium hover:bg-gray-50 transition-colors cursor-pointer disabled:opacity-60"
+            className="flex items-center gap-1 sm:gap-2 border border-white/10 rounded-md px-3 py-2 sm:px-4 sm:py-2 text-sm font-medium hover:bg-gray-50 transition-colors cursor-pointer disabled:opacity-60"
           >
-            <Edit className="w-4 h-4 text-black" />
-            <span className="hidden sm:inline text-black">Edit Profile</span>
+            <Edit className="w-4 h-4 text-white" />
+            <span className="hidden sm:inline text-white">Edit Profile</span>
           </button>
         </div>
       </div>

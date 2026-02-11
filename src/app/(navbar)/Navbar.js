@@ -51,7 +51,7 @@ const Navbar = () => {
   const router = useRouter();
   const pathname = usePathname();
 
-  const categoriesHierarchy = useGetCategoriesHierarchy();
+  const categoriesHierarchy = useGetCategoriesHierarchy({mode:"quick",city:"Delhi"});
   const menuData = getMenuData(categoriesHierarchy);
 
   // Show NEWSLETTERS only on specific routes
@@ -104,9 +104,9 @@ const Navbar = () => {
   return (
     <>
       {/* HEADER */}
-      <div className="fixed top-14 inset-x-0 z-40 shadow-sm" style={{backgroundColor:"#27272a"}}>
-        <div className="max-w-full mx-auto px-4 md:px-16 py-6 md:py-7 h-20 md:h-18 flex items-center justify-between">
-          {/* LEFT */}
+      <div className="fixed top-14 inset-x-0 z-50 shadow-sm" style={{backgroundColor:"#27272a"}}>
+        <div className="max-w-full mx-auto px-4 md:px-16 py-8 md:py-7 h-26 md:h-30 flex items-center justify-between">
+          {/* LEFT */} 
           <div className="flex items-center gap-1 md:gap-4">
             <button className="md:hidden" style={{color:"white"}} onClick={() => setIsMobileOpen(true)}>
               <Menu style={{className :"text-white"}}/>
@@ -115,7 +115,7 @@ const Navbar = () => {
             <Link href="/" className="mt-[2px] md:mt-0 flex items-center gap-1">
             <div className="flex items-center gap-2">
                <Image
-                src="/images/logo_white.png"
+                src="/images/updatedLogo.png"
                 alt="Logo"
                 width={200}
                 height={160}
@@ -123,15 +123,6 @@ const Navbar = () => {
             </div>
              
             </Link>
-
-            {/* <Link href="/" className="md:hidden border-r border-black/50 pr-4">
-              <Image
-                src="/images/logo-black.svg"
-                alt="Logo"
-                width={100}
-                height={40}
-              />
-            </Link> */}
           </div>
 
           {/* DESKTOP MENU */}
@@ -139,10 +130,10 @@ const Navbar = () => {
             {filteredMenuData.map((menu, index) => (
               <div
                 key={index}
-                className="relative text-sm font-clash-display font-medium text-white uppercase leading-4
+                className="relative text-sm font-clash-display font-medium text-white hover:text-[#7A6ECC] uppercase leading-4
              after:absolute after:left-0 after:-bottom-2
              after:h-[1.5px] after:w-full after:bg-transparent
-             hover:after:bg-white
+             hover:after:bg-[#7A6ECC] transition-colors duration-200
              hover:font-semibold"
                 onMouseEnter={() => {
                   clearTimeout(dropdownTimeout);
@@ -177,20 +168,28 @@ const Navbar = () => {
           </div>
 
           {/* RIGHT */}
+            
+          {/* Icons Row */}
           <div className="flex items-center gap-1 md:gap-4">
             <Search
-              className="text-white cursor-pointer"
+              className="text-white hover:text-[#7A6ECC] transition-color duration-200 cursor-pointer"
               onClick={() => setShowSearchDropdown(true)}
             />
 
             <Link href="/wishlist-boards">
-              <Heart className="text-white" />
+              <Heart className="text-white hover:text-[#7A6ECC] transition-color duration-200" />
             </Link>
 
             <Link href="/checkout/bag" className="relative">
-              <ShoppingBag className="text-white" />
+              <ShoppingBag className="text-white hover:text-[#7A6ECC] transition-color duration-200" />
               {cartTotal > 0 && (
-                <span className="absolute -top-1 -right-1 text-xs bg-white-500 text-white rounded-full px-1">
+                <span
+                  className="absolute -top-1 -right-1 min-w-[18px] h-[18px]
+                  flex items-center justify-center
+                  text-[10px] font-semibold
+                  bg-[#7A6ECC] text-white
+                  rounded-full"
+                >
                   {cartTotal}
                 </span>
               )}
@@ -200,11 +199,24 @@ const Navbar = () => {
               <UserDropdown user={user} />
             ) : (
               <User
-                className="text-white"
+                className="text-white hover:text-[#7A6ECC] transition-color duration-200 cursor-pointer"
                 onClick={() => dispatch(openPhoneAuthModal("navbar"))}
               />
             )}
           </div>
+
+          {/* Text Below Icons */}
+            {/* Promo Strip */}
+          <div
+            className="fixed top-[120px] md:top-[130px] inset-x-0 z-30 text-center hidden md:block"
+          >
+            <p className="text-[11px] md:text-xs font-bold uppercase text-[#7A6ECC] py-1 tracking-wide">
+              Download The App Now & Get 10% Off
+            </p>
+          </div>
+
+
+
         </div>
       </div>
 

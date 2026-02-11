@@ -7,8 +7,8 @@ import Link from "next/link";
 import BannerGrid from "@/components/collections/BannerGrid";
 
 const MenCollectionSection = () => {
-  const query = "gender=1&displayFor=men";
-  const { data: collections } = useCollection(query);
+  const query = "gender=1&displayFor=men&mode=quick&city=Delhi";
+  const { data: collections,loading } = useCollection(query);
   const [displayedProductsCount, setDisplayedProductsCount] = useState({});
 
   const handleExploreMore = (collectionId) => {
@@ -60,7 +60,7 @@ const MenCollectionSection = () => {
                             className="object-cover"
                           />
                           <Link
-                            href={`/products?collectionId=${collection.id}`}
+                            href={`/products?collectionId=${collection.id}&mode="quick"&city=Delhi`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="absolute inset-0 flex items-center justify-center bg-black/50 text-white font-bold text-lg md:text-xl hover:bg-black/60 backdrop-blur-[1px] transition-colors"
@@ -107,7 +107,6 @@ const MenCollectionSection = () => {
                     variants: product.variants || [],
                     availableSizes: availableSizes,
                   };
-
                   return (
                     <ProductCollectionCard
                       key={product.id}

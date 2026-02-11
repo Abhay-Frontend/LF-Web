@@ -10,24 +10,24 @@ const SuccessExchangeModal = ({
   onClose = () => {},
 }) => {
   return (
-    <div className="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center z-[60] p-4">
-      <div className="bg-white rounded-lg max-w-md w-full p-6 shadow-xl">
+    <div className="fixed inset-0 bg-[#27272a] backdrop-blur-md flex items-center justify-center z-[60] p-4">
+      <div className="bg-[#27272a] rounded-lg max-w-md w-full p-6 shadow-xl">
         {/* Success Icon */}
         <div className="flex justify-center mb-4">
           <CheckCircle className="w-16 h-16 text-green-500" />
         </div>
 
         {/* Title */}
-        <h2 className="text-2xl font-bold text-center text-gray-900 mb-2">
+        <h2 className="text-2xl font-bold text-center text-white mb-2">
           Exchange Requested!
         </h2>
 
-        <p className="text-center text-gray-600 mb-6">
+        <p className="text-center text-white/60 mb-6">
           Your exchange request has been submitted successfully
         </p>
 
         {/* Product Info */}
-        <div className="border border-gray-200 rounded-lg p-4 mb-6">
+        <div className="border border-white/10  rounded-lg p-4 mb-6">
           <div className="flex gap-4">
             {product.imageUrls?.[0] && (
               <Image
@@ -39,7 +39,7 @@ const SuccessExchangeModal = ({
               />
             )}
             <div className="flex-1">
-              <h3 className="font-medium text-gray-900 text-sm mb-1">
+              <h3 className="font-medium text-white text-sm mb-1">
                 {product.title}
               </h3>
               {/* <div className="text-xs text-gray-600 space-y-1">
@@ -58,7 +58,7 @@ const SuccessExchangeModal = ({
 
         {/* Info Box */}
         <div className="bg-blue-50 rounded-lg p-4 mb-6">
-          <p className="text-sm text-gray-700">
+          <p className="text-sm text-white">
             <span className="font-semibold">What's next?</span>
             <br />
             • We'll pick up the item from your address

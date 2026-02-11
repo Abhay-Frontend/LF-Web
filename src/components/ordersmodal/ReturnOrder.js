@@ -103,198 +103,393 @@ const ReturnModal = ({ order, onClose = () => {}, onSuccess = () => {} }) => {
   if (!order) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/30 backdrop-blur-sm bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-lg w-full max-w-md max-h-[90vh] overflow-y-auto">
-        {/* Header */}
-        <div className="flex items-center justify-between p-4 border-b sticky top-0 bg-white">
-          <h2 className="text-lg font-semibold text-black">
-            {order?.product?.title || "Return Item"}
-          </h2>
-          <button onClick={onClose} className="p-1 hover:bg-gray-100 rounded">
-            <X size={20} />
-          </button>
+  <div className="fixed inset-0 bg-[#27272a]/80 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+    <div className="bg-zinc-900 rounded-lg w-full max-w-md max-h-[90vh] overflow-y-auto border border-white/10 shadow-black/40">
+      
+      {/* Header */}
+      <div className="flex items-center justify-between p-4 border-b border-white/10 sticky top-0 bg-zinc-900">
+        <h2 className="text-lg font-semibold text-white">
+          {order?.product?.title || "Return Item"}
+        </h2>
+        <button
+          onClick={onClose}
+          className="p-1 rounded text-white/60 hover:text-white hover:bg-white/5"
+        >
+          <X size={20} />
+        </button>
+      </div>
+
+      {/* Content */}
+      <div className="p-4 space-y-6">
+        {/* Product Info */}
+        <div className="flex gap-4">
+          <Image
+            src={order?.product?.imageUrls?.[0] || "/api/placeholder/80/120"}
+            alt={order?.product?.title}
+            width={80}
+            height={112}
+            className="w-20 h-28 object-cover rounded"
+          />
+          <div className="flex-1">
+            <h3 className="font-medium text-sm mb-1 text-white">
+              {order?.product?.title}
+            </h3>
+            <p className="text-xs text-white/60 mb-2">
+              {order?.product?.subtitle}
+            </p>
+            <div className="flex gap-4 text-xs text-white/60">
+              <span>Size: {order?.size || "N/A"}</span>
+              <span>Qty: {order?.quantity || 1}</span>
+            </div>
+            <p className="font-semibold mt-2 text-white">
+              ₹{parseFloat(order?.total || 0).toFixed(2)}
+            </p>
+          </div>
         </div>
 
-        {/* Content */}
-        <div className="p-4 space-y-6">
-          {/* Product Info */}
-          <div className="flex gap-4">
-            <Image
-              src={order?.product?.imageUrls?.[0] || "/api/placeholder/80/120"}
-              alt={order?.product?.title}
-              width={80}
-              height={112}
-              className="w-20 h-28 object-cover rounded"
-            />
-            <div className="flex-1">
-              <h3 className="font-medium text-sm mb-1 text-black">
-                {order?.product?.title}
-              </h3>
-              <p className="text-xs text-gray-500 mb-2 text-black">
-                {order?.product?.subtitle}
-              </p>
-              <div className="flex gap-4 text-xs text-black">
-                <span>Size: {order?.size || "N/A"}</span>
-                <span>Qty: {order?.quantity || 1}</span>
-              </div>
-              <p className="font-semibold mt-2 text-black">
-                ₹{parseFloat(order?.total || 0).toFixed(2)}
-              </p>
-            </div>
-          </div>
+        {/* Reason for Return */}
+        <div>
+          <label className="block text-sm font-medium mb-2 text-white">
+            REASON FOR RETURN
+          </label>
+          <div className="relative">
+            <button
+              onClick={() => setIsReasonDropdownOpen(!isReasonDropdownOpen)}
+              className="w-full px-4 py-3 border border-white/10 rounded text-left flex items-center justify-between bg-[#27272a] text-white hover:border-white/20"
+            >
+              <span className="text-white/80">
+                {selectedReason || "Select a reason"}
+              </span>
+              <ChevronDown
+                size={20}
+                className={`transition-transform text-white/60 ${
+                  isReasonDropdownOpen ? "rotate-180" : ""
+                }`}
+              />
+            </button>
 
-          {/* Reason for Return */}
-          <div>
-            <label className="block text-sm font-medium mb-2 text-black">
-              REASON FOR RETURN
-            </label>
-            <div className="relative">
-              <button
-                onClick={() => setIsReasonDropdownOpen(!isReasonDropdownOpen)}
-                className="w-full px-4 py-3 border border-gray-300 rounded text-left flex items-center justify-between hover:border-gray-400 text-black"
-              >
-                <span className={selectedReason ? "text-black" : "text-black"}>
-                  {selectedReason || "Select a reason"}
-                </span>
-                <ChevronDown
-                  size={20}
-                  className={`transition-transform ${
-                    isReasonDropdownOpen ? "rotate-180" : ""
-                  }`}
-                />
-              </button>
-
-              {isReasonDropdownOpen && (
-                <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-300 rounded shadow-lg max-h-60 overflow-y-auto z-10">
-                  {Object.entries(returnReasons).map(([key, value]) => (
-                    <button
-                      key={key}
-                      onClick={() => {
-                        setSelectedReason(value);
-                        if (value !== "Other") {
-                          setCustomReason("");
-                        }
-                        setIsReasonDropdownOpen(false);
-                      }}
-                      className="w-full px-4 py-3 text-left hover:bg-gray-50 border-b border-gray-100 last:border-b-0 text-black"
-                    >
-                      {value}
-                    </button>
-                  ))}
-                </div>
-              )}
-
-              {selectedReason === "Other" && (
-                <div className="mt-3">
-                  <label className="block text-sm font-medium mb-1 text-black">
-                    Please specify your reason
-                  </label>
-                  <textarea
-                    value={customReason}
-                    onChange={(e) => setCustomReason(e.target.value)}
-                    placeholder="Write your reason here..."
-                    className="w-full border border-gray-300 rounded px-3 py-2 text-sm text-black focus:outline-none focus:border-black"
-                    rows={3}
-                  />
-                </div>
-              )}
-            </div>
-          </div>
-
-          {/* Pickup Address */}
-          <div>
-            <div className="flex items-center justify-between mb-2">
-              <label className="block text-sm font-medium text-black">
-                PICKUP ADDRESS
-              </label>
-              <button
-                onClick={() => setIsAddressDropdownOpen(!isAddressDropdownOpen)}
-                className="text-xs text-blue-600 hover:underline text-black"
-              >
-                Change
-              </button>
-            </div>
-
-            {/* Address Dropdown */}
-            {isAddressDropdownOpen && (
-              <div className="mb-3 border border-gray-300 rounded max-h-48 overflow-y-auto">
-                {addresses.map((address) => (
+            {isReasonDropdownOpen && (
+              <div className="absolute top-full left-0 right-0 mt-1 bg-zinc-900 border border-white/10 rounded shadow-black/40 max-h-60 overflow-y-auto z-10">
+                {Object.entries(returnReasons).map(([key, value]) => (
                   <button
-                    key={address.id}
+                    key={key}
                     onClick={() => {
-                      setSelectedAddressId(address.id);
-                      setIsAddressDropdownOpen(false);
+                      setSelectedReason(value);
+                      if (value !== "Other") setCustomReason("");
+                      setIsReasonDropdownOpen(false);
                     }}
-                    className={`w-full px-4 py-3 text-left text-black hover:bg-gray-50 border-b border-gray-100 last:border-b-0 ${
-                      selectedAddressId === address.id ? "bg-blue-50" : ""
-                    }`}
+                    className="w-full px-4 py-3 text-left text-white/80 hover:bg-white/5 border-b border-white/10 last:border-b-0"
                   >
-                    <div className="font-medium text-black text-sm">
-                      {address.contactName}
-                    </div>
-                    <div className="text-xs text-black mt-1">
-                      {address.line1}, {address.line2}
-                    </div>
-                    <div className="text-xs text-black">
-                      {address.city}, {address.state} {address.postalCode}
-                    </div>
-                    <div className="text-xs text-black">
-                      {address.contactPhone}
-                    </div>
+                    {value}
                   </button>
                 ))}
               </div>
             )}
 
-            {/* Selected Address Display */}
-            {selectedAddress && !isAddressDropdownOpen && (
-              <div className="bg-gray-50 p-3 rounded">
-                <div className="font-medium text-sm capitalize">
-                  {selectedAddress.type}
-                </div>
-                <div className="text-xs text-gray-700 mt-1">
-                  {selectedAddress.line1},{" "}
-                  {selectedAddress.line2 && `${selectedAddress.line2}, `}
-                  close to landmark
-                </div>
-                <div className="text-xs text-gray-700">
-                  {selectedAddress.city}, {selectedAddress.state},{" "}
-                  {selectedAddress.country}
-                </div>
+            {selectedReason === "Other" && (
+              <div className="mt-3">
+                <label className="block text-sm font-medium mb-1 text-white">
+                  Please specify your reason
+                </label>
+                <textarea
+                  value={customReason}
+                  onChange={(e) => setCustomReason(e.target.value)}
+                  placeholder="Write your reason here..."
+                  className="w-full border border-white/10 rounded px-3 py-2 text-sm bg-[#27272a] text-white focus:outline-none focus:border-[#988BFF]"
+                  rows={3}
+                />
               </div>
             )}
-
-            {/* Info Text */}
-            <div className="flex items-start gap-2 mt-3">
-              <div className="w-4 h-4 border border-gray-400 rounded-full flex-shrink-0 mt-0.5"></div>
-              <p className="text-xs text-black">
-                Once the item is picked up and we've reviewed your item, the
-                refund will be processed to your original payment method within
-                24 hours.
-              </p>
-            </div>
           </div>
         </div>
 
-        {/* Footer Buttons */}
-        <div className="flex gap-3 p-4 border-t sticky bottom-0 bg-white">
-          <button
-            onClick={onClose}
-            className="flex-1 py-3 border border-gray-300 rounded font-medium hover:bg-gray-50 text-black"
-          >
-            Back
-          </button>
-          <button
-            onClick={handleReturnItem}
-            disabled={!selectedReason || !selectedAddressId || isSubmitting}
-            className="flex-1 py-3 bg-black text-white rounded font-medium hover:bg-gray-800 disabled:bg-gray-300 disabled:cursor-not-allowed"
-          >
-            {isSubmitting ? "Processing..." : "Return Item"}
-          </button>
+        {/* Pickup Address */}
+        <div>
+          <div className="flex items-center justify-between mb-2">
+            <label className="block text-sm font-medium text-white">
+              PICKUP ADDRESS
+            </label>
+            <button
+              onClick={() => setIsAddressDropdownOpen(!isAddressDropdownOpen)}
+              className="text-xs text-[#988BFF] hover:underline"
+            >
+              Change
+            </button>
+          </div>
+
+          {isAddressDropdownOpen && (
+            <div className="mb-3 border border-white/10 rounded max-h-48 overflow-y-auto bg-zinc-900">
+              {addresses.map((address) => (
+                <button
+                  key={address.id}
+                  onClick={() => {
+                    setSelectedAddressId(address.id);
+                    setIsAddressDropdownOpen(false);
+                  }}
+                  className={`w-full px-4 py-3 text-left hover:bg-white/5 border-b border-white/10 last:border-b-0 ${
+                    selectedAddressId === address.id
+                      ? "bg-white/5"
+                      : ""
+                  }`}
+                >
+                  <div className="font-medium text-white text-sm">
+                    {address.contactName}
+                  </div>
+                  <div className="text-xs text-white/60 mt-1">
+                    {address.line1}, {address.line2}
+                  </div>
+                  <div className="text-xs text-white/60">
+                    {address.city}, {address.state} {address.postalCode}
+                  </div>
+                  <div className="text-xs text-white/60">
+                    {address.contactPhone}
+                  </div>
+                </button>
+              ))}
+            </div>
+          )}
+
+          {selectedAddress && !isAddressDropdownOpen && (
+            <div className="bg-[#27272a] p-3 rounded border border-white/10">
+              <div className="font-medium text-sm capitalize text-white">
+                {selectedAddress.type}
+              </div>
+              <div className="text-xs text-white/60 mt-1">
+                {selectedAddress.line1},{" "}
+                {selectedAddress.line2 && `${selectedAddress.line2}, `}
+                close to landmark
+              </div>
+              <div className="text-xs text-white/60">
+                {selectedAddress.city}, {selectedAddress.state},{" "}
+                {selectedAddress.country}
+              </div>
+            </div>
+          )}
+
+          <div className="flex items-start gap-2 mt-3">
+            <div className="w-4 h-4 border border-white/20 rounded-full flex-shrink-0 mt-0.5"></div>
+            <p className="text-xs text-white/60">
+              Once the item is picked up and reviewed, the refund will be
+              processed to your original payment method within 24 hours.
+            </p>
+          </div>
         </div>
       </div>
+
+      {/* Footer Buttons */}
+      <div className="flex gap-3 p-4 border-t border-white/10 sticky bottom-0 bg-zinc-900">
+        <button
+          onClick={onClose}
+          className="flex-1 py-3 border border-white/10 rounded font-medium text-white/80 hover:bg-white/5"
+        >
+          Back
+        </button>
+        <button
+          onClick={handleReturnItem}
+          disabled={!selectedReason || !selectedAddressId || isSubmitting}
+          className="flex-1 py-3 bg-[#988BFF] text-black rounded font-medium hover:opacity-90 disabled:opacity-40 disabled:cursor-not-allowed"
+        >
+          {isSubmitting ? "Processing..." : "Return Item"}
+        </button>
+      </div>
     </div>
-  );
+  </div>
+);
+
+
+  // return (
+  //   <div className="fixed inset-0 bg-[#27272a] backdrop-blur-sm bg-opacity-50 flex items-center justify-center z-50 p-4">
+  //     <div className="bg-[#27272a] rounded-lg w-full max-w-md max-h-[90vh] overflow-y-auto">
+  //       {/* Header */}
+  //       <div className="flex items-center justify-between p-4 border-b sticky top-0 bg-[#27272a]">
+  //         <h2 className="text-lg font-semibold text-white">
+  //           {order?.product?.title || "Return Item"}
+  //         </h2>
+  //         <button onClick={onClose} className="p-1 hover:bg-gray-100 rounded">
+  //           <X size={20} />
+  //         </button>
+  //       </div>
+
+  //       {/* Content */}
+  //       <div className="p-4 space-y-6">
+  //         {/* Product Info */}
+  //         <div className="flex gap-4">
+  //           <Image
+  //             src={order?.product?.imageUrls?.[0] || "/api/placeholder/80/120"}
+  //             alt={order?.product?.title}
+  //             width={80}
+  //             height={112}
+  //             className="w-20 h-28 object-cover rounded"
+  //           />
+  //           <div className="flex-1">
+  //             <h3 className="font-medium text-sm mb-1 text-black">
+  //               {order?.product?.title}
+  //             </h3>
+  //             <p className="text-xs text-gray-500 mb-2 text-black">
+  //               {order?.product?.subtitle}
+  //             </p>
+  //             <div className="flex gap-4 text-xs text-black">
+  //               <span>Size: {order?.size || "N/A"}</span>
+  //               <span>Qty: {order?.quantity || 1}</span>
+  //             </div>
+  //             <p className="font-semibold mt-2 text-black">
+  //               ₹{parseFloat(order?.total || 0).toFixed(2)}
+  //             </p>
+  //           </div>
+  //         </div>
+
+  //         {/* Reason for Return */}
+  //         <div>
+  //           <label className="block text-sm font-medium mb-2 text-black">
+  //             REASON FOR RETURN
+  //           </label>
+  //           <div className="relative">
+  //             <button
+  //               onClick={() => setIsReasonDropdownOpen(!isReasonDropdownOpen)}
+  //               className="w-full px-4 py-3 border border-gray-300 rounded text-left flex items-center justify-between hover:border-gray-400 text-black"
+  //             >
+  //               <span className={selectedReason ? "text-black" : "text-black"}>
+  //                 {selectedReason || "Select a reason"}
+  //               </span>
+  //               <ChevronDown
+  //                 size={20}
+  //                 className={`transition-transform ${
+  //                   isReasonDropdownOpen ? "rotate-180" : ""
+  //                 }`}
+  //               />
+  //             </button>
+
+  //             {isReasonDropdownOpen && (
+  //               <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-300 rounded shadow-lg max-h-60 overflow-y-auto z-10">
+  //                 {Object.entries(returnReasons).map(([key, value]) => (
+  //                   <button
+  //                     key={key}
+  //                     onClick={() => {
+  //                       setSelectedReason(value);
+  //                       if (value !== "Other") {
+  //                         setCustomReason("");
+  //                       }
+  //                       setIsReasonDropdownOpen(false);
+  //                     }}
+  //                     className="w-full px-4 py-3 text-left hover:bg-gray-50 border-b border-gray-100 last:border-b-0 text-black"
+  //                   >
+  //                     {value}
+  //                   </button>
+  //                 ))}
+  //               </div>
+  //             )}
+
+  //             {selectedReason === "Other" && (
+  //               <div className="mt-3">
+  //                 <label className="block text-sm font-medium mb-1 text-black">
+  //                   Please specify your reason
+  //                 </label>
+  //                 <textarea
+  //                   value={customReason}
+  //                   onChange={(e) => setCustomReason(e.target.value)}
+  //                   placeholder="Write your reason here..."
+  //                   className="w-full border border-gray-300 rounded px-3 py-2 text-sm text-black focus:outline-none focus:border-black"
+  //                   rows={3}
+  //                 />
+  //               </div>
+  //             )}
+  //           </div>
+  //         </div>
+
+  //         {/* Pickup Address */}
+  //         <div>
+  //           <div className="flex items-center justify-between mb-2">
+  //             <label className="block text-sm font-medium text-black">
+  //               PICKUP ADDRESS
+  //             </label>
+  //             <button
+  //               onClick={() => setIsAddressDropdownOpen(!isAddressDropdownOpen)}
+  //               className="text-xs text-blue-600 hover:underline text-black"
+  //             >
+  //               Change
+  //             </button>
+  //           </div>
+
+  //           {/* Address Dropdown */}
+  //           {isAddressDropdownOpen && (
+  //             <div className="mb-3 border border-gray-300 rounded max-h-48 overflow-y-auto">
+  //               {addresses.map((address) => (
+  //                 <button
+  //                   key={address.id}
+  //                   onClick={() => {
+  //                     setSelectedAddressId(address.id);
+  //                     setIsAddressDropdownOpen(false);
+  //                   }}
+  //                   className={`w-full px-4 py-3 text-left text-black hover:bg-gray-50 border-b border-gray-100 last:border-b-0 ${
+  //                     selectedAddressId === address.id ? "bg-blue-50" : ""
+  //                   }`}
+  //                 >
+  //                   <div className="font-medium text-black text-sm">
+  //                     {address.contactName}
+  //                   </div>
+  //                   <div className="text-xs text-black mt-1">
+  //                     {address.line1}, {address.line2}
+  //                   </div>
+  //                   <div className="text-xs text-black">
+  //                     {address.city}, {address.state} {address.postalCode}
+  //                   </div>
+  //                   <div className="text-xs text-black">
+  //                     {address.contactPhone}
+  //                   </div>
+  //                 </button>
+  //               ))}
+  //             </div>
+  //           )}
+
+  //           {/* Selected Address Display */}
+  //           {selectedAddress && !isAddressDropdownOpen && (
+  //             <div className="bg-gray-50 p-3 rounded">
+  //               <div className="font-medium text-sm capitalize">
+  //                 {selectedAddress.type}
+  //               </div>
+  //               <div className="text-xs text-gray-700 mt-1">
+  //                 {selectedAddress.line1},{" "}
+  //                 {selectedAddress.line2 && `${selectedAddress.line2}, `}
+  //                 close to landmark
+  //               </div>
+  //               <div className="text-xs text-gray-700">
+  //                 {selectedAddress.city}, {selectedAddress.state},{" "}
+  //                 {selectedAddress.country}
+  //               </div>
+  //             </div>
+  //           )}
+
+  //           {/* Info Text */}
+  //           <div className="flex items-start gap-2 mt-3">
+  //             <div className="w-4 h-4 border border-gray-400 rounded-full flex-shrink-0 mt-0.5"></div>
+  //             <p className="text-xs text-black">
+  //               Once the item is picked up and we've reviewed your item, the
+  //               refund will be processed to your original payment method within
+  //               24 hours.
+  //             </p>
+  //           </div>
+  //         </div>
+  //       </div>
+
+  //       {/* Footer Buttons */}
+  //       <div className="flex gap-3 p-4 border-t sticky bottom-0 bg-white">
+  //         <button
+  //           onClick={onClose}
+  //           className="flex-1 py-3 border border-gray-300 rounded font-medium hover:bg-gray-50 text-black"
+  //         >
+  //           Back
+  //         </button>
+  //         <button
+  //           onClick={handleReturnItem}
+  //           disabled={!selectedReason || !selectedAddressId || isSubmitting}
+  //           className="flex-1 py-3 bg-black text-white rounded font-medium hover:bg-gray-800 disabled:bg-gray-300 disabled:cursor-not-allowed"
+  //         >
+  //           {isSubmitting ? "Processing..." : "Return Item"}
+  //         </button>
+  //       </div>
+  //     </div>
+  //   </div>
+  // );
 };
 
 export default ReturnModal;

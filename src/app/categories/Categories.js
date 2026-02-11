@@ -6,11 +6,11 @@ import { useSearchParams } from "next/navigation";
 import useCategoryProducts from "@/hooks/useSubCategoryHierarchy";
 
 const CategoryPage = () => {
-  const searchParams = useSearchParams();
+  const searchParams = useSearchParams(); 
   const categoryId = searchParams.get("catId"); // <-- get id from URL
 
   const { categoryProducts, isCategoryLoading } =
-    useCategoryProducts(categoryId);
+    useCategoryProducts(categoryId,{city:"Delhi", mode:"quick"});
 
   // Show loader while data is being fetched
   if (isCategoryLoading) {

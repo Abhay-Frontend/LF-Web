@@ -13,19 +13,19 @@ const DeleteConfirmModal = ({
 
   return (
     <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-lg max-w-md w-full p-6 shadow-lg">
+      <div className="bg-zinc-900 rounded-lg max-w-md w-full p-6 shadow-lg">
         {/* Title */}
-        <h2 className="text-xl font-semibold text-black mb-4">{title}</h2>
+        <h2 className="text-xl font-semibold text-white mb-4">{title}</h2>
 
         {/* Message */}
-        <p className="text-gray-600 mb-6">{message}</p>
+        <p className="text-white/60 mb-6">{message}</p>
 
         {/* Buttons */}
         <div className="flex justify-end gap-3">
           <button
             onClick={onClose}
             disabled={loading}
-            className="px-6 py-2 border border-gray-300 text-gray-700 rounded hover:bg-gray-50 disabled:opacity-50"
+            className="px-6 py-2 border border-white/20 text-white rounded hover:bg-white/10 disabled:opacity-50"
           >
             Cancel
           </button>

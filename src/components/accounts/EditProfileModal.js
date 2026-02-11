@@ -36,13 +36,13 @@ const EditProfileModal = ({ isOpen, onClose, userData, onSave }) => {
 
   return (
     <div className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50">
-      <div className="bg-white w-full max-w-md mx-4 rounded shadow-xl">
+      <div className="bg-[#27272a] w-full max-w-md mx-4 rounded shadow-xl">
         {/* Header */}
-        <div className="border-b border-gray-200 px-6 py-4 flex items-center justify-between">
-          <h2 className="text-lg font-semibold text-gray-900">EDIT PROFILE</h2>
+        <div className="border-b border-white/10 px-6 py-4 flex items-center justify-between">
+          <h2 className="text-lg font-semibold text-white">EDIT PROFILE</h2>
           <button
             onClick={onClose}
-            className="text-gray-400 hover:text-gray-600 transition-colors cursor-pointer"
+            className="text-white hover:text-gray-300 transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -58,7 +58,7 @@ const EditProfileModal = ({ isOpen, onClose, userData, onSave }) => {
             <div>
               {/* First Name */}
               <div className="mb-4">
-                <label className="block text-sm  text-black mb-2">
+                <label className="block text-sm  text-white mb-2">
                   First Name
                 </label>
                 <input
@@ -66,13 +66,13 @@ const EditProfileModal = ({ isOpen, onClose, userData, onSave }) => {
                   name="firstName"
                   value={formData.firstName || ""}
                   onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-black outline-none  text-black"
+                  className="w-full px-3 py-2 border border-white/10 rounded focus:ring-2 focus:ring-black outline-none  text-white"
                 />
               </div>
 
               {/* Last Name */}
               <div className="mb-4">
-                <label className="block text-sm  text-black mb-2">
+                <label className="block text-sm  text-white mb-2">
                   Last Name
                 </label>
                 <input
@@ -80,31 +80,31 @@ const EditProfileModal = ({ isOpen, onClose, userData, onSave }) => {
                   name="lastName"
                   value={formData.lastName || ""}
                   onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-black outline-none  text-black"
+                  className="w-full px-3 py-2 border border-white/10 rounded focus:ring-2 focus:ring-black outline-none  text-white"
                 />
               </div>
 
               {/* Phone (Non-editable) */}
               <div className="mb-4">
-                <label className="block text-sm  text-black mb-2">Phone</label>
+                <label className="block text-sm  text-white mb-2">Phone</label>
                 <input
                   type="tel"
                   name="phone"
                   value={formData.phone || ""}
                   disabled
-                  className="w-full px-3 py-2 border border-gray-300 rounded bg-gray-100 cursor-not-allowed text-gray-500"
+                  className="w-full px-3 py-2 border border-white/10 rounded bg-gray-800 cursor-not-allowed text-white"
                 />
               </div>
 
               {/* Email */}
               <div className="mb-6">
-                <label className="block text-sm  text-black mb-2">Email </label>
+                <label className="block text-sm  text-white mb-2">Email </label>
                 <input
                   type="email"
                   name="email"
                   value={formData.email || ""}
                   onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-black outline-none  text-black"
+                  className="w-full px-3 py-2 border border-white/10 rounded focus:ring-2 focus:ring-black outline-none  text-white"
                 />
                 <span className="text-green-500 text-xs">
                   You will receive updates at the email address listed above.
@@ -113,7 +113,7 @@ const EditProfileModal = ({ isOpen, onClose, userData, onSave }) => {
 
               {/* Gender */}
               <div className="mb-6">
-                <label className="block text-sm font-semibold text-gray-900 mb-3">
+                <label className="block text-sm font-semibold text-white mb-3">
                   Gender
                 </label>
                 <div className="flex gap-6">
@@ -128,9 +128,9 @@ const EditProfileModal = ({ isOpen, onClose, userData, onSave }) => {
                         value={gender}
                         checked={formData.gender === gender}
                         onChange={() => handleGenderChange(gender)}
-                        className="w-4 h-4 text-black"
+                        className="w-4 h-4 text-white  border-white/10 focus:ring-black"
                       />
-                      <span className="text-sm  text-black capitalize">
+                      <span className="text-sm  text-white capitalize">
                         {gender}
                       </span>
                     </label>
@@ -142,7 +142,7 @@ const EditProfileModal = ({ isOpen, onClose, userData, onSave }) => {
               <div className="flex gap-3">
                 <button
                   onClick={onClose}
-                  className="flex-1 px-4 py-3 border border-gray-300 rounded hover:bg-gray-50 transition-colors text-black cursor-pointer"
+                  className="flex-1 px-4 py-3 border border-white/10 rounded hover:bg-gray-50 transition-colors text-white cursor-pointer"
                 >
                   Back
                 </button>

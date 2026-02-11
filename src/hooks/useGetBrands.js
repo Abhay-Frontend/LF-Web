@@ -8,12 +8,10 @@ const usegetBrands = (city="Delhi") => {
 
   const getBrands = async () => {
     try {
-      //const result = await axiosHttp.get(endPoints.getBrands);
       const result = await axiosHttp.get(endPoints.getBrandsByCity,{
         params:{city},
       });
       if (result?.status === 200) {
-      
         setBrands(result?.data?.data||[]);
       }
     } finally {

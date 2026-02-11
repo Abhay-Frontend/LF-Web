@@ -98,7 +98,11 @@ const ShopByCategoriesPage = () => {
     loading: isPageLoading,
     hasMore: hasMorePaginated,
     loadMore: loadMorePaginated,
-  } = useProducts(hasFiltersApplied() ? null : "");
+  } = useProducts({
+      query: hasFiltersApplied() ? null : "",
+      city: "Delhi",     
+      mode: "quick",        
+    });
 
   const products = hasFiltersApplied() ? filteredProducts : paginatedProducts;
   const isLoading = hasFiltersApplied() ? isFilterLoading : isPageLoading;

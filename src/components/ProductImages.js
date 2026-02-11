@@ -9,7 +9,7 @@ const ProductImageGallery = ({ images = [], hasColorVariants = false }) => {
   return (
     <div className="space-y-4">
       {/* Main Image */}
-      <div className="relative w-full bg-gray-50 rounded-lg overflow-hidden h-[400px] md:h-[800px]">
+      <div className="relative w-full bg-gray-50 rounded-lg overflow-hidden h-[500px] md:h-[800px]">
         {images?.[selectedImage] ? (
           <Image
             src={images[selectedImage]}

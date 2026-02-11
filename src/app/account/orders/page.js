@@ -24,19 +24,17 @@ const MyOrders = () => {
   const [orders, setOrders] = useState([]);
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [selectedOrderId, setSelectedOrderId] = useState(null);
-  const [activeModal, setActiveModal] = useState(null); // for review only
+  const [activeModal, setActiveModal] = useState(null);
   const [viewMode, setViewMode] = useState("list");
   const [selectedStatus, setSelectedStatus] = useState("all");
 
   const userInfo = useSelector((state) => state.user?.userInfo);
   const userId = userInfo?.id;
   const router = useRouter();
+  const dispatch = useDispatch();
 
-  // Redirect if user is not authenticated
   useEffect(() => {
-    if (!userId) {
-      router.push("/"); // Redirect to home or login page
-    }
+    if (!userId) router.push("/");
   }, [userId, router]);
 
   const {
@@ -46,44 +44,27 @@ const MyOrders = () => {
     selectedProduct,
   } = useSelector((state) => state.modal);
 
-  const dispatch = useDispatch();
-
-  // Fetch orders
   const fetchOrders = async () => {
     try {
       const response = await axiosHttp.get(`/order-history/${userId}`);
       if (response.data.status === 200) {
         setOrders(response.data.data.reverse());
       }
-    } catch (error) {}
+    } catch {}
   };
 
   useEffect(() => {
     fetchOrders();
   }, []);
 
-  // Handle actions passed from card
   const handleOrderAction = (order, actionType) => {
     setSelectedOrder(order);
-
-    if (actionType === "return") {
-      dispatch(openReturnModal(order));
-    }
-
-    if (actionType === "cancel") {
-      dispatch(openCancelModal(order));
-    }
-
-    if (actionType === "review") {
-      setActiveModal("review");
-    }
-
-    if (actionType === "exchange") {
-      dispatch(openExchangeModal(order));
-    }
+    if (actionType === "return") dispatch(openReturnModal(order));
+    if (actionType === "cancel") dispatch(openCancelModal(order));
+    if (actionType === "review") setActiveModal("review");
+    if (actionType === "exchange") dispatch(openExchangeModal(order));
   };
 
-  // Card click → view details
   const handleCardClick = (orderId) => {
     setSelectedOrderId(orderId);
     setViewMode("detail");
@@ -103,7 +84,6 @@ const MyOrders = () => {
           axiosHttp={axiosHttp}
         />
 
-        {/* RETURN MODAL */}
         {isReturnOpen && (
           <ReturnModal
             order={selectedProduct}
@@ -112,7 +92,6 @@ const MyOrders = () => {
           />
         )}
 
-        {/* CANCEL MODAL */}
         {isCancelOpen && (
           <CancelOrderModal
             order={selectedProduct}
@@ -121,7 +100,6 @@ const MyOrders = () => {
           />
         )}
 
-        {/* EXCHANGE MODAL */}
         {isExchangeOpen && (
           <ExchangeOrderModal
             order={selectedProduct}
@@ -140,11 +118,11 @@ const MyOrders = () => {
           order.status?.toLowerCase().includes(selectedStatus)
         );
 
-  // Main layout
   return (
-    <div className="max-w-5xl mx-auto p-6 min-h-screen">
+    <div className="max-w-5xl mx-auto p-6 min-h-screen bg-[#27272a]">
       <div className="mb-6">
-        <h1 className="text-2xl font-bold text-gray-900 mb-2">My Orders</h1>
+        <h1 className="text-2xl font-bold text-white mb-2">My Orders</h1>
+
         {/* STATUS FILTER */}
         <div className="flex flex-wrap gap-3 mt-4 mb-6">
           {[
@@ -161,8 +139,8 @@ const MyOrders = () => {
               onClick={() => setSelectedStatus(status)}
               className={`px-4 py-2 text-sm rounded-full border transition cursor-pointer ${
                 selectedStatus === status
-                  ? "bg-black text-white border-black"
-                  : "bg-white text-gray-700 border-gray-300 hover:bg-gray-100"
+                  ? "bg-[#988BFF] text-black border-[#988BFF]"
+                  : "bg-zinc-900 text-white/60 border-white/10 hover:shadow-md hover:shadow-black/40"
               }`}
             >
               {status.charAt(0).toUpperCase() + status.slice(1)}
@@ -170,30 +148,33 @@ const MyOrders = () => {
           ))}
         </div>
 
-        <p className="text-gray-600">
+        <p className="text-white/40">
           Track, return, cancel, review, or exchange your orders
         </p>
       </div>
 
       {/* Orders list */}
       {filteredOrders.length === 0 ? (
-        <div className="bg-white rounded-lg p-8 text-center">
-          <p className="text-gray-600 font-medium">
+        <div className="bg-zinc-900 border border-white/10 rounded-lg p-8 text-center">
+          <p className="text-white/60 font-medium">
             No order details found for{" "}
-            <span className="capitalize">
+            <span className="capitalize text-white">
               {selectedStatus === "all" ? "all orders" : selectedStatus}
             </span>
           </p>
         </div>
       ) : (
         filteredOrders.map((order) => (
-          <div key={order.id} onClick={() => handleCardClick(order.id)}>
+          <div
+            key={order.id}
+            onClick={() => handleCardClick(order.id)}
+            className="transition hover:shadow-lg hover:shadow-black/40"
+          >
             <OrderCard order={order} onAction={handleOrderAction} />
           </div>
         ))
       )}
 
-      {/* RETURN MODAL (Redux) */}
       {isReturnOpen && (
         <ReturnModal
           order={selectedProduct}
@@ -202,7 +183,6 @@ const MyOrders = () => {
         />
       )}
 
-      {/* CANCEL MODAL (Redux) */}
       {isCancelOpen && (
         <CancelOrderModal
           order={selectedProduct}
@@ -211,7 +191,6 @@ const MyOrders = () => {
         />
       )}
 
-      {/* EXCHANGE MODAL (Redux) */}
       {isExchangeOpen && (
         <ExchangeOrderModal
           order={selectedProduct}
@@ -220,7 +199,6 @@ const MyOrders = () => {
         />
       )}
 
-      {/* REVIEW MODAL (Local state) */}
       {activeModal === "review" && (
         <ReviewOrderModal
           order={selectedOrder}

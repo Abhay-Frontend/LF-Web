@@ -69,14 +69,14 @@ const CancelOrderModal = ({
   };
 
   return (
-    <div className="fixed inset-0 bg-black/30 backdrop-blur-sm bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white  max-w-md w-full md:h-[450px] overflow-y-auto">
+    <div className="fixed inset-0 bg-[#27272a] backdrop-blur-sm bg-opacity-50 flex items-center justify-center z-50 p-4">
+      <div className="bg-[#27272a]  max-w-md w-full md:h-[450px] overflow-y-auto">
         {/* Header */}
-        <div className="sticky top-0 bg-white border-b border-gray-200 p-4 flex justify-between items-center">
-          <h2 className="text-xl font-semibold text-gray-900">Cancel Order</h2>
+        <div className="sticky top-0 bg-[#27272a] border-b border-white/10 p-4 flex justify-between items-center">
+          <h2 className="text-xl font-semibold text-white">Cancel Order</h2>
           <button
             onClick={onClose}
-            className="text-gray-400 hover:text-gray-600 transition-colors"
+            className="text-white/40 hover:text-white transition-colors"
             disabled={isSubmitting}
           >
             <X size={24} />
@@ -84,7 +84,7 @@ const CancelOrderModal = ({
         </div>
 
         {/* Product Details */}
-        <div className="p-4 border-b border-gray-200">
+        <div className="p-4 border-b border-white/10">
           <div className="flex gap-4">
             {product.imageUrls?.[0] && (
               <Image
@@ -96,12 +96,12 @@ const CancelOrderModal = ({
               />
             )}
             <div className="flex-1">
-              <h3 className="font-medium text-gray-900 mb-1">
+              <h3 className="font-medium text-white mb-1">
                 {product.title || "Product"}
               </h3>
-              <div className="text-sm text-gray-600 space-y-1">
+              <div className="text-sm text-white/60 space-y-1">
                 <p>Quantity: {orderItem.quantity}</p>
-                <p className="font-semibold text-gray-900">
+                <p className="font-semibold text-white">
                   ₹{parseFloat(orderItem.total).toFixed(2)}
                 </p>
               </div>
@@ -109,15 +109,15 @@ const CancelOrderModal = ({
           </div>
 
           {orderDetails.shiprocketOrderId && (
-            <div className="mt-3 pt-3 border-t border-gray-100">
-              <p className="text-xs text-black">Order ID: {orderItem.id}</p>
+            <div className="mt-3 pt-3 border-t border-white/10">
+              <p className="text-xs text-white">Order ID: {orderItem.id}</p>
             </div>
           )}
         </div>
 
         {/* Dropdown for Cancellation Reasons */}
         <div className="p-4">
-          <label className="block text-sm font-medium text-gray-700 mb-3">
+          <label className="block text-sm font-medium text-white mb-3">
             Why do you wish to cancel this order?
           </label>
 
@@ -127,15 +127,15 @@ const CancelOrderModal = ({
               type="button"
               onClick={() => setShowDropdown((prev) => !prev)}
               disabled={isSubmitting}
-              className="w-full text-left p-3 border border-gray-300 rounded-md bg-white text-sm text-gray-700 flex justify-between items-center"
+              className="w-full text-left p-3 border border-white/10 rounded-md bg-[#27272a] text-sm text-white flex justify-between items-center"
             >
               {selectedReason || "-- Select a reason --"}
-              <span className="ml-2 text-black">&#9662;</span>
+              <span className="ml-2 text-white">&#9662;</span>
             </button>
 
             {/* Scrollable dropdown menu */}
             {showDropdown && (
-              <div className="absolute z-50 mt-1 w-full bg-white border border-gray-300 text-black rounded-md shadow-lg max-h-40 overflow-y-auto">
+              <div className="absolute z-50 mt-1 w-full bg-zinc-900 border border-white/10 text-white rounded-md shadow-lg max-h-40 overflow-y-auto">
                 {Object.entries(CANCELLATION_REASONS).map(([id, reason]) => (
                   <div
                     key={id}
@@ -145,8 +145,8 @@ const CancelOrderModal = ({
                     }}
                     className={`p-2 cursor-pointer text-sm ${
                       selectedReason === reason
-                        ? "bg-gray-100 font-medium"
-                        : "hover:bg-gray-50"
+                        ? "bg-zinc-800 font-medium"
+                        : "hover:bg-zinc-800"
                     }`}
                   >
                     {reason}
@@ -158,11 +158,11 @@ const CancelOrderModal = ({
         </div>
 
         {/* Action Buttons */}
-        <div className="sticky bottom-0 bg-white border-t border-gray-200 p-4 flex gap-3">
+        <div className="sticky bottom-0 bg-zinc-900 border-t border-white/10 p-4 flex gap-3">
           <button
             onClick={onClose}
             disabled={isSubmitting}
-            className="flex-1 px-4 py-3 border-2 border-gray-300  font-medium text-gray-700 hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex-1 px-4 py-3 border-2 border-white/10  font-medium text-white hover:bg-zinc-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             Back
           </button>

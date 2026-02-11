@@ -11,16 +11,14 @@ const useCollection = (query) => {
     try {
       setLoading(true);
       setError(null);
-      let endPoint;
-      if (query) {
-        endPoint = `${endPoints.getCollection}?${query}&limit=true`;
-      } else {
-        endPoint = `${endPoints.getCollection}?limit=true`;
-      }
+
+      const endPoint = query ? `${endPoints.getCollection}&${query}&limit=true`:
+       `${endPoints.getCollection}&limit=true`;
+
       const result = await axiosHttp.get(endPoint);
 
       if (result?.status === 200) {
-        setProducts(result?.data?.data);
+        setProducts(result?.data?.data || []);
       }
     } catch (err) {
       setError(err);
@@ -31,7 +29,7 @@ const useCollection = (query) => {
 
   useEffect(() => {
     getCollection();
-  }, []);
+  }, [query]);
   return { data: products, loading, error };
 };
 

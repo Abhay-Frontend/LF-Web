@@ -8,17 +8,17 @@ export default function AccountLayout({ children }) {
   return (
     <>
       {/* Navbar OUTSIDE the min-h-screen container */}
-      <div className="w-full bg-white">
+      <div className="w-full bg-[#27272a]">
         <Navbar />
       </div>
 
       {/* Main content should fill screen height */}
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-[#27272a]">
         <div className="max-w-[1400px] mx-auto">
           <AccountHeader />
           <div className="flex">
             <AccountSidebar />
-            <div className="flex-1 bg-white">{children}</div>
+            <div className="flex-1 bg-[#27272a]">{children}</div>
           </div>
         </div>
       </div>

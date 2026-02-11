@@ -7,7 +7,8 @@ const BannerCarousel = ({ image }) => {
     <div className="w-full bg-white relative">
       <div className="w-full">
         <div className="relative h-[140px] md:h-[400px]  w-full overflow-hidden">
-          <Image
+          {image && image!=="" && (
+            <Image
             src={image}
             alt="Banner"
             fill
@@ -15,6 +16,7 @@ const BannerCarousel = ({ image }) => {
             loading="lazy"
             sizes="100vw"
           />
+          )}
         </div>
       </div>
     </div>

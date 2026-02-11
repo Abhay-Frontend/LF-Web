@@ -7,8 +7,8 @@ import Link from "next/link";
 import BannerGrid from "@/components/collections/BannerGrid";
 
 const AccessoriesCollectionSection = () => {
-  const query = "gender=3&displayFor=accessories";
-  const { data: collections } = useCollection(query);
+  const query = "gender=3&displayFor=accessories&mode=quick&city=Delhi";
+  const { data: collections,loading } = useCollection(query);
   const [displayedProductsCount, setDisplayedProductsCount] = useState({});
 
   const handleExploreMore = (collectionId) => {
@@ -19,7 +19,7 @@ const AccessoriesCollectionSection = () => {
   };
 
   return (
-    <div className="px-0 bg-white">
+    <div className="px-0 bg-[#27272a]">
       <div className=" w-full py-4 sm:py-6 md:py-8 px-4 sm:px-6 md:px-10">
         {collections?.map((collection) => {
           const productsToShow = displayedProductsCount[collection.id] || 8;
@@ -60,7 +60,7 @@ const AccessoriesCollectionSection = () => {
                             className="object-cover"
                           />
                           <Link
-                            href={`/products?collectionId=${collection.id}`}
+                            href={`/products?collectionId=${collection.id}&mode=quick&city=Delhi`}
                             className="absolute inset-0 flex items-center justify-center bg-black/40 text-white font-bold text-lg md:text-xl hover:bg-black/50 transition-colors"
                           >
                             Explore All →

@@ -3,6 +3,11 @@ import { endPoints } from "@/utils/endpoints";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
+const QUICK_CART_CONTEXT={
+  city:"Delhi",
+  mode:"quick",
+}
+
 const useAddProductToCart = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -10,7 +15,7 @@ const useAddProductToCart = () => {
   const user = useSelector((state) => state.user.userInfo);
   const userId = user?.id;
 
-  const addProductToCart = async (productId, quantity = 1) => {
+  const addProductToCart = async (productId, quantity = 1)  => {
     setLoading(true);
     setError(null);
 
@@ -33,6 +38,9 @@ const useAddProductToCart = () => {
         productId: parseInt(productId, 10),
         variantId: parseInt(variantId, 10),
         quantity: parseInt(quantity, 10),
+
+        city: QUICK_CART_CONTEXT.city,
+        mode: QUICK_CART_CONTEXT.mode,
       };
       const result = await axiosHttp.post(endPoints.addProductToCart, payload);
 

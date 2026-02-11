@@ -8,12 +8,15 @@ import HomeCarousel from "./(carousel)/Carousel";
 import TrendingBlog from "./(newsletter)/Newsletter";
 import PhoneAuthModal from "@/components/LoginModal";
 import Footer from "@/components/footer";
+import LocationRequester from "@/components/LocationRequester";
+import ScrollButtons from "@/components/homepage/ScrollButton";
 
 const page = () => {
   return (
     <div>
       <Navbar />
       <HomePage />
+      <LocationRequester/>
       <NewestAtLafetch />
       <HomeCarousel />
       <CategorySection />
@@ -21,6 +24,8 @@ const page = () => {
       <TrendingBlog />
       <PhoneAuthModal />
       <Footer />
+
+      <ScrollButtons/>
     </div>
   );
 };

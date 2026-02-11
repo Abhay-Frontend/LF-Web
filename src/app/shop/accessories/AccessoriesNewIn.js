@@ -8,7 +8,7 @@ import { Toaster } from "react-hot-toast";
 const NewInSection = () => {
   const query = "gender=3";
   const fetchproducts = useProducts(query);
-  const { products = [] } = useProducts(query);
+  const { products = [] } = useProducts({query,city:"Delhi",mode:"quick"});
   const topProducts = products.slice(0, 8);
 
   return (

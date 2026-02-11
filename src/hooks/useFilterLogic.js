@@ -26,7 +26,7 @@ const useFilterLogic = () => {
   );
   const [isFilterLoading, setIsFilterLoading] = useState(false);
 
-  const filterProducts = useFilterProducts();
+  const filterProducts = useFilterProducts(payload);
 
   // Toggle brand selection
   const toggleBrandSelection = (brandId) => {

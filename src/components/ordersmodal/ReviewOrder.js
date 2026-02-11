@@ -77,19 +77,19 @@ const ReviewOrderModal = ({
   const displayRating = hoveredRating || rating;
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black/30 backdrop-blur-sm bg-opacity-50 p-4 z-[999]">
+    <div className="fixed inset-0 flex items-center justify-center bg-[#27272a] backdrop-blur-sm bg-opacity-50 p-4 z-[999]">
       <div
-        className="bg-white rounded-lg shadow-lg overflow-hidden"
+        className="bg-[#27272a] rounded-lg shadow-lg overflow-hidden"
         style={{ width: "513px", height: "600px" }}
       >
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b">
-          <h2 className="text-lg text-black font-semibold">
+          <h2 className="text-lg text-white font-semibold">
             Rate & Review Product
           </h2>
           <button
             onClick={handleCancel}
-            className="text-gray-400 hover:text-gray-600 text-2xl leading-none cursor-pointer"
+            className="text-white/40 hover:text-white text-2xl leading-none cursor-pointer"
           >
             ×
           </button>
@@ -106,22 +106,22 @@ const ReviewOrderModal = ({
               className="w-16 h-24 object-cover rounded"
             />
             <div className="flex-1">
-              <h3 className="font-medium text-sm mb-1 text-black">
+              <h3 className="font-medium text-sm mb-1 text-white">
                 {productTitle}
               </h3>
-              <p className="text-xs text-gray-500 mb-2 text-gray-800">
+              <p className="text-xs text-gray-500 mb-2 text-white/40">
                 {productDesc?.split(" ").slice(0, 30).join(" ") +
                   (productDesc?.split(" ").length > 30 ? "..." : "")}
               </p>
 
-              <p className="text-sm font-semibold text-black">
+              <p className="text-sm font-semibold text-white">
                 Rs. {productPrice}
               </p>
 
               {/* Show Order ID */}
-              <p className="text-xs text-gray-600 mt-1">
+              <p className="text-xs text-white mt-1">
                 Order ID:{" "}
-                <span className="text-black font-medium">#{orderItemId}</span>
+                <span className="text-white font-medium">#{orderItemId}</span>
               </p>
             </div>
           </div>
@@ -129,7 +129,7 @@ const ReviewOrderModal = ({
 
         {/* Rating Section */}
         <div className="px-6 py-6">
-          <h3 className="text-sm font-semibold mb-3 text-black">RATING</h3>
+          <h3 className="text-sm font-semibold mb-3 text-white">RATING</h3>
           <div className="flex gap-2">
             {[1, 2, 3, 4, 5].map((star) => (
               <button
@@ -156,14 +156,14 @@ const ReviewOrderModal = ({
 
         {/* Comment Section */}
         <div className="px-6 pb-6">
-          <h3 className="text-sm font-semibold mb-3 text-black">
+          <h3 className="text-sm font-semibold mb-3 text-white">
             SHARE YOUR EXPERIENCE
           </h3>
           <textarea
             value={comment}
             onChange={(e) => setComment(e.target.value)}
             placeholder="Write your review here..."
-            className="w-full h-32 px-4 py-3 text-black border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-black resize-none text-sm"
+            className="w-full bg-zinc-800 h-32 px-4 py-3 text-white border border-white/10 rounded focus:outline-none focus:ring-2 focus:ring-black resize-none text-sm"
           />
         </div>
 
@@ -171,7 +171,7 @@ const ReviewOrderModal = ({
         <div className="px-6 pb-6 flex gap-3">
           <button
             onClick={handleCancel}
-            className="flex-1 px-6 py-3 border border-gray-300 text-gray-700 rounded hover:bg-gray-50 transition-colors font-medium cursor-pointer"
+            className="flex-1 px-6 py-3 border border-white/10 text-white/60 rounded hover:bg-zinc-800 transition-colors font-medium cursor-pointer"
             disabled={isSubmitting}
           >
             Cancel
@@ -179,7 +179,7 @@ const ReviewOrderModal = ({
           <button
             onClick={handleSubmit}
             disabled={isSubmitting}
-            className="flex-1 px-6 py-3 bg-black text-white rounded hover:bg-gray-800 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+            className="flex-1 px-6 py-3 bg-[#988BFF] text-white rounded hover:shadow-black/40 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
           >
             {isSubmitting ? "Submitting..." : "Submit"}
           </button>

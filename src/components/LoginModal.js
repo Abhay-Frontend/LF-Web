@@ -90,6 +90,7 @@ const PhoneAuthModal = () => {
   };
 
   const handleOtpSubmit = async () => {
+    //comment this out below add return true if want to skip OTP verification for testing welcome screen directly
     const otpString = otp.join("");
     if (otpString.length !== 4) {
       toast.error("Please enter complete OTP");

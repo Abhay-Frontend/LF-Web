@@ -54,17 +54,17 @@ const AddressModal = ({ isOpen, onClose, onSave, editAddress = null }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/70 backdrop-blur-sm bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+    <div className="fixed inset-0 bg-[#27272a] backdrop-blur-sm bg-opacity-50 flex items-center justify-center z-50 p-4">
+      <div className="bg-zinc-900 rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
         <div className="p-6">
           {/* Header */}
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-xl font-semibold text-black">
+            <h2 className="text-xl font-semibold text-white">
               {editAddress ? "Edit Address" : "Add New Address"}
             </h2>
             <button
               onClick={onClose}
-              className="text-gray-400 hover:text-gray-600 cursor-pointer"
+              className="text-white hover:text-[#b3a9ff] cursor-pointer"
             >
               <svg
                 className="w-6 h-6"
@@ -85,12 +85,12 @@ const AddressModal = ({ isOpen, onClose, onSave, editAddress = null }) => {
           <form onSubmit={handleSubmit(onSubmit)}>
             {/* Personal Details */}
             <div className="mb-6">
-              <h3 className="text-sm font-medium text-gray-700 mb-3">
+              <h3 className="text-sm font-medium text-white mb-3">
                 PERSONAL DETAILS
               </h3>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm text-gray-700 mb-1">
+                  <label className="block text-sm text-white mb-1">
                     Name*
                   </label>
                   <input
@@ -112,7 +112,7 @@ const AddressModal = ({ isOpen, onClose, onSave, editAddress = null }) => {
                   )}
                 </div>
                 <div>
-                  <label className="block text-sm text-gray-700 mb-1">
+                  <label className="block text-sm text-white mb-1">
                     Phone*
                   </label>
 
@@ -148,12 +148,12 @@ const AddressModal = ({ isOpen, onClose, onSave, editAddress = null }) => {
 
             {/* Postal Details */}
             <div className="mb-6">
-              <h3 className="text-sm font-medium text-gray-700 mb-3">
+              <h3 className="text-sm font-medium text-white/60 mb-3">
                 POSTAL DETAILS
               </h3>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm text-gray-700 mb-1">
+                  <label className="block text-sm text-white mb-1">
                     Address*
                   </label>
                   <input
@@ -177,12 +177,12 @@ const AddressModal = ({ isOpen, onClose, onSave, editAddress = null }) => {
                     type="text"
                     placeholder="Area, Landmark (Optional)"
                     {...register("line2")}
-                    className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-gray-400 text-black"
+                    className="w-full px-3 py-2 border border-white/20 rounded focus:outline-none focus:border-gray-400 text-black"
                   />
                 </div>
                 <div className="grid grid-cols-3 gap-4">
                   <div>
-                    <label className="block text-sm text-gray-700 mb-1">
+                    <label className="block text-sm text-white mb-1">
                       City*
                     </label>
                     <input
@@ -202,7 +202,7 @@ const AddressModal = ({ isOpen, onClose, onSave, editAddress = null }) => {
                     )}
                   </div>
                   <div>
-                    <label className="block text-sm text-gray-700 mb-1">
+                    <label className="block text-sm text-white mb-1">
                       State*
                     </label>
                     <input
@@ -222,7 +222,7 @@ const AddressModal = ({ isOpen, onClose, onSave, editAddress = null }) => {
                     )}
                   </div>
                   <div>
-                    <label className="block text-sm text-gray-700 mb-1">
+                    <label className="block text-sm text-white mb-1">
                       Zip Code*
                     </label>
                     <input
@@ -249,7 +249,7 @@ const AddressModal = ({ isOpen, onClose, onSave, editAddress = null }) => {
 
             {/* Save As */}
             <div className="mb-6">
-              <h3 className="text-sm font-medium text-gray-700 mb-3">
+              <h3 className="text-sm font-medium text-white/60 mb-3">
                 SAVE AS
               </h3>
               <div className="flex gap-4">
@@ -264,7 +264,7 @@ const AddressModal = ({ isOpen, onClose, onSave, editAddress = null }) => {
                       {...register("type", { required: true })}
                       className="w-4 h-4 mr-2"
                     />
-                    <span className="text-sm text-gray-700">
+                    <span className="text-sm text-white">
                       {type.charAt(0).toUpperCase() + type.slice(1)}
                     </span>
                   </label>
@@ -280,7 +280,7 @@ const AddressModal = ({ isOpen, onClose, onSave, editAddress = null }) => {
                   {...register("isDefaultAddress")}
                   className="w-4 h-4 mr-2"
                 />
-                <span className="text-sm text-gray-700">
+                <span className="text-sm text-white">
                   Make this as my default address
                 </span>
               </label>
@@ -297,7 +297,7 @@ const AddressModal = ({ isOpen, onClose, onSave, editAddress = null }) => {
               </button>
               <button
                 type="submit"
-                className="px-6 py-2 bg-gray-200 text-black rounded hover:bg-gray-300 cursor-pointer"
+                className="px-6 py-2 bg-gray-200 text-white rounded hover:bg-gray-300 cursor-pointer"
               >
                 Save Address
               </button>

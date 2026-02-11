@@ -44,7 +44,7 @@ const NavbarDropdown = ({ menu, latestBlogs, onMouseEnter, onMouseLeave }) => {
 
   return (
     <div
-      className="fixed left-0 right-0 top-32 z-40 max-h-[90vh] overflow-y-auto"
+      className="fixed left-0 right-0 top-43 z-40 max-h-[90vh] overflow-y-auto"
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
@@ -57,11 +57,15 @@ const NavbarDropdown = ({ menu, latestBlogs, onMouseEnter, onMouseLeave }) => {
                 <div
                   key={section.id}
                   className={
-                    index % 2 === 0 ? "bg-zinc-800 hover:bg-zinc-700" : "bg-zinc-800/70 hover:bg-zinc-700"
+                    index % 2 === 0
+                    ? "bg-zinc-800 hover:bg-[#7A6ECC]/10 transition-colors"
+                    : "bg-zinc-800/70 hover:bg-[#7A6ECC]/10 transition-colors"
                   }
                 >
                   <a href={`/categories?catId=${section.id}`}>
-                    <h3 className="text-[10px] font-[600] text-white mb-1 font-clash-display uppercase break-words">
+                    <h3 className="text-[10px] font-[600] text-white mb-1
+                      font-clash-display uppercase break-words
+                      hover:text-[#7A6ECC] transition-colors duration-200">
                       {section.heading}
                     </h3>
                   </a>
@@ -70,7 +74,8 @@ const NavbarDropdown = ({ menu, latestBlogs, onMouseEnter, onMouseLeave }) => {
                       <li key={item.id}>
                         <a
                           href={`/products?subCatId=${item.id}`}
-                          className="text-[10px] font-normal text-white/50 hover:text-white transition-colors"
+                          className="text-[10px] font-normal text-white/50
+                          hover:text-[#7A6ECC] transition-colors duration-200"
                         >
                           {item.name}
                         </a>
@@ -92,7 +97,7 @@ const NavbarDropdown = ({ menu, latestBlogs, onMouseEnter, onMouseLeave }) => {
                         src={categoryImages[0].src}
                         alt={categoryImages[0].alt}
                         fill
-                        className="object-cover hover:scale-105 transition-transform duration-300"
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
                       />
                     </div>
                   )}

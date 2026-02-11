@@ -224,7 +224,7 @@ const CreateBoardModal = ({ productData, onClose }) => {
                     className="object-contain max-w-full max-h-[180px] md:max-h-[220px]"
                   />
                 ) : (
-                  <div className="w-full h-64 bg-gray-200 flex items-center justify-center text-gray-500">
+                  <div className="w-full h-64 bg-zinc-900 flex items-center justify-center text-white">
                     No image available
                   </div>
                 )}

@@ -19,7 +19,7 @@ export default function useFilterMetadata({ superCatId, catId, subCatId }) {
   useEffect(() => {
     setLoading(true);
     setError(null);
-    const params = {};
+    const params = {mode:"quick", city:"Delhi"};
     if (superCatId) params.superCatId = superCatId;
     if (catId) params.catId = catId;
     if (subCatId) params.subCatId = subCatId;

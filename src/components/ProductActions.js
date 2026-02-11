@@ -5,7 +5,7 @@ import { openWishlistModal } from "@/redux/slices/loginmodalSlice";
 import CreateBoardModal from "./WishlistBoardModal";
 import useAddProductToCart from "@/hooks/useAddProductToCart";
 import { addToCart } from "@/redux/slices/cartSlice";
-
+  
 const ProductActions = ({
   onAddToWishlist,
   productData,

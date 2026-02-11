@@ -2,7 +2,7 @@ import React from "react";
 
 const AddressCard = ({ address, isSelected, onSelect, onEdit, onDelete }) => {
   return (
-    <div className="bg-white border border-gray-200 rounded-lg p-4 mb-4 hover:border-gray-300 transition-colors">
+    <div className="bg-zinc-900 border border-white/10 rounded-lg p-4 mb-4 hover:border-[#988BFF] transition-colors">
       <div className="flex items-start justify-between">
         <div className="flex items-start gap-3 flex-1">
           {/* Radio Button */}
@@ -10,41 +10,41 @@ const AddressCard = ({ address, isSelected, onSelect, onEdit, onDelete }) => {
             type="radio"
             checked={isSelected}
             onChange={onSelect}
-            className="mt-1 w-4 h-4 cursor-pointer"
+            className="mt-1 w-4 h-4 cursor-pointer accent-[#988BFF]"
           />
 
           <div className="flex-1">
             {/* Address Type */}
             <div className="flex items-center gap-2 mb-2">
-              <h3 className="font-semibold text-black text-base capitalize">
+              <h3 className="font-semibold text-white text-base capitalize">
                 {address.type || "Home"}
               </h3>
               {address.isDefaultAddress && (
-                <span className="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded">
+                <span className="text-xs bg-white/10 text-white/60 px-2 py-0.5 rounded">
                   Default
                 </span>
               )}
             </div>
 
             {/* Contact Name */}
-            <p className="text-sm text-gray-700 mb-1 font-medium">
+            <p className="text-sm text-white mb-1 font-medium">
               {address.contactName}
             </p>
 
             {/* Address Lines */}
-            <p className="text-sm text-gray-600 mb-1">
+            <p className="text-sm text-white/60 mb-1">
               {address.line1}
               {address.line2 && `, ${address.line2}`}
             </p>
 
-            <p className="text-sm text-gray-600 mb-1">
+            <p className="text-sm text-white/60 mb-1">
               {address.city}, {address.state} - {address.postalCode}
             </p>
 
-            <p className="text-sm text-gray-600 mb-2">{address.country}</p>
+            <p className="text-sm text-white/60 mb-2">{address.country}</p>
 
             {/* Mobile Number */}
-            <p className="text-sm text-gray-700 font-medium">
+            <p className="text-sm text-white font-medium">
               Mobile: {address.contactPhone}
             </p>
           </div>
@@ -53,7 +53,7 @@ const AddressCard = ({ address, isSelected, onSelect, onEdit, onDelete }) => {
         {/* Edit Button */}
         <button
           onClick={onEdit}
-          className="text-sm text-gray-600 hover:text-black flex items-center gap-1 ml-4"
+          className="text-sm text-white/60 hover:text-[#988BFF] flex items-center gap-1 ml-4 transition-colors"
         >
           <svg
             className="w-4 h-4"
@@ -73,10 +73,10 @@ const AddressCard = ({ address, isSelected, onSelect, onEdit, onDelete }) => {
       </div>
 
       {/* Delete Button */}
-      <div className="mt-3 pt-3 border-t border-gray-100">
+      <div className="mt-3 pt-3 border-t border-white/10">
         <button
           onClick={onDelete}
-          className="text-sm text-red-500 hover:text-red-700 flex items-center gap-1"
+          className="text-sm text-red-500 hover:text-red-600 flex items-center gap-1 transition-colors"
         >
           <svg
             className="w-4 h-4"

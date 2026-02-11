@@ -196,204 +196,403 @@ const OrderDetailView = ({ orderId, onBack, axiosHttp }) => {
   const actionButtons = getActionButtons(status);
 
   return (
-    <div className="max-w-5xl mx-auto p-6 min-h-screen">
-      {/* Header */}
-      <div className="flex items-center justify-between mb-6">
-        <button
-          onClick={onBack}
-          className="flex items-center text-gray-700 hover:text-gray-900 cursor-pointer"
-        >
-          <ArrowLeft className="w-5 h-5 mr-2" />
-          Back
-        </button>
-        <p className="text-sm text-gray-600">
-          Order ID:{" "}
-          <span className="font-semibold text-gray-900">#{orderId}</span>
-        </p>
-      </div>
+  <div className="max-w-5xl mx-auto p-6 min-h-screen bg-[#27272a] text-white">
+    {/* Header */}
+    <div className="flex items-center justify-between mb-6">
+      <button
+        onClick={onBack}
+        className="flex items-center text-white/60 hover:text-white cursor-pointer"
+      >
+        <ArrowLeft className="w-5 h-5 mr-2" />
+        Back
+      </button>
+      <p className="text-sm text-white/40">
+        Order ID:{" "}
+        <span className="font-semibold text-white">#{orderId}</span>
+      </p>
+    </div>
 
-      {/* Product Card */}
-      <Link href={`/products/${product.id}`} className="bg-white  p-4 mb-6">
-        <div className="flex gap-4">
-          <Image
-            src={product?.imageUrls?.[0] || "/placeholder.jpg"}
-            alt={product?.title}
-            width={80}
-            height={80}
-            className=" object-cover rounded border "
-          />
-          <div className="flex-1">
-            <h2 className="font-semibold text-gray-900 mb-1">
-              {product?.title}
-            </h2>
-            <p className="text-sm text-gray-600 mb-2 line-clamp-1">
-              {product?.shortDescription ||
-                product?.description?.substring(0, 100)}
-            </p>
-            <div className="flex gap-4 text-sm text-gray-600">
-              <span>
-                Qty: <span className="font-medium">{quantity}</span>
-              </span>
-            </div>
-          </div>
-        </div>
-      </Link>
-
-      {/* Delivery Estimate */}
-      {/* Order Info */}
-      <div className="bg-white p-2 mb-2">
-        <p className="text-gray-900 font-medium mb-1">
-          Ordered At {formatDate(orderData?.createdAt)}
-        </p>
-      </div>
-
-      {/* Order Progress */}
-      {/* Order Status & Tracking */}
-      <div className="bg-white rounded-lg p-4 mb-6">
-        <h3 className="font-semibold text-gray-900 mb-2">Order Status</h3>
-
-        <div className="flex items-center justify-between flex-wrap gap-3 mb-4">
-          {/* Status */}
-          <div className="flex items-center gap-2">
-            <Package className="w-5 h-5 text-gray-600" />
-            <span className="text-sm font-medium capitalize text-gray-800">
-              {status}
+    {/* Product Card */}
+    <Link
+      href={`/products/${product.id}`}
+      className="bg-zinc-900 border border-white/10 p-4 mb-6 rounded-lg hover:shadow-black/40 transition"
+    >
+      <div className="flex gap-4">
+        <Image
+          src={product?.imageUrls?.[0] || "/placeholder.jpg"}
+          alt={product?.title}
+          width={80}
+          height={80}
+          className="object-cover rounded border border-white/10"
+        />
+        <div className="flex-1">
+          <h2 className="font-semibold text-white mb-1">
+            {product?.title}
+          </h2>
+          <p className="text-sm text-white/60 mb-2 line-clamp-1">
+            {product?.shortDescription ||
+              product?.description?.substring(0, 100)}
+          </p>
+          <div className="flex gap-4 text-sm text-white/60">
+            <span>
+              Qty: <span className="font-medium text-white">{quantity}</span>
             </span>
           </div>
+        </div>
+      </div>
+    </Link>
 
-          {/* Tracking */}
-          {orderData?.trackURL && orderData.trackURL.trim() !== "" ? (
-            <a
-              href={orderData.trackURL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-2 text-sm font-medium bg-black text-white rounded hover:bg-gray-800 transition"
-            >
-              Track Order
-            </a>
-          ) : (
-            <span className="text-sm text-orange-600 font-medium"></span>
-          )}
+    {/* Order Info */}
+    <div className="bg-zinc-900 border border-white/10 p-2 mb-2 rounded-lg">
+      <p className="text-white font-medium mb-1">
+        Ordered At {formatDate(orderData?.createdAt)}
+      </p>
+    </div>
+
+    {/* Order Status */}
+    <div className="bg-zinc-900 border border-white/10 rounded-lg p-4 mb-6">
+      <h3 className="font-semibold text-white mb-2">Order Status</h3>
+
+      <div className="flex items-center justify-between flex-wrap gap-3 mb-4">
+        <div className="flex items-center gap-2">
+          <Package className="w-5 h-5 text-white/60" />
+          <span className="text-sm font-medium capitalize text-white/80">
+            {status}
+          </span>
         </div>
 
-        {/* ✅ ACTION BUTTONS KEPT */}
-        {actionButtons.length > 0 && (
-          <div className="mt-4">
-            <div className="flex gap-3">
-              {actionButtons.map((button, index) => (
-                <button
-                  key={index}
-                  onClick={() => {
-                    if (button.action === "cancel") {
-                      dispatch(openCancelModal(orderData));
-                    }
-                    if (button.action === "return") {
-                      dispatch(openReturnModal(orderData));
-                    }
-                    if (button.action === "exchange") {
-                      dispatch(openExchangeModal(orderData));
-                    }
-                  }}
-                  className="flex-1 py-3 text-sm font-medium transition-colors border border-gray-300 text-gray-700 hover:bg-gray-50 cursor-pointer"
-                >
-                  {button.label}
-                  {button.info && (
-                    <span className="block text-xs text-gray-500 mt-1">
-                      {formatDate(button.info)}
-                    </span>
-                  )}
-                </button>
-              ))}
-            </div>
-          </div>
+        {orderData?.trackURL && orderData.trackURL.trim() !== "" ? (
+          <a
+            href={orderData.trackURL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-4 py-2 text-sm font-medium bg-[#988BFF] text-black rounded hover:opacity-90 transition"
+          >
+            Track Order
+          </a>
+        ) : (
+          <span className="text-sm text-white/40 font-medium"></span>
         )}
       </div>
 
-      {/* Summary */}
-      <div className="bg-white rounded-lg shadow-sm p-6">
-        <h3 className="font-semibold text-gray-900 mb-4">SUMMARY</h3>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Delivery Details - Empty for now */}
-          <div>
-            <h4 className="font-medium text-gray-900  mb-3">
-              DELIVERY DETAILS
-            </h4>
-
-            {order?.user_address ? (
-              <div className="space-y-1 text-sm text-gray-700">
-                <p className="font-medium text-gray-900">
-                  {order.user_address.contactName}
-                </p>
-                <p>
-                  {order.user_address.line1}
-                  {order.user_address.line2 && `, ${order.user_address.line2}`}
-                </p>
-                <p>
-                  {order.user_address.city}, {order.user_address.state} -{" "}
-                  {order.user_address.postalCode}
-                </p>
-                <p>{order.user_address.country}</p>
-                <p className="mt-2">
-                  Phone:{" "}
-                  <span className="font-medium">
-                    {order.user_address.contactPhone}
+      {/* Action Buttons */}
+      {actionButtons.length > 0 && (
+        <div className="mt-4">
+          <div className="flex gap-3">
+            {actionButtons.map((button, index) => (
+              <button
+                key={index}
+                onClick={() => {
+                  if (button.action === "cancel") {
+                    dispatch(openCancelModal(orderData));
+                  }
+                  if (button.action === "return") {
+                    dispatch(openReturnModal(orderData));
+                  }
+                  if (button.action === "exchange") {
+                    dispatch(openExchangeModal(orderData));
+                  }
+                }}
+                className="flex-1 py-3 text-sm font-medium border border-white/10 text-white/70 hover:bg-white/5 hover:text-white transition cursor-pointer"
+              >
+                {button.label}
+                {button.info && (
+                  <span className="block text-xs text-white/40 mt-1">
+                    {formatDate(button.info)}
                   </span>
-                </p>
-                <p className="text-xs text-gray-500 capitalize">
-                  Address Type: {order.user_address.type}
-                </p>
-              </div>
-            ) : (
-              <p className="text-gray-500 italic">No address found</p>
-            )}
+                )}
+              </button>
+            ))}
           </div>
+        </div>
+      )}
+    </div>
 
-          {/* Price Details */}
-          <div>
-            <h4 className="font-medium text-gray-900 mb-3">PRICE DETAILS</h4>
+    {/* Summary */}
+    <div className="bg-zinc-900 border border-white/10 rounded-lg shadow-black/40 p-6">
+      <h3 className="font-semibold text-white mb-4">SUMMARY</h3>
 
-            <div className="space-y-2 text-sm">
-              <div className="flex justify-between">
-                <span className="text-gray-600">Item Total</span>
-                <span className="font-medium text-gray-900">
-                  ₹{orderData?.unitPrice || "0.00"}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Delivery Details */}
+        <div>
+          <h4 className="font-medium text-white mb-3">
+            DELIVERY DETAILS
+          </h4>
+
+          {order?.user_address ? (
+            <div className="space-y-1 text-sm text-white/70">
+              <p className="font-medium text-white">
+                {order.user_address.contactName}
+              </p>
+              <p>
+                {order.user_address.line1}
+                {order.user_address.line2 && `, ${order.user_address.line2}`}
+              </p>
+              <p>
+                {order.user_address.city}, {order.user_address.state} -{" "}
+                {order.user_address.postalCode}
+              </p>
+              <p>{order.user_address.country}</p>
+              <p className="mt-2">
+                Phone:{" "}
+                <span className="font-medium text-white">
+                  {order.user_address.contactPhone}
                 </span>
-              </div>
+              </p>
+              <p className="text-xs text-white/40 capitalize">
+                Address Type: {order.user_address.type}
+              </p>
+            </div>
+          ) : (
+            <p className="text-white/40 italic">No address found</p>
+          )}
+        </div>
 
-              <div className="flex justify-between">
-                <span className="text-gray-600">Discount</span>
-                <span className="font-medium text-green-600">
-                  - ₹{orderData?.discount || "0.00"}
-                </span>
-              </div>
+        {/* Price Details */}
+        <div>
+          <h4 className="font-medium text-white mb-3">PRICE DETAILS</h4>
 
-              <div className="flex justify-between">
-                <span className="text-gray-600">Tax</span>
-                <span className="font-medium text-gray-900">
-                  ₹{orderData?.tax || "0.00"}
-                </span>
-              </div>
+          <div className="space-y-2 text-sm">
+            <div className="flex justify-between">
+              <span className="text-white/60">Item Total</span>
+              <span className="font-medium text-white">
+                ₹{orderData?.unitPrice || "0.00"}
+              </span>
+            </div>
 
-              <div className="flex justify-between">
-                <span className="text-gray-600">Shipping</span>
-                <span className="font-medium text-gray-900">
-                  ₹{orderData?.shippingCost || "0.00"}
-                </span>
-              </div>
+            <div className="flex justify-between">
+              <span className="text-white/60">Discount</span>
+              <span className="font-medium text-green-400">
+                - ₹{orderData?.discount || "0.00"}
+              </span>
+            </div>
 
-              <div className="flex justify-between pt-3 mt-2 border-t border-gray-200 font-semibold text-base">
-                <span className="text-gray-900">TOTAL PAYABLE</span>
-                <span className="text-gray-900">
-                  ₹{orderData?.total || "0.00"}
-                </span>
-              </div>
+            <div className="flex justify-between">
+              <span className="text-white/60">Tax</span>
+              <span className="font-medium text-white">
+                ₹{orderData?.tax || "0.00"}
+              </span>
+            </div>
+
+            <div className="flex justify-between">
+              <span className="text-white/60">Shipping</span>
+              <span className="font-medium text-white">
+                ₹{orderData?.shippingCost || "0.00"}
+              </span>
+            </div>
+
+            <div className="flex justify-between pt-3 mt-2 border-t border-white/10 font-semibold text-base">
+              <span className="text-white">TOTAL PAYABLE</span>
+              <span className="text-white">
+                ₹{orderData?.total || "0.00"}
+              </span>
             </div>
           </div>
         </div>
       </div>
     </div>
-  );
+  </div>
+);
+
+  // return (
+  //   <div className="max-w-5xl mx-auto p-6 min-h-screen">
+  //     {/* Header */}
+  //     <div className="flex items-center justify-between mb-6">
+  //       <button
+  //         onClick={onBack}
+  //         className="flex items-center text-gray-700 hover:text-gray-900 cursor-pointer"
+  //       >
+  //         <ArrowLeft className="w-5 h-5 mr-2" />
+  //         Back
+  //       </button>
+  //       <p className="text-sm text-gray-600">
+  //         Order ID:{" "}
+  //         <span className="font-semibold text-gray-900">#{orderId}</span>
+  //       </p>
+  //     </div>
+
+  //     {/* Product Card */}
+  //     <Link href={`/products/${product.id}`} className="bg-white  p-4 mb-6">
+  //       <div className="flex gap-4">
+  //         <Image
+  //           src={product?.imageUrls?.[0] || "/placeholder.jpg"}
+  //           alt={product?.title}
+  //           width={80}
+  //           height={80}
+  //           className=" object-cover rounded border "
+  //         />
+  //         <div className="flex-1">
+  //           <h2 className="font-semibold text-gray-900 mb-1">
+  //             {product?.title}
+  //           </h2>
+  //           <p className="text-sm text-gray-600 mb-2 line-clamp-1">
+  //             {product?.shortDescription ||
+  //               product?.description?.substring(0, 100)}
+  //           </p>
+  //           <div className="flex gap-4 text-sm text-gray-600">
+  //             <span>
+  //               Qty: <span className="font-medium">{quantity}</span>
+  //             </span>
+  //           </div>
+  //         </div>
+  //       </div>
+  //     </Link>
+
+  //     {/* Delivery Estimate */}
+  //     {/* Order Info */}
+  //     <div className="bg-white p-2 mb-2">
+  //       <p className="text-gray-900 font-medium mb-1">
+  //         Ordered At {formatDate(orderData?.createdAt)}
+  //       </p>
+  //     </div>
+
+  //     {/* Order Progress */}
+  //     {/* Order Status & Tracking */}
+  //     <div className="bg-white rounded-lg p-4 mb-6">
+  //       <h3 className="font-semibold text-gray-900 mb-2">Order Status</h3>
+
+  //       <div className="flex items-center justify-between flex-wrap gap-3 mb-4">
+  //         {/* Status */}
+  //         <div className="flex items-center gap-2">
+  //           <Package className="w-5 h-5 text-gray-600" />
+  //           <span className="text-sm font-medium capitalize text-gray-800">
+  //             {status}
+  //           </span>
+  //         </div>
+
+  //         {/* Tracking */}
+  //         {orderData?.trackURL && orderData.trackURL.trim() !== "" ? (
+  //           <a
+  //             href={orderData.trackURL}
+  //             target="_blank"
+  //             rel="noopener noreferrer"
+  //             className="px-4 py-2 text-sm font-medium bg-black text-white rounded hover:bg-gray-800 transition"
+  //           >
+  //             Track Order
+  //           </a>
+  //         ) : (
+  //           <span className="text-sm text-orange-600 font-medium"></span>
+  //         )}
+  //       </div>
+
+  //       {/* ✅ ACTION BUTTONS KEPT */}
+  //       {actionButtons.length > 0 && (
+  //         <div className="mt-4">
+  //           <div className="flex gap-3">
+  //             {actionButtons.map((button, index) => (
+  //               <button
+  //                 key={index}
+  //                 onClick={() => {
+  //                   if (button.action === "cancel") {
+  //                     dispatch(openCancelModal(orderData));
+  //                   }
+  //                   if (button.action === "return") {
+  //                     dispatch(openReturnModal(orderData));
+  //                   }
+  //                   if (button.action === "exchange") {
+  //                     dispatch(openExchangeModal(orderData));
+  //                   }
+  //                 }}
+  //                 className="flex-1 py-3 text-sm font-medium transition-colors border border-gray-300 text-gray-700 hover:bg-gray-50 cursor-pointer"
+  //               >
+  //                 {button.label}
+  //                 {button.info && (
+  //                   <span className="block text-xs text-gray-500 mt-1">
+  //                     {formatDate(button.info)}
+  //                   </span>
+  //                 )}
+  //               </button>
+  //             ))}
+  //           </div>
+  //         </div>
+  //       )}
+  //     </div>
+
+  //     {/* Summary */}
+  //     <div className="bg-white rounded-lg shadow-sm p-6">
+  //       <h3 className="font-semibold text-gray-900 mb-4">SUMMARY</h3>
+
+  //       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+  //         {/* Delivery Details - Empty for now */}
+  //         <div>
+  //           <h4 className="font-medium text-gray-900  mb-3">
+  //             DELIVERY DETAILS
+  //           </h4>
+
+  //           {order?.user_address ? (
+  //             <div className="space-y-1 text-sm text-gray-700">
+  //               <p className="font-medium text-gray-900">
+  //                 {order.user_address.contactName}
+  //               </p>
+  //               <p>
+  //                 {order.user_address.line1}
+  //                 {order.user_address.line2 && `, ${order.user_address.line2}`}
+  //               </p>
+  //               <p>
+  //                 {order.user_address.city}, {order.user_address.state} -{" "}
+  //                 {order.user_address.postalCode}
+  //               </p>
+  //               <p>{order.user_address.country}</p>
+  //               <p className="mt-2">
+  //                 Phone:{" "}
+  //                 <span className="font-medium">
+  //                   {order.user_address.contactPhone}
+  //                 </span>
+  //               </p>
+  //               <p className="text-xs text-gray-500 capitalize">
+  //                 Address Type: {order.user_address.type}
+  //               </p>
+  //             </div>
+  //           ) : (
+  //             <p className="text-gray-500 italic">No address found</p>
+  //           )}
+  //         </div>
+
+  //         {/* Price Details */}
+  //         <div>
+  //           <h4 className="font-medium text-gray-900 mb-3">PRICE DETAILS</h4>
+
+  //           <div className="space-y-2 text-sm">
+  //             <div className="flex justify-between">
+  //               <span className="text-gray-600">Item Total</span>
+  //               <span className="font-medium text-gray-900">
+  //                 ₹{orderData?.unitPrice || "0.00"}
+  //               </span>
+  //             </div>
+
+  //             <div className="flex justify-between">
+  //               <span className="text-gray-600">Discount</span>
+  //               <span className="font-medium text-green-600">
+  //                 - ₹{orderData?.discount || "0.00"}
+  //               </span>
+  //             </div>
+
+  //             <div className="flex justify-between">
+  //               <span className="text-gray-600">Tax</span>
+  //               <span className="font-medium text-gray-900">
+  //                 ₹{orderData?.tax || "0.00"}
+  //               </span>
+  //             </div>
+
+  //             <div className="flex justify-between">
+  //               <span className="text-gray-600">Shipping</span>
+  //               <span className="font-medium text-gray-900">
+  //                 ₹{orderData?.shippingCost || "0.00"}
+  //               </span>
+  //             </div>
+
+  //             <div className="flex justify-between pt-3 mt-2 border-t border-gray-200 font-semibold text-base">
+  //               <span className="text-gray-900">TOTAL PAYABLE</span>
+  //               <span className="text-gray-900">
+  //                 ₹{orderData?.total || "0.00"}
+  //               </span>
+  //             </div>
+  //           </div>
+  //         </div>
+  //       </div>
+  //     </div>
+  //   </div>
+  // );
 };
 
 export default OrderDetailView;

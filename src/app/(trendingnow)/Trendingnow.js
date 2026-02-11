@@ -12,7 +12,7 @@ const TrendingNowSection = () => {
     data: collections,
     loading,
     error,
-  } = useCollection("displayFor=homepage");
+  } = useCollection("displayFor=homepage&mode=quick&city=Delhi");
   const [currentPages, setCurrentPages] = useState({});
   const [sortOrders, setSortOrders] = useState({}); // Track sort order per collection
   const [showSortDropdown, setShowSortDropdown] = useState({}); // Track dropdown visibility per collection
@@ -74,9 +74,9 @@ const TrendingNowSection = () => {
 
   if (loading) {
     return (
-      <div className="bg-white py-16 px-4 sm:px-6 md:px-10">
+      <div className="bg-[#27272a] py-16 px-4 sm:px-6 md:px-10">
         <div className="flex justify-center items-center min-h-[400px]">
-          <div className="animate-spin rounded-full h-12 w-12 border-4 border-stone-200 border-t-stone-950"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-4 border-white/10 border-t-white"></div>
         </div>
       </div>
     );
@@ -84,7 +84,7 @@ const TrendingNowSection = () => {
 
   if (error) {
     return (
-      <div className="bg-white py-16 px-4 sm:px-6 md:px-10">
+      <div className="bg-[#27272a] py-16 px-4 sm:px-6 md:px-10">
         <div className="flex justify-center items-center min-h-[400px]">
           <p className="text-red-500">
             Error loading collections. Please try again later.
@@ -95,7 +95,7 @@ const TrendingNowSection = () => {
   }
 
   return (
-    <div className="bg-white">
+    <div className="bg-[#27272a]">
       {collections?.map((collection, collectionIndex) => {
         // Don't show section if no products
         if (!collection.products || collection.products.length === 0) {
@@ -131,7 +131,7 @@ const TrendingNowSection = () => {
           >
             {/* Header */}
             <div className="flex flex-row justify-between items-center gap-2 sm:gap-4 mb-8 sm:mb-10">
-              <h1 className="text-[13px]  md:text-[35px] font-semibold uppercase text-black max-w-[200px] md:max-w-[500px] ">
+              <h1 className="text-[13px]  md:text-[35px] font-semibold uppercase text-white max-w-[200px] md:max-w-[500px] ">
                 {collection.name}
               </h1>
 
@@ -140,10 +140,10 @@ const TrendingNowSection = () => {
                 <div className="relative">
                   <button
                     onClick={() => toggleSortDropdown(collection.id)}
-                    className="h-8 sm:h-9 md:h-10 px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-2.5 bg-white rounded-lg sm:rounded-xl outline outline-1 outline-offset-[-1px] outline-stone-950 inline-flex justify-center items-center gap-1 sm:gap-1.5 cursor-pointer"
+                    className="h-8 sm:h-9 md:h-10 px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-2.5 bg-zinc-900 rounded-lg sm:rounded-xl outline outline-1 outline-offset-[-1px] outline-white/10 inline-flex justify-center items-center gap-1 sm:gap-1.5 cursor-pointer"
                   >
                     <div className="flex flex-row justify-start items-center gap-1 sm:gap-1.5">
-                      <div className="text-center justify-start text-stone-950 text-xs sm:text-sm md:text-base font-medium leading-tight sm:leading-5 tracking-wide whitespace-nowrap">
+                      <div className="text-center justify-start text-white text-xs sm:text-sm md:text-base font-medium leading-tight sm:leading-5 tracking-wide whitespace-nowrap">
                         {sortOrders[collection.id] === "lowToHigh"
                           ? "Price: Low to High"
                           : sortOrders[collection.id] === "highToLow"
@@ -162,12 +162,12 @@ const TrendingNowSection = () => {
 
                   {/* Dropdown Menu */}
                   {showSortDropdown[collection.id] && (
-                    <div className="absolute top-full mt-2 right-0 bg-white border border-stone-950 rounded-lg shadow-lg z-10 min-w-[200px]">
+                    <div className="absolute top-full mt-2 right-0 bg-zinc-900 border border-white/10 rounded-lg shadow-lg z-10 min-w-[200px]">
                       <button
                         onClick={() =>
                           handleSortChange(collection.id, "default")
                         }
-                        className="w-full px-4 py-3 text-left text-sm md:text-base hover:bg-stone-100 transition"
+                        className="w-full px-4 py-3 text-left text-sm md:text-base text-white hover:bg-black/20 transition"
                       >
                         Default
                       </button>
@@ -175,7 +175,7 @@ const TrendingNowSection = () => {
                         onClick={() =>
                           handleSortChange(collection.id, "lowToHigh")
                         }
-                        className="w-full px-4 py-3 text-left text-sm md:text-base hover:bg-stone-100 transition border-t border-stone-200"
+                        className="w-full px-4 py-3 text-left text-sm md:text-base text-white hover:bg-black/20 transition border-t border-white/10"
                       >
                         Price: Low to High
                       </button>
@@ -183,7 +183,7 @@ const TrendingNowSection = () => {
                         onClick={() =>
                           handleSortChange(collection.id, "highToLow")
                         }
-                        className="w-full px-4 py-3 text-left text-sm md:text-base hover:bg-stone-100 transition border-t border-stone-200"
+                        className="w-full px-4 py-3 text-left text-sm md:text-base text-white hover:bg-black/20 transition border-t border-white/10"
                       >
                         Price: High to Low
                       </button>
@@ -194,10 +194,10 @@ const TrendingNowSection = () => {
                 <button
                   onClick={() => handlePrevPage(collection.id)}
                   disabled={currentPage === 0 || shouldDisableChevrons}
-                  className={`w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 border rounded-full flex items-center justify-center cursor-pointer transition text-sm sm:text-base ${
+                  className={`w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 border border-white/10 rounded-full flex items-center justify-center cursor-pointer transition text-sm sm:text-base ${
                     currentPage === 0 || shouldDisableChevrons
-                      ? "text-[#A0A0A0]"
-                      : "text-black hover:bg-stone-950 hover:text-white"
+                      ? "text-white/40"
+                      : "text-white hover:bg-white/10"
                   }`}
                 >
                   <ChevronLeft
@@ -211,10 +211,10 @@ const TrendingNowSection = () => {
                   disabled={
                     currentPage === totalPages - 1 || shouldDisableChevrons
                   }
-                  className={`w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 border rounded-full flex items-center justify-center cursor-pointer transition text-sm sm:text-base ${
+                  className={`w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 border border-white/10 rounded-full flex items-center justify-center cursor-pointer transition text-sm sm:text-base ${
                     currentPage === totalPages - 1 || shouldDisableChevrons
-                      ? "text-[#A0A0A0]"
-                      : "text-black hover:bg-stone-950 hover:text-white"
+                      ? "text-white/40"
+                      : "text-white hover:bg-white/10"
                   }`}
                 >
                   <ChevronRight
@@ -275,8 +275,10 @@ const TrendingNowSection = () => {
                 <div className="w-full">
                   <ViewAllCard
                     onClick={() => {
-                      (window.location.href = `/products?collectionId=${collection.id}`),
-                        "_blank";
+                      window.open(
+                        `/products?collectionId=${collection.id}&mode=quick&city=Delhi`,
+                        "_blank"
+                      );
                     }}
                   />
                 </div>

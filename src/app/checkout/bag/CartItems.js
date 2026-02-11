@@ -11,7 +11,7 @@ import useUpdateCartQuantity from "@/hooks/useUpdateCartQuantity";
 import Link from "next/link";
 import DeleteConfirmModal from "@/components/DeleteModal";
 import { openPhoneAuthModal } from "@/redux/slices/loginmodalSlice";
-// PhoneAuthModal is now rendered globally in Providers.js
+// PhoneAuthModal is now rendered globally in Providers.js   
 import {
   removeFromCart,
   setCartItems,

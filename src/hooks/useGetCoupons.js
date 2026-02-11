@@ -9,7 +9,7 @@ const useGetCoupons = () => {
     try {
       const endPoint = `${endPoints.getCoupons}`;
       const result = await axiosHttp.get(endPoint);
-      if (result?.status === 201) {
+      if (result?.status === 200) {
         setCoupons(result?.data?.data);
       }
     } catch (err) {

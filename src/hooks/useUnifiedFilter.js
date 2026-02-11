@@ -57,6 +57,8 @@ const useUnifiedFilter = () => {
 
         // Add page parameter
         params.append("page", pageNumber);
+        params.append("mode", "quick");
+        params.append("city", "Delhi");
 
         const response = await axiosHttp.post(
           `/filter-products?${params.toString()}`

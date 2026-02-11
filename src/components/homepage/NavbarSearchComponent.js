@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import axiosHttp from "@/utils/axioshttp";
+import Link from "next/link";
 import { addSearch } from "@/redux/slices/searchSlice";
 
 export default function NavbarSearchComponent({
@@ -74,19 +75,22 @@ export default function NavbarSearchComponent({
   return (
     <div className="w-full max-h-screen bg-[#27272a] z-[1000] fixed top-15 left-0">
       {/* Search Input Area */}
-      <div className="w-full h-auto min-h-20 md:h-24 px-4 sm:px-8 md:px-12 lg:px-16 py-4 md:py-7 bg-zinc-900 inline-flex justify-between items-center">
+      <div className="w-full h-auto min-h-20 md:h-24 px-4 sm:px-8 md:px-12 lg:px-16 py-4 md:py-7  inline-flex justify-between items-center">
         <div className="flex-1 flex justify-start items-center gap-4 md:gap-8 lg:gap-32">
           <div className="hidden sm:flex justify-start items-center gap-4 md:gap-14">
-            <div className="w-16 sm:w-20 h-6 sm:h-8 relative">
-              <Image
-                src="/images/Lafetch-white.svg"
+            <Link href="/" className="mt-[2px] md:mt-0 flex items-center gap-1">
+            <div className="flex items-center gap-2">
+               <Image
+                src="/images/logo_white.png"
                 alt="Logo"
-                width={100}
-                height={40}
+                width={200}
+                height={160}
               />
             </div>
+             
+            </Link>
           </div>
-          <div className="flex-1 py-0.5 border-b border-white/30 flex justify-between items-center gap-2">
+          <div className="flex-1 py-0.5 border-b border-white flex justify-between items-center gap-2">
             <div className="flex-1 flex justify-start items-center gap-1 sm:gap-2">
               <div className="flex justify-start items-center gap-2 sm:gap-5">
                 <div className="flex justify-start items-center gap-2 sm:gap-4">
@@ -154,10 +158,10 @@ export default function NavbarSearchComponent({
                       key={index}
                       href={`/products?key=${suggestion.trim()}`}
                       onClick={() => handleSuggestionClick(suggestion)}
-                      className="h-auto sm:h-7 px-2 sm:px-2.5 py-1 sm:py-1.5 bg-zinc-700 rounded flex justify-center items-center gap-1 cursor-pointer hover:bg-zinc-600 transition-colors"
+                      className="group h-auto sm:h-7 px-2 sm:px-2.5 py-1 sm:py-1.5 bg-zinc-700 rounded flex justify-center items-center gap-1 cursor-pointer hover:bg-zinc-600 transition-colors transition-all duration-200"
                     >
                       <div className="flex justify-center items-start gap-2.5">
-                        <div className="justify-start text-white/70 text-xs sm:text-sm font-normal">
+                        <div className="justify-start text-white/70 group-hover:text-[#7A6ECC] text-xs sm:text-sm font-normal">
                           {suggestion}
                         </div>
                       </div>
@@ -169,10 +173,10 @@ export default function NavbarSearchComponent({
                       key={index}
                       href={`/products?key=${search.trim()}`}
                       onClick={() => handleSuggestionClick(search)}
-                      className="h-auto sm:h-7 px-2 sm:px-2.5 py-1 sm:px-2.5 bg-zinc-700 rounded flex justify-center items-center gap-1 cursor-pointer hover:bg-zinc-600 transition-colors"
+                      className="group h-auto sm:h-7 px-2 sm:px-2.5 py-1 sm:py-1.5 bg-zinc-700 rounded flex justify-center items-center gap-1 cursor-pointer hover:bg-zinc-600 transition-colors transition-all duration-200"
                     >
                       <div className="flex justify-center items-start gap-2.5">
-                        <div className="justify-start text-white/70 text-xs sm:text-sm font-normal">
+                        <div className="justify-start text-white/70 group-hover:text-[#7A6ECC] text-xs sm:text-sm font-normal">
                           {search}
                         </div>
                       </div>
@@ -200,9 +204,9 @@ export default function NavbarSearchComponent({
                           key={index}
                           href={`/products?key=${item.trim()}`}
                           onClick={() => handleSuggestionClick(item)}
-                          className="inline-flex justify-center items-center gap-2.5 cursor-pointer hover:opacity-70 transition-opacity"
+                          className="group inline-flex justify-center items-center gap-2.5 cursor-pointer hover:opacity-70 transition-opacity"
                         >
-                          <div className="justify-start text-white/70 text-xs sm:text-sm font-normal">
+                          <div className="justify-start group-hover:text-[#7A6ECC] text-white/70 text-xs sm:text-sm font-normal">
                             {item}
                           </div>
                         </a>

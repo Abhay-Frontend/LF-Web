@@ -25,29 +25,24 @@ const MobileNavbar = ({ isOpen, onClose, menuData, getMenuHref }) => {
         transition-transform duration-300 flex flex-col`}
       >
         <div className="flex items-center justify-between p-4 border-b border-[#3f3f46]">
-          {/* <button className="border-r border-black/50 w-20 h-8 flex items-center justify-center">
-            <Image
-              src="/images/quick.png"
-              alt="Quick"
-              width={100}
-              height={30}
-            />
-          </button> */}
           <Link href="/" className="flex-shrink-0">
             <Image src="/images/logo_white.png" alt="Logo" width={160} height={50} />
           </Link>
 
           <button onClick={onClose}>
-            <X className="w-6 h-6 text-[#a1a1aa] hover:text-white" />
+            <X className="w-6 h-6 text-[#a1a1aa] hover:text-[#7A6ECC] transition-colors duration-200" />
           </button>
         </div>
+        <p className="mt-2 text-[12px] font-bold uppercase text-[#7A6ECC] text-center tracking-wide">
+          Download The App Now & Get 10% Off
+        </p>
 
         <div className="p-4 space-y-4 overflow-y-auto flex-1">
           {menuData.map((menu, index) => (
             <div key={index}>
               <Link
                 href={getMenuHref(menu.title)}
-                className="block py-2 font-bold text-[#fafafa] hover:text-white"
+                className="block py-2 font-bold text-[#fafafa] hover:text-[#7A6ECC] transition-colors duration-200"
                 onClick={onClose}
               >
                 {menu.title}
@@ -60,7 +55,7 @@ const MobileNavbar = ({ isOpen, onClose, menuData, getMenuHref }) => {
                       <div className="flex items-center justify-between">
                         <Link
                           href={`/categories?catId=${section.id}`}
-                          className="text-[12px] font-semibold text-[#d4d4d8] hover:text-white"
+                          className="text-[12px] font-semibold text-[#d4d4d8] hover:text-[#7A6ECC] transition-colors duration-200"
                           onClick={onClose}
                         >
                           {section.heading}
@@ -69,7 +64,7 @@ const MobileNavbar = ({ isOpen, onClose, menuData, getMenuHref }) => {
                         {section.items.length > 0 && (
                           <button
                             onClick={() => toggleSection(section.id)}
-                            className="flex items-center justify-center py-2 px-2 text-gray-700 hover:text-black"
+                            className="flex items-center justify-center py-2 px-2 text-[#a1a1aa] hover:text-[#7A6ECC] transition-colors duration-200"
                           >
                             {expandedSections[section.id] ? (
                               <Minus className="w-4 h-4" />
@@ -85,7 +80,7 @@ const MobileNavbar = ({ isOpen, onClose, menuData, getMenuHref }) => {
                           <Link
                             key={item.id}
                             href={`/products?subCatId=${item.id}`}
-                            className="block py-1 text-sm text-[#a1a1aa] hover:text-[#e4e4e7]"
+                            className="block py-1 text-sm text-[#a1a1aa] hover:text-[#7A6ECC] transition-colors duration-200"
                             onClick={onClose}
                           >
                             {item.name}

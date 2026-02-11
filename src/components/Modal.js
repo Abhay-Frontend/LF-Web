@@ -8,7 +8,6 @@ import axiosHttp from "@/utils/axioshttp";
 import { endPoints } from "@/utils/endpoints";
 import { addToCart } from "@/redux/slices/cartSlice";
 import { getParsedSelectedOptions } from "@/utils/variantUtils";
-
 const ProductModal = () => {
   const dispatch = useDispatch();
   const isOpen = useSelector((state) => state.modal.productViewModal);
@@ -392,12 +391,12 @@ const ProductModal = () => {
       <div className="bg-[#27272a] w-full max-w-3xl  overflow-hidden">
         <div className="flex flex-col md:flex-row overflow-y-auto  max-h-[400px]">
           {/* Product Image */}
-          <div className="md:w-1/2 w-full relative bg-gray-50 flex items-center justify-center ">
+          <div className="md:w-1/2 w-full relative bg-gray-50 flex-shrink-0 ">
             {/* <button className="absolute top-4 right-4 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md z-10">
               <Heart className="w-5 h-5 text-gray-400 hover:text-red-500 transition-colors" />
             </button> */}
 
-            <div className="relative w-full h-70 md:h-[400px]">
+            <div className="relative w-full aspect-[3/4] md:h-[400px]">
               <Image
                 src={
                   product?.imageUrls
@@ -406,7 +405,7 @@ const ProductModal = () => {
                 }
                 alt={product?.title || "product-img"}
                 fill
-                className="object-fill"
+                className="object-contain"
               />
             </div>
           </div>

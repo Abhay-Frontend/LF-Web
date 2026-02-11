@@ -172,16 +172,16 @@ const ExchangeOrderModal = ({
   }`;
 
   return (
-    <div className="fixed inset-0 bg-black/30 backdrop-blur-sm bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-lg w-full max-w-md max-h-[90vh] overflow-y-auto">
+    <div className="fixed inset-0 bg-[#27272a] backdrop-blur-sm bg-opacity-50 flex items-center justify-center z-50 p-4">
+      <div className="bg-zinc-900 rounded-lg w-full max-w-md max-h-[90vh] overflow-y-auto">
         {/* Header */}
-        <div className="flex items-center justify-between p-4 border-b sticky top-0 bg-white">
-          <h2 className="text-lg font-semibold text-black">
+        <div className="flex items-center justify-between p-4 border-b border-white/10 sticky top-0 bg-zinc-900">
+          <h2 className="text-lg font-semibold text-white">
             {order?.product?.title || "Exchange Item"}
           </h2>
           <button
             onClick={onClose}
-            className="p-1 hover:bg-gray-100 rounded"
+            className="p-1 hover:bg-white/10 text-white/60 rounded"
             disabled={isSubmitting}
           >
             <X size={20} />
@@ -197,20 +197,20 @@ const ExchangeOrderModal = ({
               alt={order?.product?.title}
               width={80}
               height={112}
-              className="w-20 h-28 object-cover rounded"
+              className="w-20 h-28 object-cover rounded border boorder-white/10"
             />
             <div className="flex-1">
-              <h3 className="font-medium text-sm mb-1 text-black">
+              <h3 className="font-medium text-sm mb-1 text-white">
                 {order?.product?.title}
               </h3>
-              <p className="text-xs text-gray-500 mb-2 text-black">
+              <p className="text-xs text-gray-500 mb-2 text-white/60">
                 {order?.product?.subtitle}
               </p>
-              <div className="flex gap-4 text-xs text-black">
+              <div className="flex gap-4 text-xs text-white/60">
                 <span>Variant: {currentVariantDisplay}</span>
                 <span>Qty: {order?.quantity || 1}</span>
               </div>
-              <p className="font-semibold mt-2 text-black">
+              <p className="font-semibold mt-2 text-white">
                 ₹{parseFloat(order?.total || 0).toFixed(2)}
               </p>
             </div>
@@ -219,7 +219,7 @@ const ExchangeOrderModal = ({
           {/* Variant Selection */}
           {/* Variant Selection */}
           <div>
-            <label className="block text-sm font-medium mb-3 text-black">
+            <label className="block text-sm font-medium mb-3 text-white">
               CHOOSE NEW VARIANT
             </label>
 
@@ -231,7 +231,7 @@ const ExchangeOrderModal = ({
               <div className="space-y-4">
                 {/* Size Selection */}
                 <div>
-                  <label className="block text-xs font-medium mb-2 text-black">
+                  <label className="block text-xs font-medium mb-2 text-white/60">
                     SELECT SIZE
                   </label>
                   <div className="flex flex-wrap gap-2">
@@ -266,16 +266,16 @@ const ExchangeOrderModal = ({
                             px-4 py-2 border-2 rounded font-medium text-sm transition-all
                             ${
                               isSelected
-                                ? "bg-pink-500 text-white border-pink-500"
+                                ? "bg-[#988BFF] text-black border-pink-500"
                                 : !hasAnyStock
-                                ? "border-gray-200 text-gray-300 cursor-not-allowed"
-                                : "border-black text-black hover:bg-black hover:text-white"
+                                ? "border-white/10 text-white/30 cursor-not-allowed"
+                                : "border-white/10 text-white hover:bg-white/5 hover:text-black"
                             }
                           `}
                         >
                           {size}
                           {isCurrent && (
-                            <span className="ml-1 text-xs">(Current)</span>
+                            <span className="ml-1 text-xs text-white/40">(Current)</span>
                           )}
                         </button>
                       );
@@ -285,7 +285,7 @@ const ExchangeOrderModal = ({
 
                 {/* Color Selection */}
                 <div>
-                  <label className="block text-xs font-medium mb-2 text-black">
+                  <label className="block text-xs font-medium mb-2 text-white/60">
                     SELECT COLOR
                   </label>
                   <div className="flex flex-wrap gap-2">
@@ -319,16 +319,16 @@ const ExchangeOrderModal = ({
                             px-4 py-2 border-2 rounded-full font-medium text-sm transition-all
                             ${
                               isSelected
-                                ? "bg-black text-white border-black"
+                                ? "bg-white text-black border-black"
                                 : !selectedSize || !hasStock
-                                ? "border-gray-200 text-gray-300 cursor-not-allowed"
-                                : "border-gray-400 text-black hover:border-black"
+                                ? "border-white/10 text-white/30 cursor-not-allowed"
+                                : "border-white/10 text-white hover:bg-white/5 hover:text-black"
                             }
                           `}
                         >
                           {color}
                           {isCurrent && (
-                            <span className="ml-1 text-xs">(Current)</span>
+                            <span className="ml-1 text-xs text-white/40">(Current)</span>
                           )}
                         </button>
                       );
@@ -338,11 +338,11 @@ const ExchangeOrderModal = ({
 
                 {/* Selected Variant Info */}
                 {selectedVariantId && (
-                  <div className="bg-gray-50 p-3 rounded">
-                    <div className="text-xs text-gray-600 mb-1">
+                  <div className="bg-[#27272a] p-3 rounded border border-white/10">
+                    <div className="text-xs text-white/40 mb-1">
                       Selected Variant:
                     </div>
-                    <div className="font-medium text-sm text-black">
+                    <div className="font-medium text-sm text-white">
                       {
                         variants.find(
                           (v) => v.id.toString() === selectedVariantId
@@ -355,7 +355,7 @@ const ExchangeOrderModal = ({
                         )?.size
                       }
                     </div>
-                    <div className="text-sm text-black mt-1">
+                    <div className="text-sm text-white mt-1">
                       ₹
                       {
                         variants.find(
@@ -379,7 +379,7 @@ const ExchangeOrderModal = ({
                 )}
               </div>
             ) : (
-              <div className="p-4 text-center text-gray-500">
+              <div className="p-4 text-center text-white">
                 No variants available
               </div>
             )}
@@ -387,16 +387,16 @@ const ExchangeOrderModal = ({
 
           {/* Reason for Exchange */}
           <div>
-            <label className="block text-sm font-medium mb-2 text-black">
+            <label className="block text-sm font-medium mb-2 text-white">
               REASON FOR EXCHANGE
             </label>
             <div className="relative">
               <button
                 onClick={() => setIsReasonDropdownOpen(!isReasonDropdownOpen)}
-                className="w-full px-4 py-3 border border-gray-300 rounded text-left flex items-center justify-between hover:border-gray-400 text-black"
+                className="w-full px-4 py-3 border border-white/10 rounded text-left flex items-center justify-between hover:border-white/30 text-white"
                 disabled={isSubmitting}
               >
-                <span className="text-black">
+                <span className="text-white">
                   {selectedReasonText || "Select a reason"}
                 </span>
                 <ChevronDown
@@ -408,7 +408,7 @@ const ExchangeOrderModal = ({
               </button>
 
               {isReasonDropdownOpen && (
-                <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-300 rounded shadow-lg max-h-60 overflow-y-auto z-10">
+                <div className="absolute top-full left-0 right-0 mt-1 bg-[#27272a] border border-white/10  rounded shadow-lg max-h-60 overflow-y-auto z-10">
                   {Object.entries(EXCHANGE_REASONS).map(([key, value]) => (
                     <button
                       key={key}
@@ -420,7 +420,7 @@ const ExchangeOrderModal = ({
                           setCustomReason("");
                         }
                       }}
-                      className="w-full px-4 py-3 text-left hover:bg-gray-50 border-b border-gray-100 last:border-b-0 text-black"
+                      className="w-full px-4 py-3 text-left hover:bg-gray-50 border-b border-gray-100 last:border-b-0 text-white"
                     >
                       {value}
                     </button>
@@ -436,7 +436,7 @@ const ExchangeOrderModal = ({
                   value={customReason}
                   onChange={(e) => setCustomReason(e.target.value)}
                   placeholder="Please describe your reason..."
-                  className="w-full px-3 py-2 border border-gray-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-black text-black"
+                  className="w-full px-3 py-2 border border-white/10 rounded text-sm focus:outline-none focus:ring-2 focus:ring-black text-white bg-[#27272a]"
                   rows={3}
                   disabled={isSubmitting}
                 />
@@ -447,12 +447,12 @@ const ExchangeOrderModal = ({
           {/* Pickup Address */}
           <div>
             <div className="flex items-center justify-between mb-2">
-              <label className="block text-sm font-medium text-black">
+              <label className="block text-sm font-medium text-white">
                 PICKUP ADDRESS
               </label>
               <button
                 onClick={() => setIsAddressDropdownOpen(!isAddressDropdownOpen)}
-                className="text-xs text-blue-600 hover:underline"
+                className="text-xs text-blue-400 hover:underline"
               >
                 Change
               </button>
@@ -468,20 +468,20 @@ const ExchangeOrderModal = ({
                       setSelectedAddressId(address.id);
                       setIsAddressDropdownOpen(false);
                     }}
-                    className={`w-full px-4 py-3 text-left text-black hover:bg-gray-50 border-b border-gray-100 last:border-b-0 ${
+                    className={`w-full px-4 py-3 text-left text-white hover:bg-gray-50 border-b border-gray-100 last:border-b-0 ${
                       selectedAddressId === address.id ? "bg-blue-50" : ""
                     }`}
                   >
-                    <div className="font-medium text-black text-sm">
+                    <div className="font-medium text-white text-sm">
                       {address.contactName}
                     </div>
-                    <div className="text-xs text-black mt-1">
+                    <div className="text-xs text-white/10 mt-1">
                       {address.line1}, {address.line2}
                     </div>
-                    <div className="text-xs text-black">
+                    <div className="text-xs text-white/10">
                       {address.city}, {address.state} {address.postalCode}
                     </div>
-                    <div className="text-xs text-black">
+                    <div className="text-xs text-white/10">
                       {address.contactPhone}
                     </div>
                   </button>
@@ -492,15 +492,15 @@ const ExchangeOrderModal = ({
             {/* Selected Address Display */}
             {selectedAddress && !isAddressDropdownOpen && (
               <div className="bg-gray-50 p-3 rounded">
-                <div className="font-medium text-sm capitalize text-black">
+                <div className="font-medium text-sm capitalize text-white">
                   {selectedAddress.type}
                 </div>
-                <div className="text-xs text-gray-700 mt-1">
+                <div className="text-xs text-white/10 mt-1">
                   {selectedAddress.line1},{" "}
                   {selectedAddress.line2 && `${selectedAddress.line2}, `}
                   close to landmark
                 </div>
-                <div className="text-xs text-gray-700">
+                <div className="text-xs text-white/10">
                   {selectedAddress.city}, {selectedAddress.state},{" "}
                   {selectedAddress.country}
                 </div>
@@ -510,7 +510,7 @@ const ExchangeOrderModal = ({
             {/* Info Text */}
             <div className="flex items-start gap-2 mt-3">
               <div className="w-4 h-4 border border-gray-400 rounded-full flex-shrink-0 mt-0.5"></div>
-              <p className="text-xs text-black">
+              <p className="text-xs text-white/10">
                 Your replacement will be shipped once the item passes quality
                 check. This typically takes 2-3 business days.
               </p>
@@ -519,11 +519,11 @@ const ExchangeOrderModal = ({
         </div>
 
         {/* Footer Buttons */}
-        <div className="flex gap-3 p-4 border-t sticky bottom-0 bg-white">
+        <div className="flex gap-3 p-4 border-t sticky bottom-0 bg-[#27272a]">
           <button
             onClick={onClose}
             disabled={isSubmitting}
-            className="flex-1 py-3 border border-gray-300 rounded font-medium hover:bg-gray-50 text-black disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex-1 py-3 border border-gray-300 rounded font-medium hover:bg-gray-50 text-white disabled:opacity-50 disabled:cursor-not-allowed"
           >
             Back
           </button>

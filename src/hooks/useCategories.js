@@ -7,11 +7,9 @@ const useCategories = (query) => {
 
   const getCategories = async () => {
     try {
-      let endPoint;
+      let endPoint= endPoints.getCategories;
       if (query) {
-        endPoint = `${endPoints.getCategories}?${query}&status=true`;
-      } else {
-        endPoint = `${endPoints.getCategories}?status=true`;
+        endPoint += `&${query}`;
       }
 
       const result = await axiosHttp.get(endPoint);
@@ -19,12 +17,12 @@ const useCategories = (query) => {
       if (result?.status === 200) {
         setCategories(result?.data?.data);
       }
-    } catch (err) {}
+    } catch (err) {console.error("Error fetching categories:",err);}
   };
 
   useEffect(() => {
     getCategories();
-  }, []);
+  }, [query]);
   return categories;
 };
 

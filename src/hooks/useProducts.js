@@ -2,7 +2,7 @@ import axiosHttp from "@/utils/axioshttp";
 import { endPoints } from "@/utils/endpoints";
 import { useEffect, useState, useCallback } from "react";
 
-const useProducts = (query) => {
+const useProducts = ({query,city,mode}={}) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
@@ -10,8 +10,15 @@ const useProducts = (query) => {
 
   const getProducts = useCallback(
     async (pageNumber = 1, isLoadMore = false) => {
+      //quick guard
+      if(!city && mode!=="quick"){
+        setLoading(false);
+        setHasMore(false);
+        setProducts([]);
+        return;
+      }
       // Skip if query is null (search or subCategory is active)
-      if (query === null) {
+      if (query === undefined) {
         setLoading(false);
         setHasMore(false);
         setProducts([]);
@@ -23,12 +30,11 @@ const useProducts = (query) => {
           setLoading(true);
         }
 
-        let endPoint;
+        let endPoint =  `${endPoints.getProducts}&mode=${mode}&city=${city}`;
         if (query) {
-          endPoint = `${endPoints.getProducts}&${query}&page=${pageNumber}`;
-        } else {
-          endPoint = `${endPoints.getProducts}&page=${pageNumber}`;
-        }
+          endPoint += `&${query}`;
+        } 
+        endPoint+=`&page=${pageNumber}`;
 
         const result = await axiosHttp.get(endPoint);
 
@@ -60,10 +66,10 @@ const useProducts = (query) => {
       } finally {
         if (pageNumber === 1) {
           setLoading(false);
-        }
+        } 
       }
     },
-    [query]
+    [query,city]
   );
 
   // Initial load when query changes

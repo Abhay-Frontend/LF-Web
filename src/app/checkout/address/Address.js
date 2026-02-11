@@ -12,7 +12,7 @@ import useGetCoupons from "@/hooks/useGetCoupons";
 import Link from "next/link";
 import Footer from "@/components/footer";
 import { setCartItems } from "@/redux/slices/cartSlice";
-import toast from "react-hot-toast";
+import toast from "react-hot-toast";   
 
 const CheckOutAddress = () => {
   const [products, setProducts] = useState([]);
