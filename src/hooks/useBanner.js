@@ -9,9 +9,9 @@ const useBanner = (query) => {
     try {
       let endPoint;
       if (query) {
-        endPoint = `${endPoints.getBanners}?${query}`;
+        endPoint = `${endPoints.getBanners}?${query}&channel=quick`;
       } else {
-        endPoint = `${endPoints.getBanners}`;
+        endPoint = `${endPoints.getBanners}?channel=quick `;
       }
       // const endPoint = `${endPoints.getProducts}`;
       const result = await axiosHttp.get(endPoint);
